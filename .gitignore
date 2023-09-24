@@ -1,0 +1,47 @@
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# C/C++ binary extension file
+*.bin
+
+# VisualStudioCode
+.vscode/
+*.code-workspace
+
+# CodeLite IDE
+*.mk
+*.txt
+*.project
+*.workspace
+compile_commands.json
+Makefile
+.codelite/
+.cache/
+.ctagsd/
+.clang*
+*.session
+*.tags
+tags
+
+# Builds
+Debug/
+build-Debug/
