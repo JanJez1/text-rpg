@@ -8,16 +8,16 @@
 #include <vector>
 
 #include "utils.h"
-#include "Item.h"
+#include "objects/Item.h"
 
 class Room
 {
 
 private:
-    std::string title;
-    std::string desc;
-    std::map<Exit, Room*> exits;
-    std::vector<std::unique_ptr<Item>> items;
+    std::string m_title;
+    std::string m_desc;
+    std::map<Exit, Room*> m_exits;
+    std::vector<std::unique_ptr<Item>> m_items;
     
 public:
     Room(std::string title = "void", std::string desc = "darkness");
@@ -25,7 +25,7 @@ public:
     std::string get_full_desc();
     void add_exit(Exit, Room*);
     Room* get_exit(Exit);    
-    void add_item(std::unique_ptr<Item> item) { items.push_back(move(item)); }
+    void add_item(std::unique_ptr<Item> item) { m_items.push_back(move(item)); }
     
     Item* find_item(std::string);
 

@@ -30,48 +30,48 @@ void World::link_rooms(std::string room1 , Exit exit, std::string room2) {
     rooms[room2]->add_exit(get_opposite_exit(exit), rooms[room1].get());
 }
 
+void World::add_item(std::string room, std::string item) {
+    rooms[room]->add_item(item_factory.create(item));
+}
 
 World::World()
-: rooms{}, current_room{nullptr}
+    : rooms{},
+      current_room{nullptr},
+      item_factory{} 
 {
     create_room(
         "sq",
         "main square",
-        "a quite large square covered with cobblestones. Currently only one street leads to the south."
+        "a quite large square covered with cobblestones. Currently only one narrow street leads to the south."
     );
   
     create_room(
-        "da1",
-        "a dark ale",
+        "dl1",
+        "a dark lane",
         "This is a narrow dark street running among tiny houses. "
         "It opens to a square to the north while getting even darker to the south."
     );
 
     create_room(
-        "da2",
-        "a dark ale bending",
+        "dl2",
+        "a dark lane bending",
         "This is a narrow street running among tiny houses. It turns here abruptly."
     );
 
     create_room(
-        "da3",
-        "a dark ale dead end",
-        "The dark ale ends here. The only exit is to the west."
+        "dl3",
+        "a dark lane dead end",
+        "The dark lane ends here. The only exit is to the west."
     );
     
     set_start_room(rooms["sq"].get());
     
-    link_rooms("sq", south, "da1");
-    link_rooms("da1", south, "da2");
-    link_rooms("da2", east, "da3");
+    link_rooms("sq", south, "dl1");
+    link_rooms("dl1", south, "dl2");
+    link_rooms("dl2", east, "dl3");
 
-    rooms["sq"]->add_item(make_unique<Item>(
-        "knife",
-        "an old rusty knife",
-        "This knife is about ten inches long. It has rusty blade and batterend handle."
-    ));
-
-    
+    add_item("sq", "key");
+    add_item("dl3", "leather_helmet");
 }
 
 

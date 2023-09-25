@@ -3,7 +3,7 @@
 
 #include "Cmd_Base.h"
 #include "../World.h"
-#include "../Item.h"
+#include "../objects/Item.h"
 
 
 class Look : public Cmd_Base
