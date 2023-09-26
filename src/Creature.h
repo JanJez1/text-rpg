@@ -19,6 +19,7 @@ public:
     void add_item_to_inv(std::unique_ptr<Object>);
     std::unique_ptr<Object> move_item_from_inv(std::string);
     Object* find_item_in_inv(std::string);
+    std::vector<std::unique_ptr<Object>>& get_inv() { return m_inv; };
 };
 
 #endif // CREATURE_H

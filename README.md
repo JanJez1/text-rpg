@@ -13,5 +13,5 @@ Currently implemented:
 
 Commands:
 - go ('go north', or simply 'n')
-- look (at)
+- look (at), inventory
 - get, drop
