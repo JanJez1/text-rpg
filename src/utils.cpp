@@ -1,4 +1,3 @@
-#include <string>
 #include "utils.h"
 
 std::string to_upper(std::string str) {
@@ -36,4 +35,23 @@ Exit string_to_exit(std::string ex) {
     if (ex == "west" || ex =="w")
         return west;
     return invalid;
+}
+
+std::unique_ptr<Object> move_obj_from_vector(std::string str, std::vector<std::unique_ptr<Object>>& vec) {
+    auto it = (std::find_if(vec.begin(), vec.end(),
+        [&](std::unique_ptr<Object> & obj){ return obj->get_key_name() == str;}));
+    if (it != vec.end()) {
+        auto temp = std::move(*it);
+        vec.erase(it);
+        return temp;
+    }
+    return nullptr;   
+}
+
+Object* find_obj_in_vector(std::string str, std::vector<std::unique_ptr<Object>>& vec) {
+    auto it = (std::find_if(vec.begin(), vec.end(),
+        [&](std::unique_ptr<Object> & obj){ return obj->get_key_name() == str;}));
+    if (it != vec.end())
+        return (*it).get();
+    return nullptr;
 }

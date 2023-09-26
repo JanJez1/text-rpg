@@ -9,7 +9,7 @@ class Go : public Cmd_Base
 {
 public:
     virtual ~Go() {};
-    virtual std::string action(std::vector<std::string>, World&) override;
+    virtual std::string action(std::vector<std::string>, Player&) override;
 };
 
 #endif // GO_H

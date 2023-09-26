@@ -3,14 +3,14 @@
 
 #include <string>
 #include <vector>
-#include "../World.h"
+#include "../Player.h"
 
 class Cmd_Base
 {
 public:
     virtual ~Cmd_Base() {};
 
-    virtual std::string action(std::vector<std::string>, World&) =0;
+    virtual std::string action(std::vector<std::string>, Player&) =0;
 };
 
 #endif // CMD_BASE_H

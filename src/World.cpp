@@ -9,21 +9,6 @@ void World::create_room(string key, string title, string desc) {
     return;
 }
 
-void World::set_start_room(Room* p_room) {
-    start_room = p_room;
-    current_room = p_room;
-}
-
-void World::set_current_room(Room* p_room) {
-    current_room = p_room;
-}
-
-Room* World::get_current_room() {
-    if (current_room == nullptr) {
-        return start_room;
-    }
-    return current_room;
-}
 
 void World::link_rooms(std::string room1 , Exit exit, std::string room2) {
     rooms[room1]->add_exit(exit, rooms[room2].get());
@@ -36,7 +21,7 @@ void World::add_item(std::string room, std::string item) {
 
 World::World()
     : rooms{},
-      current_room{nullptr},
+      start_room{nullptr},
       item_factory{} 
 {
     create_room(
@@ -44,7 +29,9 @@ World::World()
         "main square",
         "a quite large square covered with cobblestones. Currently only one narrow street leads to the south."
     );
-  
+    add_item("sq", "key");
+    add_item("sq", "leather_helmet");
+      
     create_room(
         "dl1",
         "a dark lane",
@@ -63,6 +50,7 @@ World::World()
         "a dark lane dead end",
         "The dark lane ends here. The only exit is to the west."
     );
+    add_item("dl3", "leather_helmet");
     
     set_start_room(rooms["sq"].get());
     
@@ -70,8 +58,7 @@ World::World()
     link_rooms("dl1", south, "dl2");
     link_rooms("dl2", east, "dl3");
 
-    add_item("sq", "key");
-    add_item("dl3", "leather_helmet");
+    rooms["dl3"]->move_item_from_room("helmet");
 }
 
 

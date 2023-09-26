@@ -12,7 +12,7 @@ class World
 {
 private:
     std::map<std::string, std::unique_ptr<Room>> rooms;
-    Room* current_room;
+    // Room* current_room;
     Room* start_room;
     Item_Factory item_factory;
    
@@ -23,9 +23,8 @@ private:
 public:
     World();
 
-    void set_current_room(Room* p = nullptr);
-    void set_start_room(Room* p = nullptr);
-    Room* get_current_room();
+    void set_start_room(Room* room) {start_room = room;}
+    Room* get_start_room() {return start_room;}
 };
 
 #endif // WORLD_H

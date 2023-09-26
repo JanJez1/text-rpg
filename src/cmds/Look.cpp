@@ -1,8 +1,8 @@
 #include "Look.h"
 
-std::string Look::action(std::vector<std::string> params, World& world) {
+std::string Look::action(std::vector<std::string> params, Player& player) {
     if (params.size() == 0)
-        return world.get_current_room()->get_full_desc();
+        return player.get_current_room()->get_full_desc();
     std::string target_string = "";
     if (params.size() == 1) {
         if(params.at(0) == "at") {
@@ -19,7 +19,10 @@ std::string Look::action(std::vector<std::string> params, World& world) {
             return "You can look at one thing a time only.";
         }
     }
-    auto p_item = world.get_current_room()->find_item(target_string);
+    auto p_item = player.get_current_room()->find_item(target_string);
+    if(p_item != nullptr)
+        return p_item->get_desc();
+    p_item = player.find_item_in_inv(target_string);
     if(p_item != nullptr)
         return p_item->get_desc();
     return "You don't see " + target_string + " here.";

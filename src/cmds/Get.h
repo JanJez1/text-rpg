@@ -1,16 +1,17 @@
-#ifndef LOOK_H
-#define LOOK_H
+#ifndef GET_H
+#define GET_H
 
 #include "Cmd_Base.h"
 #include "../World.h"
+#include "../Object.h"
 #include "../objects/Item.h"
 
 
-class Look : public Cmd_Base
+class Get : public Cmd_Base
 {
 public:
-    virtual ~Look() {};
+    virtual ~Get() {};
     virtual std::string action(std::vector<std::string>, Player&) override;
 };
 
-#endif // LOOK_H
+#endif // GET_H
