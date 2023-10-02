@@ -57,8 +57,6 @@ World::World()
     link_rooms("sq", south, "dl1");
     link_rooms("dl1", south, "dl2");
     link_rooms("dl2", east, "dl3");
-
-    rooms["dl3"]->move_item_from_room("helmet");
 }
 
 

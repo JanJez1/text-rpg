@@ -19,11 +19,22 @@ std::string Look::action(std::vector<std::string> params, Player& player) {
             return "You can look at one thing a time only.";
         }
     }
-    auto p_item = player.get_current_room()->find_item(target_string);
-    if(p_item != nullptr)
-        return p_item->get_desc();
-    p_item = player.find_item_in_inv(target_string);
-    if(p_item != nullptr)
-        return p_item->get_desc();
+
+    std::vector<std::unique_ptr<Object>>::iterator iter;
+    
+    if (player.get_current_room() != nullptr) {
+        auto& items = player.get_current_room()->get_items();
+        iter = find_elem(target_string, items);
+        if(iter != items.end()) {
+            return (*iter)->get_desc();
+        }
+    }
+
+    auto& inv = player.get_inv();
+    iter = find_elem(target_string, inv);
+    if(iter != inv.end()) {
+        return (*iter)->get_desc();
+    }
+
     return "You don't see " + target_string + " here.";
 }

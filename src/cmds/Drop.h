@@ -2,6 +2,7 @@
 #define DROP_H
 
 #include "Cmd_Base.h"
+#include "../utils.h"
 #include "../World.h"
 #include "../Object.h"
 #include "../objects/Item.h"

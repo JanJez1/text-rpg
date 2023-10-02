@@ -3,6 +3,7 @@
 
 #include "Cmd_Base.h"
 #include "../World.h"
+#include "../Room.h"
 #include "../objects/Item.h"
 
 

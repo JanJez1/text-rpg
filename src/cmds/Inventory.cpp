@@ -1,5 +1,18 @@
 #include "Inventory.h"
 
+ std::string get_equipped_item_string(std::unique_ptr<Object>& item) {
+    if (item == nullptr) return "---";
+    return item->get_title();
+ }
+
+std::string get_equipped_string(std::map<Object_Type, std::unique_ptr<Object>>& equipped) {
+    std::string str = "You have equipped:\n";
+    for(auto& [key, val] : equipped) {
+        str += "  " + object_type_to_string(key) + ": " + get_equipped_item_string(val);
+    }
+    return str;
+}
+
 std::string Inventory::action(std::vector<std::string> params, Player& player) {
 
     if (params.size() > 0) {
@@ -7,7 +20,8 @@ std::string Inventory::action(std::vector<std::string> params, Player& player) {
     }
     
     auto& inv = player.get_inv();
-    if(inv.size() == 0) {
+
+    if(inv.size() == 0 ) {
         return "You carry nothing.";
     }
 

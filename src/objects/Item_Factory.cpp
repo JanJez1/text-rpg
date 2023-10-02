@@ -17,7 +17,8 @@ unique_ptr<Item> Item_Factory::create(string str) {
             "helmet",
             "a leather helmet",
             "This is a simple helmet made of hardened leather. It covers top of the head only.",
-            1
+            1,
+            Object_Type::helmet
         );
     return make_unique<Item>("", "an unidentified blob");
 }

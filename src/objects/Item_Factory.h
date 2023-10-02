@@ -6,6 +6,7 @@
 
 #include "Item.h"
 #include "Armour.h"
+#include "../defs.h"
 
 class Item_Factory
 {

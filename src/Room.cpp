@@ -49,11 +49,3 @@ Room* Room::get_exit(Exit exit) {
     }
     return nullptr;
 }
-
-unique_ptr<Object> Room::move_item_from_room(string str) {
-    return move_obj_from_vector(str, m_items);
-}
-
-Object* Room::find_item(string str) {
-    return find_obj_in_vector(str, m_items);
-}

@@ -7,7 +7,7 @@
 #include "utils.h"
 #include "Input_Handler.h"
 #include "Commands.h"
-
+// #include "objects/Item_Factory.h"
 using namespace std;
 
 int main() {
@@ -28,6 +28,9 @@ int main() {
     string response="";
     
     cout << player.get_current_room()->get_full_desc() << endl;
+
+    // Item_Factory fact{};
+
     
     // main game loop
     do {

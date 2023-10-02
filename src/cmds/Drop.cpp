@@ -3,11 +3,10 @@
 std::string Drop::action(std::vector<std::string> params, Player& player) {
     if (params.size() != 1)
         return "What do you want to drop?";
-    auto p_item = player.move_item_from_inv(params.at(0));
-    if(p_item != nullptr) {
-        std::string response = "You've dropped " + p_item->get_title() + "."; 
-        player.get_current_room()->add_item(move(p_item));
-        return response;
+    auto& inv = player.get_inv();
+    auto iter = find_elem(params.at(0), inv);
+    if(iter != inv.end()) {
+        return player.event_drop_item(iter);
     }
-    return "You don't see any " + params.at(0) + " here.";
+    return "You don't have it.";
 }
