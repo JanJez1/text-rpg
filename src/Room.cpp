@@ -19,7 +19,7 @@ string Room::get_full_desc() {
             items_string += " is lying here.\n";
         else {
             if(m_items.size()>2) {
-                for(size_t i{1}; i <= m_items.size()-1; i++)
+                for(size_t i{1}; i <= m_items.size()-2; i++)
                     items_string += ", " + m_items.at(i)->get_title();
             }
             items_string += " and " + m_items.back()->get_title() +" are lying here.\n";
