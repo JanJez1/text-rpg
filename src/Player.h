@@ -16,6 +16,7 @@ private:
     Room* current_room;
 public:
     Player(std::string, std::string title = "hero", std::string desc = "not described");
+    virtual ~Player() = default;
     void set_current_room(Room* room) {current_room = room;}
     Room* get_current_room() override {return current_room;}
 };

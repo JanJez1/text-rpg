@@ -16,7 +16,7 @@ public:
         std::string desc = "not described",
         int ac = 0,
         Object_Type object_type = Object_Type::undefined);
-    virtual ~Armour(){}
+    virtual ~Armour() = default;
 };
 
 #endif // ARMOUR_H

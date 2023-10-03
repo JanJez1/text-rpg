@@ -16,7 +16,7 @@ public:
         std::string title = "unknown",
         std::string desc = "not described",
         Object_Type object_type = Object_Type::item);
-    virtual ~Item(){}
+    virtual ~Item() = default;
 
     bool is_equipped() { return equipped; }
     void set_equipped(bool eq) override { equipped = eq; }

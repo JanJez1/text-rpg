@@ -17,7 +17,7 @@ public:
         std::string desc = "not described",
         Object_Type object_type = Object_Type::undefined
         );
-    virtual ~Object() {};
+    virtual ~Object() = default;
 
     std::string get_key_name() {return m_key_name;}
     std::string get_title() {return m_title;}

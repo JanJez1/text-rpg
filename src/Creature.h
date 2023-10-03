@@ -21,7 +21,7 @@ private:
 
 public:
     Creature(std::string, std::string title = "unknown", std::string desc = "not described");
-    virtual ~Creature(){}
+    virtual ~Creature() = default;
 
     void add_item(std::unique_ptr<Object>);
     std::vector<std::unique_ptr<Object>>& get_inv() { return m_inv; };
