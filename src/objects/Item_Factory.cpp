@@ -20,6 +20,16 @@ unique_ptr<Item> Item_Factory::create(string str) {
             1,
             Object_Type::helmet
         );
+
+    if (str == "leather_cap")
+        return make_unique<Armour>(
+            "cap",
+            "a leather cap",
+            "This is a simple cap made of hardened leather. It covers top of the head only.",
+            1,
+            Object_Type::helmet
+        );
+
     return make_unique<Item>("", "an unidentified blob");
 }
 

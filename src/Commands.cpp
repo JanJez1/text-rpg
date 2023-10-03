@@ -13,6 +13,9 @@ Commands::Commands()
     commands.insert({"i", std::make_unique<Inventory>()});
     commands.insert({"look", std::make_unique<Look>()});
     commands.insert({"l", std::make_unique<Look>()});
+    commands.insert({"remove", std::make_unique<Remove>()});
+    commands.insert({"wear", std::make_unique<Wear>()});
+    
 }
 
 

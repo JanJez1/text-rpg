@@ -29,8 +29,9 @@ World::World()
         "main square",
         "a quite large square covered with cobblestones. Currently only one narrow street leads to the south."
     );
-    add_item("sq", "key");
     add_item("sq", "leather_helmet");
+    add_item("sq", "leather_cap");
+    add_item("sq", "key");
       
     create_room(
         "dl1",
@@ -38,6 +39,7 @@ World::World()
         "This is a narrow dark street running among tiny houses. "
         "It opens to a square to the north while getting even darker to the south."
     );
+    add_item("dl1", "key");
 
     create_room(
         "dl2",

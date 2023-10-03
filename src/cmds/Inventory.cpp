@@ -27,7 +27,14 @@ std::string Inventory::action(std::vector<std::string> params, Player& player) {
 
     std::string output = "\nYou carry:\n";
     for(const auto& item: inv) {
-        output += "  " + item->get_title() + "\n";
+        output += "  " + item->get_title();
+        if(item->is_equipped()) {
+            if(item->is_wearable())
+                output += " (worn)";
+            if(item->is_holdable())
+                output += " (held)";
+        }
+        output += "\n";
     }
 
     return output;

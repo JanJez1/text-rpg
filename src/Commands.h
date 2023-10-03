@@ -15,6 +15,8 @@
 #include "cmds/Go.h"
 #include "cmds/Inventory.h"
 #include "cmds/Look.h"
+#include "cmds/Remove.h"
+#include "cmds/Wear.h"
 
 
 class Commands
