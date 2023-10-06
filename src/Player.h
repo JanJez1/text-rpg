@@ -7,10 +7,10 @@
 #include <memory>
 
 #include "Room.h"
-#include "Creature.h"
+#include "Humanoid.h"
 #include "objects/Item.h"
 
-class Player: public Creature
+class Player: public Humanoid
 {
 private:
     Room* current_room;

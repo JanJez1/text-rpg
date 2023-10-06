@@ -4,15 +4,49 @@ using namespace std;
 
 Creature::Creature(string key_name, string title, string desc)
     : Object{key_name, title, desc},
-      m_inv{}
+      m_inv{},
+      str{1}, dex{1}, con{1},
+      hp{10}, max_hp{10}
 {
 }
+
+// settings
+    short apply_ability_limits(short ability) {
+        if (ability < 1) return 1;
+        if (ability > 30) return 30;
+        return ability;
+    }
+
+    void Creature::set_abilities(short strength, short dexterity, short constitution) {
+        str = apply_ability_limits(strength);
+        dex = apply_ability_limits(dexterity);
+        con = apply_ability_limits(constitution);
+    }
+
+    void Creature::set_max_hp(int max_health, bool reset_actual_hp) {
+        if (max_health <1) 
+            max_hp = 1;
+        max_hp = max_health;
+        if (reset_actual_hp) 
+            hp = max_health;
+    }
 
 
 void Creature::add_item(std::unique_ptr<Object> item) {
     m_inv.push_back(move(item));
 }
 
+
+void Creature::add_hp(int change) {
+    if ( (hp + change) > max_hp) {
+        hp = max_hp;
+        return;
+    }
+    hp += change;
+    if (hp < 0) {} //event_die()
+}
+
+// item manipulation
 // iter to items in room
 string Creature::event_pick_item(vector<unique_ptr<Object>>::iterator iter) {
     string response = "You've picked up " + (*iter)->get_title() + "."; 

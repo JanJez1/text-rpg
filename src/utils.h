@@ -5,6 +5,7 @@
 #include <vector>
 #include <memory>
 #include <algorithm>
+#include <cstdlib>
 
 #include "Object.h"
 #include "defs.h"
@@ -20,5 +21,8 @@ Exit string_to_exit(std::string);
 std::string object_type_to_string(Object_Type);
 
 std::vector<std::unique_ptr<Object>>::iterator find_elem(std::string str, std::vector<std::unique_ptr<Object>>& vec);
+
+int random(int min, int max);
+int random(int max);
 
 #endif // UTILS_H

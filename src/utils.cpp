@@ -57,3 +57,12 @@ std::vector<std::unique_ptr<Object>>::iterator find_elem(std::string str, std::v
         [&](std::unique_ptr<Object> & obj){ return obj->get_key_name() == str;});
 
 }
+
+int random(int min, int max) {
+    srand(time(0));
+    return (rand() % (max - min + 1)) + min;
+}
+
+int random(int max) {
+    return random(1, max);
+}
