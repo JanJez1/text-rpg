@@ -52,12 +52,6 @@ std::string object_type_to_string(Object_Type object_type) {
     }
 }
 
-std::vector<std::unique_ptr<Object>>::iterator find_elem(std::string str, std::vector<std::unique_ptr<Object>>& vec) {
-    return std::find_if(vec.begin(), vec.end(),
-        [&](std::unique_ptr<Object> & obj){ return obj->get_key_name() == str;});
-
-}
-
 int random(int min, int max) {
     srand(time(0));
     return (rand() % (max - min + 1)) + min;
