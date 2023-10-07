@@ -23,14 +23,6 @@ public:
     std::string get_title() {return m_title;}
     std::string get_desc() {return m_desc;}
     Object_Type get_object_type() { return m_object_type; }
-
-    // overrides (perhaps would be enough to put it in Item.h
-    virtual bool is_equipped() {return false;}
-    virtual void set_equipped(bool) {}
-
-    // other "Item" methods
-    bool is_wearable();
-    bool is_holdable();
 };
 
 #endif // OBJECT_H

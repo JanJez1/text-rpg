@@ -19,7 +19,9 @@ public:
     virtual ~Item() = default;
 
     bool is_equipped() { return equipped; }
-    void set_equipped(bool eq) override { equipped = eq; }
+    virtual void set_equipped(bool eq) { equipped = eq; }
+    bool is_wearable();
+    bool is_holdable();
 };
 
 #endif // ITEM_H

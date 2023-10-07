@@ -32,7 +32,7 @@ Creature::Creature(string key_name, string title, string desc)
     }
 
 
-void Creature::add_item(std::unique_ptr<Object> item) {
+void Creature::add_item(std::unique_ptr<Item> item) {
     m_inv.push_back(move(item));
 }
 
@@ -48,7 +48,7 @@ void Creature::add_hp(int change) {
 
 // item manipulation
 // iter to items in room
-string Creature::event_pick_item(vector<unique_ptr<Object>>::iterator iter) {
+string Creature::event_pick_item(vector<unique_ptr<Item>>::iterator iter) {
     string response = "You've picked up " + (*iter)->get_title() + "."; 
     if (get_current_room() != nullptr) { 
         m_inv.push_back(move(*iter));
@@ -58,7 +58,7 @@ string Creature::event_pick_item(vector<unique_ptr<Object>>::iterator iter) {
 }
 
 // iter to inventory
-string Creature::event_drop_item(vector<unique_ptr<Object>>::iterator iter) {
+string Creature::event_drop_item(vector<unique_ptr<Item>>::iterator iter) {
     string response = "";
     if ((*iter)->is_equipped())
         response = event_remove_item(iter) + "\n";
@@ -73,10 +73,10 @@ string Creature::event_drop_item(vector<unique_ptr<Object>>::iterator iter) {
     return response;
 }
 
-std::string Creature::event_wear_item(vector<unique_ptr<Object>>::iterator iter) {
+std::string Creature::event_wear_item(vector<unique_ptr<Item>>::iterator iter) {
     // if sth already equipped on the same body part
     auto worn = find_if(m_inv.begin(), m_inv.end(),
-        [&](unique_ptr<Object> & obj){
+        [&](unique_ptr<Item> & obj){
         return (obj->is_equipped() && obj->get_object_type() == (*iter)->get_object_type());
     });
     string response = "";
@@ -88,7 +88,7 @@ std::string Creature::event_wear_item(vector<unique_ptr<Object>>::iterator iter)
     return response += "You've worn " + (*iter)->get_title() + ".";
 }
 
-std::string Creature::event_remove_item(vector<unique_ptr<Object>>::iterator iter) {
+std::string Creature::event_remove_item(vector<unique_ptr<Item>>::iterator iter) {
     (*iter)->set_equipped(false);
     return "You've removed " + (*iter)->get_title() + ".";
 }

@@ -17,7 +17,7 @@
 class Creature: public Object
 {
 private:
-    std::vector<std::unique_ptr<Object>> m_inv;
+    std::vector<std::unique_ptr<Item>> m_inv;
 protected:
     short str, dex, con;
     int hp, max_hp;
@@ -31,8 +31,8 @@ public:
     void set_max_hp(int, bool reset_actual_hp = false);
 
 
-    void add_item(std::unique_ptr<Object>);
-    std::vector<std::unique_ptr<Object>>& get_inv() { return m_inv; };
+    void add_item(std::unique_ptr<Item>);
+    std::vector<std::unique_ptr<Item>>& get_inv() { return m_inv; };
 
     // combat related
     void add_hp(int change);
@@ -41,10 +41,10 @@ public:
     virtual int get_dr() = 0; // damage roll
 
     // item manipulation
-    std::string event_drop_item(std::vector<std::unique_ptr<Object>>::iterator); // only for player
-    std::string event_pick_item(std::vector<std::unique_ptr<Object>>::iterator); // only for player
-    std::string event_wear_item(std::vector<std::unique_ptr<Object>>::iterator);
-    std::string event_remove_item(std::vector<std::unique_ptr<Object>>::iterator);
+    std::string event_drop_item(std::vector<std::unique_ptr<Item>>::iterator); // only for player
+    std::string event_pick_item(std::vector<std::unique_ptr<Item>>::iterator); // only for player
+    std::string event_wear_item(std::vector<std::unique_ptr<Item>>::iterator);
+    std::string event_remove_item(std::vector<std::unique_ptr<Item>>::iterator);
 
     // overrides
     virtual Room* get_current_room() {return nullptr;}

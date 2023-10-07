@@ -20,7 +20,7 @@ std::string Look::action(std::vector<std::string> params, Player& player) {
         }
     }
 
-    std::vector<std::unique_ptr<Object>>::iterator iter;
+    std::vector<std::unique_ptr<Item>>::iterator iter;
     
     if (player.get_current_room() != nullptr) {
         auto& items = player.get_current_room()->get_items();

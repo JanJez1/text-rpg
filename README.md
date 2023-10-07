@@ -15,3 +15,4 @@ Commands:
 - go ('go north', or simply 'n')
 - look (at), inventory
 - get, drop
+- wear, remove
