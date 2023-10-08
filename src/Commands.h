@@ -16,6 +16,7 @@
 #include "cmds/Inventory.h"
 #include "cmds/Look.h"
 #include "cmds/Remove.h"
+#include "cmds/Status.h"
 #include "cmds/Wear.h"
 
 

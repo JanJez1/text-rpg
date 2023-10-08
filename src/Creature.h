@@ -19,17 +19,14 @@ class Creature: public Object
 private:
     std::vector<std::unique_ptr<Item>> m_inv;
 protected:
-    short str, dex, con;
-    int hp, max_hp;
+    short hp;
+    std::map<Param_Type, short> base_params;
+
 public:
-    Creature(std::string, std::string title = "unknown", std::string desc = "not described");
+    Creature(std::string key_name, std::string title, std::string desc, std::map<Param_Type, short> params);
     virtual ~Creature() = default;
 
-    // settings
-    void set_abilities(short str=1, short dex=1, short con=1);
-    short get_ability_modifier(short ability) { return ( ability-10 ) / 2; }
-    void set_max_hp(int, bool reset_actual_hp = false);
-
+    short get_ability_modifier(short ability_value) { return ( ability_value-10 ) / 2; }
 
     void add_item(std::unique_ptr<Item>);
     std::vector<std::unique_ptr<Item>>& get_inv() { return m_inv; };
@@ -39,12 +36,15 @@ public:
     virtual int get_ac() = 0; // armour class
     virtual int get_hr() = 0; // hit roll
     virtual int get_dr() = 0; // damage roll
+    short get_param(Param_Type);
 
-    // item manipulation
+    // item manipulation - move to humanoid!!
     std::string event_drop_item(std::vector<std::unique_ptr<Item>>::iterator); // only for player
     std::string event_pick_item(std::vector<std::unique_ptr<Item>>::iterator); // only for player
     std::string event_wear_item(std::vector<std::unique_ptr<Item>>::iterator);
     std::string event_remove_item(std::vector<std::unique_ptr<Item>>::iterator);
+
+    std::string display_status(); // in production should be in player, it is here to check monsters during  development
 
     // overrides
     virtual Room* get_current_room() {return nullptr;}

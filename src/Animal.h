@@ -12,16 +12,11 @@
 
 class Animal: public Creature
 {
-private:
-    int ac;
-    int attack;
-    int min_damage, max_damage;
 public:
-    Animal(std::string, std::string title = "hero", std::string desc = "not described");
+    Animal(std::string key_name, std::string title, std::string desc, std::map<Param_Type, short> params);
     virtual ~Animal() = default;
 
     //combat related
-    void set_attack(int a);
     int get_ac() override; // armour class
     int get_hr() override; // hit roll
     int get_dr() override; // damage roll

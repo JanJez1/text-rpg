@@ -2,24 +2,22 @@
 
 using namespace std;
 
-Animal::Animal(string key_name, string title, string desc)
-    : Creature{key_name, title, desc}
+Animal::Animal(string key_name, string title, string desc, map<Param_Type, short> params)
+    : Creature{key_name, title, desc, params}
 {}
 
-void Animal::set_attack(int a) { 
-    if (a < 0) { attack = 0; return; }
-    if (a > 30) { attack = 30; return; }
-    attack = a;
-}
-
 int Animal::get_ac() { 
-    return ac + get_ability_modifier(dex);
+    short dex_modifier = get_ability_modifier(get_param(Param_Type::dex));
+    short base_ac = get_param(Param_Type::ac);
+    return base_ac + dex_modifier;
 } 
 
 int Animal::get_hr() {
-    return attack + random(20);
+    return get_param(Param_Type::attack) + random(20);
 }
 
 int Animal::get_dr() {
+    short min_damage = get_param(Param_Type::min_damage);
+    short max_damage = get_param(Param_Type::max_damage);
     return random(min_damage, max_damage);
 }

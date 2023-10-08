@@ -7,6 +7,7 @@
 #include <memory>
 
 #include "Room.h"
+#include "defs.h"
 #include "Creature.h"
 #include "objects/Item.h"
 
@@ -17,7 +18,7 @@ private:
     int attack;
     int min_damage, max_damage;
 public:
-    Humanoid(std::string, std::string title = "hero", std::string desc = "not described");
+    Humanoid(std::string key_name, std::string title, std::string desc, std::map<Param_Type, short> params);
     virtual ~Humanoid() = default;
 
     //combat related

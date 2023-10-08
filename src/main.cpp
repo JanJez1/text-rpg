@@ -1,13 +1,14 @@
 #include <iostream>
 #include <memory>
+#include <map>
 #include <string>
 
+#include "defs.h"
 #include "World.h"
 #include "Player.h"
 #include "utils.h"
 #include "Input_Handler.h"
 #include "Commands.h"
-// #include "objects/Item_Factory.h"
 using namespace std;
 
 int main() {
@@ -17,8 +18,13 @@ int main() {
  // - extract some code from main.cpp somewhere else
  // - make a "quit" command rather than this :-)
    
-    
-    Player player{"hero"};
+     map<Param_Type, short> default_player_params {
+        {Param_Type::str, 7},
+        {Param_Type::dex, 10},
+        {Param_Type::con, 15}
+     };
+
+    Player player{"Dorban", "player", "A young barbarian.", default_player_params};
     World world{};
     player.set_current_room(world.get_start_room());
     string input_line = "";
@@ -28,9 +34,6 @@ int main() {
     string response="";
     
     cout << player.get_current_room()->get_full_desc() << endl;
-
-    // Item_Factory fact{};
-
     
     // main game loop
     do {
