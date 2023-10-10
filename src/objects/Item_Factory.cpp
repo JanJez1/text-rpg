@@ -52,6 +52,32 @@ unique_ptr<Item> Item_Factory::create(string str) {
         );
     }
 
+//    *****    SHIELDS    ***********
+    if (str == "buckler") {
+        std::map<Param_Type, short> params {
+            {Param_Type::ac, 1},
+        };
+        return make_unique<Item>(
+            "buckler",
+            "a tiny buckler",
+            "A tiny round shield measuring around one foot in diamater.",
+            Object_Type::shield,
+            params
+        );
+    }
+
+    if (str == "heater_shield") {
+        std::map<Param_Type, short> params {
+            {Param_Type::ac, 2},
+        };
+        return make_unique<Item>(
+            "shield",
+            "a heater shield",
+            "The shield made of thin wood overlaid with leather and braced with iron.",
+            Object_Type::shield,
+            params
+        );
+    }
 
 //    *****    WEAPONS    ***********
     if (str == "stick") {
@@ -63,6 +89,19 @@ unique_ptr<Item> Item_Factory::create(string str) {
             "stick",
             "a wooden stick",
             "This is about one foot long and relatively strong piece of wood.",
+            Object_Type::weapon,
+            params
+        );
+    }
+    if (str == "rusty_dagger") {
+        std::map<Param_Type, short> params {
+            {Param_Type::min_damage, 2},
+            {Param_Type::max_damage, 4}
+        };
+        return make_unique<Item>(
+            "dagger",
+            "a rusty dagger",
+            "An old rusty dagger. It is about a half foot long.",
             Object_Type::weapon,
             params
         );

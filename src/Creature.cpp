@@ -68,7 +68,7 @@ string Creature::event_drop_item(vector<unique_ptr<Item>>::iterator iter) {
     return response;
 }
 
-std::string Creature::event_wear_item(vector<unique_ptr<Item>>::iterator iter) {
+std::string Creature::event_equip_item(vector<unique_ptr<Item>>::iterator iter) {
     // if sth already equipped on the same body part
     auto worn = find_if(m_inv.begin(), m_inv.end(),
         [&](unique_ptr<Item> & obj){
@@ -83,7 +83,10 @@ std::string Creature::event_wear_item(vector<unique_ptr<Item>>::iterator iter) {
     for(auto const& [key, value]: (*iter)->get_item_params()) {
         alter_param_bonus(key, value);
     }
-    return response += "You've worn " + (*iter)->get_title() + ".";
+    if ((*iter)->is_wearable())
+        return response += "You've worn " + (*iter)->get_title() + ".";
+    return response += "You've held " + (*iter)->get_title() + ".";
+
 }
 
 std::string Creature::event_remove_item(vector<unique_ptr<Item>>::iterator iter) {
@@ -94,6 +97,7 @@ std::string Creature::event_remove_item(vector<unique_ptr<Item>>::iterator iter)
     return "You've removed " + (*iter)->get_title() + ".";
 }
 
+// --------- SUPPORT
 
 std::string ability_value_to_string(short value) {
     std::string str = std::to_string(value) + " ";

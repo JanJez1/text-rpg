@@ -11,11 +11,11 @@ Currently implemented:
 - hero movement
 - items, armours, weapons
 - item manipulation
-- worn items alter player's characteristics (ac, damage, strength, ...)
+- worn/held items alter player's characteristics (ac, damage, strength, ...)
 
 Commands:
 - go ('go north', or simply 'n')
 - look (at), inventory, status
 - get, drop
-- wear, remove
+- wear, hold, remove
 - quit

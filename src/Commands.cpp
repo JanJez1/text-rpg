@@ -8,6 +8,7 @@ Commands::Commands()
     commands.insert({"drop", std::make_unique<Drop>()});
     commands.insert({"get", std::make_unique<Get>()});
     commands.insert({"go", std::make_unique<Go>()});
+    commands.insert({"hold", std::make_unique<Hold>()});
     commands.insert({"inventory", std::make_unique<Inventory>()});
     commands.insert({"inv", std::make_unique<Inventory>()});
     commands.insert({"i", std::make_unique<Inventory>()});

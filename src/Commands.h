@@ -13,6 +13,7 @@
 #include "cmds/Drop.h"
 #include "cmds/Get.h"
 #include "cmds/Go.h"
+#include "cmds/Hold.h"
 #include "cmds/Inventory.h"
 #include "cmds/Look.h"
 #include "cmds/Quit.h"

@@ -34,6 +34,9 @@ World::World()
     add_item("sq", "key");
     add_item("sq", "leather_boots_dex");
     add_item("sq", "stick");
+    add_item("sq", "rusty_dagger");
+    add_item("sq", "heater_shield");
+    add_item("sq", "buckler");
       
     create_room(
         "dl1",

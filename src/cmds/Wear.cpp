@@ -12,5 +12,5 @@ std::string Wear::action(std::vector<std::string> params, Player& player) {
         return "You've already worn it.";
     else if(!(*iter)->is_wearable() )
         return "You can't wear " + (*iter)->get_title() + ".";
-    return player.event_wear_item(iter);
+    return player.event_equip_item(iter);
 }

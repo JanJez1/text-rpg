@@ -46,7 +46,7 @@ public:
     // item manipulation - move to humanoid!!
     std::string event_drop_item(std::vector<std::unique_ptr<Item>>::iterator); // only for player
     std::string event_pick_item(std::vector<std::unique_ptr<Item>>::iterator); // only for player
-    std::string event_wear_item(std::vector<std::unique_ptr<Item>>::iterator);
+    std::string event_equip_item(std::vector<std::unique_ptr<Item>>::iterator);
     std::string event_remove_item(std::vector<std::unique_ptr<Item>>::iterator);
 
     std::string get_status();
