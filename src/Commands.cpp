@@ -13,6 +13,8 @@ Commands::Commands()
     commands.insert({"i", std::make_unique<Inventory>()});
     commands.insert({"look", std::make_unique<Look>()});
     commands.insert({"l", std::make_unique<Look>()});
+    commands.insert({"quit", std::make_unique<Quit>()});
+    commands.insert({"q", std::make_unique<Quit>()});
     commands.insert({"remove", std::make_unique<Remove>()});
     commands.insert({"status", std::make_unique<Status>()});
     commands.insert({"wear", std::make_unique<Wear>()});
@@ -26,8 +28,7 @@ string Commands::execute_command(vector<string> tokens, Player& player) {
     apply_go_aliases(tokens); //  transfers 'n' to 'go north'
     string verb = tokens.at(0);
     tokens.erase(tokens.begin()); // the first token is verb, after erasing it, only params remain in tokens
-
-    if (commands.find(verb) == commands.end()) 
+    if (commands.find(verb) == commands.end() )
         return "Command not recognized.";
     return commands.at(verb)->action(tokens, player);
 }

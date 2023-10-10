@@ -2,8 +2,10 @@
 
 using namespace std;
 
-Item::Item(string key_name, string title, string desc, Object_Type object_type)
+Item::Item(string key_name, string title, string desc, Object_Type object_type, map<Param_Type, short> item_params_)
+// Item::Item(string key_name, string title, string desc, Object_Type object_type)
     : Object{key_name, title, desc, object_type},
+    item_params{item_params_},
     equipped{false}
 {}
 

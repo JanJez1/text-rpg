@@ -32,6 +32,8 @@ World::World()
     add_item("sq", "leather_helmet");
     add_item("sq", "leather_cap");
     add_item("sq", "key");
+    add_item("sq", "leather_boots_dex");
+    add_item("sq", "stick");
       
     create_room(
         "dl1",
@@ -39,7 +41,7 @@ World::World()
         "This is a narrow dark street running among tiny houses. "
         "It opens to a square to the north while getting even darker to the south."
     );
-    add_item("dl1", "key");
+    // add_item("dl1", "key");
 
     create_room(
         "dl2",

@@ -15,6 +15,7 @@
 #include "cmds/Go.h"
 #include "cmds/Inventory.h"
 #include "cmds/Look.h"
+#include "cmds/Quit.h"
 #include "cmds/Remove.h"
 #include "cmds/Status.h"
 #include "cmds/Wear.h"

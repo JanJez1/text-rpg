@@ -4,21 +4,35 @@ using namespace std;
 
 Creature::Creature(string key_name, string title, string desc, map<Param_Type, short> params)
     : Object{key_name, title, desc},
-      base_params{params} 
+      base_params{params},
+      param_bonuses{}
 {
 }
 
+void Creature::alter_param_bonus(Param_Type param_type, short value) {
+    auto itr = param_bonuses.find(param_type);
+    if (itr != param_bonuses.end())
+        itr->second += value;
+    else
+        param_bonuses[param_type] = value;
+}
+
 short Creature::get_param(Param_Type param_type) {
-    if (base_params.find(param_type) == base_params.end())
-        return 0;
-    return base_params.at(param_type); // + (temporary) param_bonus once implemented
+    short param_value {0};
+    auto itr = base_params.find(param_type);
+    if (itr != base_params.end())
+        param_value += itr->second;
+    itr = param_bonuses.find(param_type); // change this line or next line!!
+    if (param_bonuses.find(param_type) != param_bonuses.end())
+        param_value += param_bonuses.at(param_type);
+    return param_value;
 }
 
 void Creature::add_item(std::unique_ptr<Item> item) {
     m_inv.push_back(move(item));
 }
 
-void Creature::add_hp(int change) {
+void Creature::alter_hp(int change) {
     if ( (hp + change) > get_param(Param_Type::max_hp)) {
         hp = get_param(Param_Type::max_hp);
         return;
@@ -66,13 +80,20 @@ std::string Creature::event_wear_item(vector<unique_ptr<Item>>::iterator iter) {
     }
 
     (*iter)->set_equipped(true);
+    for(auto const& [key, value]: (*iter)->get_item_params()) {
+        alter_param_bonus(key, value);
+    }
     return response += "You've worn " + (*iter)->get_title() + ".";
 }
 
 std::string Creature::event_remove_item(vector<unique_ptr<Item>>::iterator iter) {
     (*iter)->set_equipped(false);
+    for(auto const& [key, value]: (*iter)->get_item_params()) {
+        alter_param_bonus(key, -value);
+    }
     return "You've removed " + (*iter)->get_title() + ".";
 }
+
 
 std::string ability_value_to_string(short value) {
     std::string str = std::to_string(value) + " ";
@@ -85,12 +106,13 @@ std::string ability_value_to_string(short value) {
     return str += std::to_string(modif) + ")";
 }
 
-std::string Creature::display_status(){
+std::string Creature::get_status(){
     std::string response = "";
     response += "Strength:      " + ability_value_to_string(get_param(Param_Type::str)) + "\n";
     response += "Dexterity:     " + ability_value_to_string(get_param(Param_Type::dex)) + "\n";
     response += "Constitution:  " + ability_value_to_string(get_param(Param_Type::con)) + "\n";
     response += "Health points: " + std::to_string(get_param(Param_Type::max_hp)) + "/" + std::to_string(get_param(Param_Type::max_hp)) + "\n";
+    response += "Damage:        " + std::to_string(get_param(Param_Type::min_damage)) + "/" + std::to_string(get_param(Param_Type::max_damage)) + "\n";;
     response += "Armour class:  " + std::to_string(get_param(Param_Type::ac));
     return response;
 }

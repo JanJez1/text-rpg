@@ -44,8 +44,7 @@ int main() {
         response = commands.execute_command(tokens, player);
         cout << response << endl;
     }
-    while (input_line != "q" && input_line != "quit");
-    cout << "Thanks for playing!" << endl;
+    while (player.is_playing());
 	return 0;
 }
 
