@@ -16,7 +16,6 @@ int main() {
  // ToDo
  // - initialization of the game - name of player, setting stats etc.
  // - extract some code from main.cpp somewhere else
- // - make a "quit" command rather than this :-)
    
      map<Param_Type, short> default_player_params {
         {Param_Type::str, 7},

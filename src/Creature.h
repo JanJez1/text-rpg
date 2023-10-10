@@ -8,7 +8,7 @@
 #include <algorithm>
 
 #include "Object.h"
-#include "Room.h"
+// #include "Room.h"
 #include "utils.h"
 #include "defs.h"
 #include "objects/Item.h"
@@ -44,15 +44,15 @@ public:
     short get_param(Param_Type);
 
     // item manipulation - move to humanoid!!
-    std::string event_drop_item(std::vector<std::unique_ptr<Item>>::iterator); // only for player
-    std::string event_pick_item(std::vector<std::unique_ptr<Item>>::iterator); // only for player
+    // std::string event_drop_item(std::vector<std::unique_ptr<Item>>::iterator); // only for player
+    // std::string event_pick_item(std::vector<std::unique_ptr<Item>>::iterator); // only for player
     std::string event_equip_item(std::vector<std::unique_ptr<Item>>::iterator);
     std::string event_remove_item(std::vector<std::unique_ptr<Item>>::iterator);
 
     std::string get_status();
 
     // overrides
-    virtual Room* get_current_room() {return nullptr;}
+    // virtual Room* get_current_room() {return nullptr;}
 };
 
 #endif // CREATURE_H

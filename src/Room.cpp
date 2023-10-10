@@ -9,10 +9,42 @@ Room::Room(string title, string desc)
       m_items{}
 {}
 
+// string objects_in_room_to_string(const vector<unique_ptr<Object>>& objects) {
+//     string objects_string{objects.at(0)->get_title()};
+//     if(objects.size() > 1) {
+//         if(objects.size()>2) {
+//             for(size_t i{1}; i <= objects.size()-2; i++)
+//                 objects_string += ", " + objects.at(i)->get_title();
+//         }
+//         objects_string += " and " + objects.back()->get_title();
+//     }
+//     return objects_string; 
+// }
+
 string Room::get_full_desc() {
+    
     string full_desc  = "\n" +
         to_upper(m_title) + "\n" +
         to_upper(m_desc) + "\n";
+  
+    // MONSTERS IN ROOM
+    if (m_monsters.size() > 0 ) {
+        string items_string{m_monsters.at(0)->get_title()};
+        if(m_monsters.size() == 1)
+            items_string += " is standing here.\n";
+        else {
+            if(m_monsters.size()>2) {
+                for(size_t i{1}; i <= m_monsters.size()-2; i++)
+                    items_string += ", " + m_monsters.at(i)->get_title();
+            }
+            items_string += " and " + m_monsters.back()->get_title() +" are standing here.\n";
+        }
+        full_desc += to_upper(items_string);
+    }
+    
+    // ITEMS IN ROOM 
+    // -  identical to monsters in room, but no simple solution to extract repeated code
+    //    Only solution I know - template with function definition in header - not good
     if (m_items.size() > 0 ) {
         string items_string{m_items.at(0)->get_title()};
         if(m_items.size() == 1)
@@ -26,6 +58,8 @@ string Room::get_full_desc() {
         }
         full_desc += to_upper(items_string);
     }
+
+    // EXITS:
     string exits_string{"Exits: "};
     if(m_exits.size()==0)
         exits_string = "none";
@@ -33,6 +67,7 @@ string Room::get_full_desc() {
         for(const auto& [key, v]: m_exits)
             exits_string += exit_to_string(key) += " "; // ToDO: change to coma separated list
     full_desc += exits_string;
+    
     return full_desc;
 }
 
