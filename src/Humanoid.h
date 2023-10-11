@@ -25,6 +25,7 @@ public:
     int get_ac() override; // armour class
     int get_hr() override; // hit roll
     int get_dr() override; // damage roll
+    std::string get_desc() override; //desc + equipped items
 };
 
 #endif // HUMANOID_H

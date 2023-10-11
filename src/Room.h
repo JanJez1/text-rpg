@@ -19,7 +19,7 @@ private:
     std::string m_desc;
     std::map<Exit, Room*> m_exits;
     std::vector<std::unique_ptr<Item>> m_items;
-    std::vector<std::unique_ptr<Creature>> m_monsters;
+    std::vector<std::unique_ptr<Creature>> m_creatures;
     
 public:
     Room(std::string title = "void", std::string desc = "darkness");
@@ -31,8 +31,9 @@ public:
 
     void add_item(std::unique_ptr<Item> item) { m_items.push_back(move(item)); }
     std::vector<std::unique_ptr<Item>>& get_items() {return m_items;}
-    void add_monster(std::unique_ptr<Creature> monster) { m_monsters.push_back(move(monster)); }
-    std::vector<std::unique_ptr<Creature>>& get_monsters() {return m_monsters;}
+    
+    void add_creature(std::unique_ptr<Creature> creature) { m_creatures.push_back(move(creature)); }
+    std::vector<std::unique_ptr<Creature>>& get_creatures() {return m_creatures;}
 };
 
 #endif // ROOM_H

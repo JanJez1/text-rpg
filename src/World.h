@@ -6,6 +6,7 @@
 #include "Room.h"
 #include "objects/Item.h"
 #include "objects/Item_Factory.h"
+#include "objects/Creature_Factory.h"
 #include "utils.h"
 
 class World
@@ -15,10 +16,12 @@ private:
     // Room* current_room;
     Room* start_room;
     Item_Factory item_factory;
+    Creature_Factory creature_factory;
    
     void create_room(std::string, std::string title="void", std::string desc="");
     void link_rooms(std::string, Exit, std::string);
     void add_item(std::string room, std::string item);
+    void add_creature(std::string room, std::string creature);
 
 public:
     World();

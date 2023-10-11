@@ -5,6 +5,7 @@
 #include "../World.h"
 #include "../Room.h"
 #include "../objects/Item.h"
+#include "../Creature.h"
 
 
 class Look : public Cmd_Base

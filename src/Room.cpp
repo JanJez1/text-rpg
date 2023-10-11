@@ -6,7 +6,8 @@ Room::Room(string title, string desc)
     : m_title{title},
       m_desc{desc},
       m_exits{},
-      m_items{}
+      m_items{},
+      m_creatures{}
 {}
 
 // string objects_in_room_to_string(const vector<unique_ptr<Object>>& objects) {
@@ -28,16 +29,16 @@ string Room::get_full_desc() {
         to_upper(m_desc) + "\n";
   
     // MONSTERS IN ROOM
-    if (m_monsters.size() > 0 ) {
-        string items_string{m_monsters.at(0)->get_title()};
-        if(m_monsters.size() == 1)
+    if (m_creatures.size() > 0 ) {
+        string items_string{m_creatures.at(0)->get_title()};
+        if(m_creatures.size() == 1)
             items_string += " is standing here.\n";
         else {
-            if(m_monsters.size()>2) {
-                for(size_t i{1}; i <= m_monsters.size()-2; i++)
-                    items_string += ", " + m_monsters.at(i)->get_title();
+            if(m_creatures.size()>2) {
+                for(size_t i{1}; i <= m_creatures.size()-2; i++)
+                    items_string += ", " + m_creatures.at(i)->get_title();
             }
-            items_string += " and " + m_monsters.back()->get_title() +" are standing here.\n";
+            items_string += " and " + m_creatures.back()->get_title() +" are standing here.\n";
         }
         full_desc += to_upper(items_string);
     }

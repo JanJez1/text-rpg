@@ -21,7 +21,7 @@ public:
 
     std::string get_key_name() {return m_key_name;}
     std::string get_title() {return m_title;}
-    std::string get_desc() {return m_desc;}
+    virtual std::string get_desc() {return m_desc;}
     Object_Type get_object_type() { return m_object_type; }
 };
 

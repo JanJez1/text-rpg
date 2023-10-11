@@ -25,3 +25,15 @@ int Humanoid::get_dr() {
     // weapon equipped:
 }
 
+string Humanoid::get_desc() {
+    string output = Creature::get_desc();
+    for(const auto& item: get_inv()) {
+        if(item->is_equipped()) {
+            if(item->is_wearable())
+                output += "\n" + item->get_title() + " (worn)";
+            if(item->is_holdable())
+                output += "\n" + item->get_title() + " (held)";
+        }
+    }
+    return output;
+}

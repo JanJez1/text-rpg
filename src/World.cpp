@@ -19,10 +19,16 @@ void World::add_item(std::string room, std::string item) {
     rooms[room]->add_item(item_factory.create(item));
 }
 
+void World::add_creature(std::string room, std::string creature) {
+    rooms[room]->add_creature(creature_factory.create(creature));
+}
+
+
 World::World()
     : rooms{},
       start_room{nullptr},
-      item_factory{} 
+      item_factory{},
+      creature_factory{}
 {
     create_room(
         "sq",
@@ -37,6 +43,7 @@ World::World()
     add_item("sq", "rusty_dagger");
     add_item("sq", "heater_shield");
     add_item("sq", "buckler");
+    add_creature("sq", "green_orc");
       
     create_room(
         "dl1",

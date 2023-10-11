@@ -5,7 +5,8 @@ using namespace std;
 Creature::Creature(string key_name, string title, string desc, map<Param_Type, short> params)
     : Object{key_name, title, desc},
       base_params{params},
-      param_bonuses{}
+      param_bonuses{},
+      m_inv{}
 {
 }
 
@@ -28,7 +29,14 @@ short Creature::get_param(Param_Type param_type) {
     return param_value;
 }
 
-void Creature::add_item(std::unique_ptr<Item> item) {
+void Creature::add_item(string name, bool equip) {
+    Item_Factory item_factory{};
+    auto item = item_factory.create(name);
+    if (equip) {
+        item->set_equipped(true);
+        for(auto const& [key, value]: item->get_item_params())
+            alter_param_bonus(key, value);
+    }
     m_inv.push_back(move(item));
 }
 
@@ -41,32 +49,6 @@ void Creature::alter_hp(int change) {
     if (hp < 0) {} //event_die()
 }
 
-// item manipulation
-// // iter to items in room
-// string Creature::event_pick_item(vector<unique_ptr<Item>>::iterator iter) {
-//     string response = "You've picked up " + (*iter)->get_title() + "."; 
-//     if (get_current_room() != nullptr) { 
-//         m_inv.push_back(move(*iter));
-//         get_current_room()->get_items().erase(iter);
-//     }
-//     return response;
-// }
-
-// // iter to inventory
-// string Creature::event_drop_item(vector<unique_ptr<Item>>::iterator iter) {
-//     string response = "";
-//     if ((*iter)->is_equipped())
-//         response = event_remove_item(iter) + "\n";
-    
-//     response += "You've dropped " + (*iter)->get_title() + "."; 
-//     // ToDo: add try / catch to be sure
-//     if (get_current_room() != nullptr) { 
-//         get_current_room()->add_item(move(*iter));
-//         m_inv.erase(iter);
-//     }
-
-//     return response;
-// }
 
 std::string Creature::event_equip_item(vector<unique_ptr<Item>>::iterator iter) {
     // if sth already equipped on the same body part
@@ -98,7 +80,6 @@ std::string Creature::event_remove_item(vector<unique_ptr<Item>>::iterator iter)
 }
 
 // --------- SUPPORT
-
 std::string ability_value_to_string(short value) {
     std::string str = std::to_string(value) + " ";
     short modif = ( value - 10 ) / 2;
@@ -120,3 +101,6 @@ std::string Creature::get_status(){
     response += "Armour class:  " + std::to_string(get_param(Param_Type::ac));
     return response;
 }
+
+
+

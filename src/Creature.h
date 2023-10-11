@@ -8,20 +8,20 @@
 #include <algorithm>
 
 #include "Object.h"
-// #include "Room.h"
 #include "utils.h"
 #include "defs.h"
 #include "objects/Item.h"
+#include "objects/Item_Factory.h"
 
 
 class Creature: public Object
 {
-private:
-    std::vector<std::unique_ptr<Item>> m_inv;
+  
 protected:
     short hp;
     std::map<Param_Type, short> base_params;
     std::map<Param_Type, short> param_bonuses;
+    std::vector<std::unique_ptr<Item>> m_inv;
 
 public:
     Creature(std::string key_name, std::string title, std::string desc, std::map<Param_Type, short> params);
@@ -29,7 +29,7 @@ public:
 
     short get_ability_modifier(short ability_value) { return ( ability_value-10 ) / 2; }
 
-    void add_item(std::unique_ptr<Item>);
+    void add_item(std::string, bool equip = false);
     std::vector<std::unique_ptr<Item>>& get_inv() { return m_inv; }; // change to const?
 
     // combat related
@@ -43,16 +43,11 @@ public:
     void alter_param_bonus(Param_Type, short);
     short get_param(Param_Type);
 
-    // item manipulation - move to humanoid!!
-    // std::string event_drop_item(std::vector<std::unique_ptr<Item>>::iterator); // only for player
-    // std::string event_pick_item(std::vector<std::unique_ptr<Item>>::iterator); // only for player
+    // item manipulation - move it to Player class??
     std::string event_equip_item(std::vector<std::unique_ptr<Item>>::iterator);
     std::string event_remove_item(std::vector<std::unique_ptr<Item>>::iterator);
 
     std::string get_status();
-
-    // overrides
-    // virtual Room* get_current_room() {return nullptr;}
 };
 
 #endif // CREATURE_H
