@@ -28,6 +28,7 @@ public:
     virtual ~Creature() = default;
 
     short get_ability_modifier(short ability_value) { return ( ability_value-10 ) / 2; }
+    std::string ability_to_string(short value);
 
     void add_item(std::string, bool equip = false);
     std::vector<std::unique_ptr<Item>>& get_inv() { return m_inv; }; // change to const?

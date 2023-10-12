@@ -43,7 +43,6 @@ World::World()
     add_item("sq", "rusty_dagger");
     add_item("sq", "heater_shield");
     add_item("sq", "buckler");
-    add_creature("sq", "green_orc");
       
     create_room(
         "dl1",
@@ -51,7 +50,7 @@ World::World()
         "This is a narrow dark street running among tiny houses. "
         "It opens to a square to the north while getting even darker to the south."
     );
-    // add_item("dl1", "key");
+    add_creature("dl1", "green_orc");
 
     create_room(
         "dl2",

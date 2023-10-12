@@ -9,9 +9,9 @@ You are in control of a hero in a medieval/fantasy world. The world consists of 
 Currently implemented:
 - rooms connected via exits
 - hero movement
-- items, armours, weapons
+- items, armours, weapons, creatures
 - item manipulation
-- worn/held items alter player's characteristics (ac, damage, strength, ...)
+- worn/held items alter player (and monster) characteristics (ac, damage, strength, ...)
 
 Commands:
 - go ('go north', or simply 'n')

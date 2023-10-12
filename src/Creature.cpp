@@ -80,9 +80,9 @@ std::string Creature::event_remove_item(vector<unique_ptr<Item>>::iterator iter)
 }
 
 // --------- SUPPORT
-std::string ability_value_to_string(short value) {
+std::string Creature::ability_to_string(short value) {
     std::string str = std::to_string(value) + " ";
-    short modif = ( value - 10 ) / 2;
+    short modif = get_ability_modifier(value);
     if (modif == 0)
         return str;
     str += "(";
@@ -92,12 +92,15 @@ std::string ability_value_to_string(short value) {
 }
 
 std::string Creature::get_status(){
+    short strength = get_param(Param_Type::str);
     std::string response = "";
-    response += "Strength:      " + ability_value_to_string(get_param(Param_Type::str)) + "\n";
-    response += "Dexterity:     " + ability_value_to_string(get_param(Param_Type::dex)) + "\n";
-    response += "Constitution:  " + ability_value_to_string(get_param(Param_Type::con)) + "\n";
+    response += "Strength:      " + ability_to_string(strength) + "\n";
+    response += "Dexterity:     " + ability_to_string(get_param(Param_Type::dex)) + "\n";
+    response += "Constitution:  " + ability_to_string(get_param(Param_Type::con)) + "\n";
     response += "Health points: " + std::to_string(get_param(Param_Type::max_hp)) + "/" + std::to_string(get_param(Param_Type::max_hp)) + "\n";
-    response += "Damage:        " + std::to_string(get_param(Param_Type::min_damage)) + "/" + std::to_string(get_param(Param_Type::max_damage)) + "\n";;
+    response += "Damage:        " 
+        + std::to_string( get_param(Param_Type::min_damage) + get_ability_modifier(strength) ) +
+        "/" + std::to_string( get_param(Param_Type::max_damage) + get_ability_modifier(strength) ) + "\n";;
     response += "Armour class:  " + std::to_string(get_param(Param_Type::ac));
     return response;
 }

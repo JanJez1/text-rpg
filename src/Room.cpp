@@ -64,9 +64,13 @@ string Room::get_full_desc() {
     string exits_string{"Exits: "};
     if(m_exits.size()==0)
         exits_string = "none";
-    else
-        for(const auto& [key, v]: m_exits)
-            exits_string += exit_to_string(key) += " "; // ToDO: change to coma separated list
+    else {
+        auto itr = m_exits.begin();
+        exits_string += exit_to_string(itr->first);
+        itr++;
+        for(; itr != m_exits.end(); itr++)
+            exits_string += ", " + exit_to_string(itr->first) += " ";
+    }
     full_desc += exits_string;
     
     return full_desc;

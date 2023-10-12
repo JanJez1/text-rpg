@@ -27,13 +27,16 @@ int Humanoid::get_dr() {
 
 string Humanoid::get_desc() {
     string output = Creature::get_desc();
+    string equipped_str = "";
     for(const auto& item: get_inv()) {
         if(item->is_equipped()) {
             if(item->is_wearable())
-                output += "\n" + item->get_title() + " (worn)";
+                equipped_str += "\n  " + item->get_title() + " (worn)";
             if(item->is_holdable())
-                output += "\n" + item->get_title() + " (held)";
+                equipped_str += "\n  " + item->get_title() + " (held)";
         }
     }
+    if (equipped_str.size())
+        output += " " + to_upper(get_key_name()) + " has equipped:" + equipped_str;
     return output;
 }

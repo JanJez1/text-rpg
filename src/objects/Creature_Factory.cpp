@@ -34,6 +34,11 @@ unique_ptr<Creature> Creature_Factory::create(string str) {
     // HUMANOIDS
     if (str == "green_orc") {
         std::map<Param_Type, short> params {
+            {Param_Type::str, 15},
+            {Param_Type::dex, 9},
+            {Param_Type::con, 15},
+            {Param_Type::attack, 2},
+            {Param_Type::max_hp, 10},
             {Param_Type::ac, 5}
         };    
         auto creature = make_unique<Humanoid>(
@@ -43,6 +48,7 @@ unique_ptr<Creature> Creature_Factory::create(string str) {
             params
         );
         creature->add_item("rusty_dagger", true);
+        creature->add_item("leather_cap", true);
         creature->add_item("key"); 
         return move(creature);
     }
