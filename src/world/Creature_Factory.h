@@ -8,6 +8,7 @@
 #include "../objects/Humanoid.h"
 #include "../objects/Animal.h"
 #include "../defs.h"
+#include "../utils.h"
 #include "Item_Factory.h"
 
 class Creature_Factory

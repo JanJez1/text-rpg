@@ -32,7 +32,7 @@ public:
     std::string ability_to_string(short value);
 
     void add_item(std::string, bool equip = false);
-    std::vector<std::unique_ptr<Item>>& get_inv() { return m_inv; }; // change to const?
+    std::vector<std::unique_ptr<Item>>& get_inv() { return m_inv; }; 
 
     // combat related
     void alter_hp(int change);

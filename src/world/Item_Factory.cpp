@@ -11,99 +11,96 @@ unique_ptr<Item> Item_Factory::create(string str) {
             "This is a tiny key made of silver. It looks to be used very often."
         );
 
-//    *****    ARMOURS    ***********
+//    *****    PREDEFINED PARAMS FOR ARMOURS    ***********
+    std::map<Param_Type, short> ac1 {
+        {Param_Type::ac, 1}
+    };
+    std::map<Param_Type, short> ac2 {
+        {Param_Type::ac, 2}
+    };
+    std::map<Param_Type, short> ac3 {
+        {Param_Type::ac, 3}
+    };
 
+//    *****    ARMOURS    ***********
     if (str == "leather_helmet") {
-        std::map<Param_Type, short> params {
-            {Param_Type::ac, 1}
-        };
         return make_unique<Item>(
             "helmet",
             "a leather helmet",
             "This is a simple helmet made of hardened leather. It covers top of the head only.",
             Object_Type::helmet,
-            params
+            ac1
         );
     }
 
     if (str == "leather_cap") {
-        std::map<Param_Type, short> params {
-            {Param_Type::ac, 1}
-        };
         return make_unique<Item>(
             "cap",
             "a leather cap",
             "This is a simple cap made of hardened leather. It covers top of the head only.",
             Object_Type::helmet,
-            params
+            ac1
         );
     }
+
     if (str == "leather_boots_dex") {
-        std::map<Param_Type, short> params {
-            {Param_Type::ac, 1},
-            {Param_Type::dex, 2}
-        };
         return make_unique<Item>(
             "boots",
             "leather boots of dexterity",
             "Light boots made of soft leather.",
             Object_Type::boots,
-            params
+            std::map<Param_Type, short> {
+              {Param_Type::ac, 1},
+              {Param_Type::dex, 2}
+            }
         );
     }
 
 //    *****    SHIELDS    ***********
     if (str == "buckler") {
-        std::map<Param_Type, short> params {
-            {Param_Type::ac, 1},
-        };
         return make_unique<Item>(
             "buckler",
             "a tiny buckler",
             "A tiny round shield measuring around one foot in diamater.",
             Object_Type::shield,
-            params
+            ac1
         );
     }
 
     if (str == "heater_shield") {
-        std::map<Param_Type, short> params {
-            {Param_Type::ac, 2},
-        };
         return make_unique<Item>(
             "shield",
             "a heater shield",
             "The shield made of thin wood overlaid with leather and braced with iron.",
             Object_Type::shield,
-            params
+            ac2
         );
     }
 
 //    *****    WEAPONS    ***********
     if (str == "stick") {
-        std::map<Param_Type, short> params {
-            {Param_Type::min_damage, 1},
-            {Param_Type::max_damage, 2}
-        };
         return make_unique<Item>(
             "stick",
             "a wooden stick",
             "This is about one foot long and relatively strong piece of wood.",
             Object_Type::weapon,
-            params
+            std::map<Param_Type, short> {
+                {Param_Type::min_damage, 1},
+                {Param_Type::max_damage, 2}
+            }
         );
     }
+
     if (str == "rusty_dagger") {
-        std::map<Param_Type, short> params {
-            {Param_Type::min_damage, 2},
-            {Param_Type::max_damage, 4}
-        };
         return make_unique<Item>(
             "dagger",
             "a rusty dagger",
             "An old rusty dagger. It is about a half foot long.",
             Object_Type::weapon,
-            params
+            std::map<Param_Type, short> {
+                {Param_Type::min_damage, 2},
+                {Param_Type::max_damage, 4}
+            }
         );
     }
 

@@ -34,7 +34,7 @@ public:
     
     void add_creature(std::unique_ptr<Creature> creature) { m_creatures.push_back(move(creature)); }
     std::vector<std::unique_ptr<Creature>>& get_creatures() {return m_creatures;}
-    std::string creature_killed(Creature& killed);
+    void creature_killed(Creature& killed);
 };
 
 #endif // ROOM_H

@@ -57,6 +57,7 @@ World::World()
         "a dark lane bending",
         "This is a narrow street running among tiny houses. It turns here abruptly."
     );
+    add_creature("dl2", "rat");
 
     create_room(
         "dl3",

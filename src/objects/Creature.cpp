@@ -13,7 +13,8 @@ Creature::Creature(string key_name, string title, string desc, map<Param_Type, s
         hp = 10;
         base_params.insert({Param_Type::max_hp, hp});
     }
-    hp = iter->second;
+    else
+        hp = iter->second;
 }
 
 void Creature::alter_param_bonus(Param_Type param_type, short value) {
