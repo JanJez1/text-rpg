@@ -3,10 +3,10 @@
 
 #include <map>
 #include <memory>
-#include "Room.h"
+#include "objects/Room.h"
 #include "objects/Item.h"
-#include "objects/Item_Factory.h"
-#include "objects/Creature_Factory.h"
+#include "world/Creature_Factory.h"
+#include "world/Item_Factory.h"
 #include "utils.h"
 
 class World

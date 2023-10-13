@@ -2,10 +2,10 @@
 #define LOOK_H
 
 #include "Cmd_Base.h"
-#include "../World.h"
-#include "../Room.h"
+// #include "../World.h"
+#include "../objects/Room.h"
 #include "../objects/Item.h"
-#include "../Creature.h"
+#include "../objects/Creature.h"
 
 
 class Look : public Cmd_Base

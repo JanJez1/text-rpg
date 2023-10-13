@@ -4,8 +4,8 @@
 #include <string>
 // #include <message>
 
-#include "Creature.h"
-#include "Player.h"
+#include "objects/Creature.h"
+#include "objects/Player.h"
 
 
 class Combat

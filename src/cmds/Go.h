@@ -2,7 +2,7 @@
 #define GO_H
 
 #include "Cmd_Base.h"
-#include "../World.h"
+// #include "../World.h"
 #include "../utils.h"
 
 class Go : public Cmd_Base

@@ -8,11 +8,11 @@
 #include <memory>
 #include <algorithm>
 
-#include "Object.h"
-#include "utils.h"
-#include "defs.h"
-#include "objects/Item.h"
-#include "objects/Item_Factory.h"
+#include "../Object.h"
+#include "../utils.h"
+#include "../defs.h"
+#include "Item.h"
+#include "../world/Item_Factory.h"
 
 
 class Creature: public Object

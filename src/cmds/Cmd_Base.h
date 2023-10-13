@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include "../Player.h"
+#include "../objects/Player.h"
 
 class Cmd_Base
 {

@@ -5,7 +5,7 @@
 
 #include "defs.h"
 #include "World.h"
-#include "Player.h"
+#include "objects/Player.h"
 #include "utils.h"
 #include "Input_Handler.h"
 #include "Commands.h"

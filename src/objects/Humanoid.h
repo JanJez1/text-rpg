@@ -6,10 +6,10 @@
 #include <map>
 #include <memory>
 
-#include "Room.h"
-#include "defs.h"
+// #include "Room.h"
+#include "../defs.h"
 #include "Creature.h"
-#include "objects/Item.h"
+#include "Item.h"
 
 class Humanoid: public Creature
 {

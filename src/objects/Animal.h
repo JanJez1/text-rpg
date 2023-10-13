@@ -6,9 +6,9 @@
 #include <map>
 #include <memory>
 
-#include "Room.h"
+// #include "Room.h"
 #include "Creature.h"
-#include "objects/Item.h"
+#include "Item.h"
 
 class Animal: public Creature
 {

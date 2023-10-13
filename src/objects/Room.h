@@ -7,8 +7,8 @@
 #include <map>
 #include <vector>
 
-#include "utils.h"
-#include "objects/Item.h"
+#include "../utils.h"
+#include "Item.h"
 #include "Creature.h"
 
 class Room

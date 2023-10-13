@@ -4,7 +4,7 @@
 #include <string>
 #include <memory>
 
-#include "Item.h"
+#include "../objects/Item.h"
 #include "../defs.h"
 
 class Item_Factory

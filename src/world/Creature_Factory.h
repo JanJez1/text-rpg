@@ -4,9 +4,9 @@
 #include <string>
 #include <memory>
 
-#include "../Creature.h"
-#include "../Humanoid.h"
-#include "../Animal.h"
+#include "../objects/Creature.h"
+#include "../objects/Humanoid.h"
+#include "../objects/Animal.h"
 #include "../defs.h"
 #include "Item_Factory.h"
 

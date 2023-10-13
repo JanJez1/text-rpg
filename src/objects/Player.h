@@ -8,7 +8,7 @@
 
 #include "Room.h"
 #include "Humanoid.h"
-#include "objects/Item.h"
+#include "Item.h"
 
 class Player: public Humanoid
 {
