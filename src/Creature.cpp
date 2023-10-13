@@ -7,7 +7,13 @@ Creature::Creature(string key_name, string title, string desc, map<Param_Type, s
       base_params{params},
       param_bonuses{},
       m_inv{}
-{
+{    
+    map<Param_Type, short>::const_iterator iter = base_params.find(Param_Type::max_hp);
+    if(iter == base_params.end()) {
+        hp = 10;
+        base_params.insert({Param_Type::max_hp, hp});
+    }
+    hp = iter->second;
 }
 
 void Creature::alter_param_bonus(Param_Type param_type, short value) {
@@ -18,14 +24,16 @@ void Creature::alter_param_bonus(Param_Type param_type, short value) {
         param_bonuses[param_type] = value;
 }
 
+
+// I made changes here 13.10
 short Creature::get_param(Param_Type param_type) {
     short param_value {0};
     auto itr = base_params.find(param_type);
     if (itr != base_params.end())
         param_value += itr->second;
-    itr = param_bonuses.find(param_type); // change this line or next line!!
-    if (param_bonuses.find(param_type) != param_bonuses.end())
-        param_value += param_bonuses.at(param_type);
+    auto itr2 = param_bonuses.find(param_type); 
+    if (itr2 != param_bonuses.end())
+        param_value += itr2->second;
     return param_value;
 }
 
@@ -47,6 +55,10 @@ void Creature::alter_hp(int change) {
     }
     hp += change;
     if (hp < 0) {} //event_die()
+}
+
+string Creature::die() {  // 
+    return to_upper(get_key_name() + " drops dead.");
 }
 
 
@@ -97,7 +109,7 @@ std::string Creature::get_status(){
     response += "Strength:      " + ability_to_string(strength) + "\n";
     response += "Dexterity:     " + ability_to_string(get_param(Param_Type::dex)) + "\n";
     response += "Constitution:  " + ability_to_string(get_param(Param_Type::con)) + "\n";
-    response += "Health points: " + std::to_string(get_param(Param_Type::max_hp)) + "/" + std::to_string(get_param(Param_Type::max_hp)) + "\n";
+    response += "Health points: " + std::to_string(hp) + "/" + std::to_string(get_param(Param_Type::max_hp)) + "\n";
     response += "Damage:        " 
         + std::to_string( get_param(Param_Type::min_damage) + get_ability_modifier(strength) ) +
         "/" + std::to_string( get_param(Param_Type::max_damage) + get_ability_modifier(strength) ) + "\n";;

@@ -5,6 +5,16 @@ std::string to_upper(std::string str) {
     return str;
 }
 
+std::string remove_article(std::string input) {
+    size_t space_position = input.find(' ');
+    if (space_position == std::string::npos)
+        return input;
+    std::string first_word = input.substr(0, space_position);
+    if (first_word == "a" || first_word == "an" || first_word == "the" )
+        input = input.substr(space_position + 1, input.back());
+    return input;
+}
+
 Exit get_opposite_exit(Exit ex) {
     switch(ex) {
         case north: return south;

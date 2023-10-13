@@ -12,6 +12,7 @@ Currently implemented:
 - items, armours, weapons, creatures
 - item manipulation
 - worn/held items alter player (and monster) characteristics (ac, damage, strength, ...)
+- simple combat based on AD&D
 
 Commands:
 - go ('go north', or simply 'n')
@@ -19,3 +20,4 @@ Commands:
 - get, drop
 - wear, hold, remove
 - quit
+- hit (attack)

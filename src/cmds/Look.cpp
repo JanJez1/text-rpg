@@ -20,13 +20,7 @@ std::string Look::action(std::vector<std::string> params, Player& player) {
         }
     }
 
-    // ITEMS IN ROOM
-    auto& items = player.get_current_room()->get_items();
-    std::vector<std::unique_ptr<Item>>::iterator itr_items;
-    itr_items = find_elem(target_string, items);
-    if(itr_items != items.end()) {
-        return (*itr_items)->get_desc();
-    }
+
     // CREATURES IN ROOM
     auto& creatures = player.get_current_room()->get_creatures();
     std::vector<std::unique_ptr<Creature>>::iterator itr_creatures;
@@ -35,12 +29,13 @@ std::string Look::action(std::vector<std::string> params, Player& player) {
         return (*itr_creatures)->get_desc();
     }
 
-    // ITEMS IN INVENTORY
-    auto& inv = player.get_inv();
-    itr_items = find_elem(target_string, inv);
-    if(itr_items != inv.end()) {
+    // ITEMS IN ROOM
+    auto& items = player.get_current_room()->get_items();
+    std::vector<std::unique_ptr<Item>>::iterator itr_items;
+    itr_items = find_elem(target_string, items);
+    if(itr_items != items.end()) {
         return (*itr_items)->get_desc();
     }
-
+    
     return "You don't see " + target_string + " here.";
 }

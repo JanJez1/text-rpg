@@ -89,3 +89,21 @@ Room* Room::get_exit(Exit exit) {
     }
     return nullptr;
 }
+
+string Room::creature_killed(Creature& killed) {
+    
+    if (killed.get_inv().size() > 0) {
+        for (auto iter = killed.get_inv().begin(); iter != killed.get_inv().end(); iter++) {
+            (*iter)->set_equipped(false);
+            add_item(std::move(*iter));
+        }
+        // destruct killed creature
+        auto iter_creature = find_elem(killed.get_key_name(), get_creatures());
+        if( iter_creature != get_creatures().end() ) {
+            get_creatures().erase(iter_creature);
+        }
+        // killed.get_inv().clear();
+        
+    }
+    return "";
+}

@@ -38,8 +38,8 @@ unique_ptr<Creature> Creature_Factory::create(string str) {
             {Param_Type::dex, 9},
             {Param_Type::con, 15},
             {Param_Type::attack, 2},
-            {Param_Type::max_hp, 10},
-            {Param_Type::ac, 5}
+            {Param_Type::max_hp, 20},
+            {Param_Type::ac, 0}
         };    
         auto creature = make_unique<Humanoid>(
             "orc",

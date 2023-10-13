@@ -1,6 +1,7 @@
 #ifndef CREATURE_H
 #define CREATURE_H
 
+#include <iostream>
 #include <string>
 #include <vector>
 #include <map>
@@ -35,9 +36,12 @@ public:
 
     // combat related
     void alter_hp(int change);
+    short get_hp() { return hp; };
     virtual int get_ac() = 0; // armour class
     virtual int get_hr() = 0; // hit roll
     virtual int get_dr() = 0; // damage roll
+    virtual std::string die();
+
     void set_base_param(Param_Type param_type, short value) {
         base_params.insert_or_assign(param_type, value);
     }

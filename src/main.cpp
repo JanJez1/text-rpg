@@ -18,12 +18,14 @@ int main() {
  // - extract some code from main.cpp somewhere else
    
      map<Param_Type, short> default_player_params {
-        {Param_Type::str, 7},
+        {Param_Type::str, 15},
         {Param_Type::dex, 10},
-        {Param_Type::con, 15}
+        {Param_Type::con, 15},
+        {Param_Type::max_hp, 30},
+        {Param_Type::ac, 8}
      };
 
-    Player player{"Dorban", "player", "A young barbarian.", default_player_params};
+    Player player{"Dorban", "you", "A young barbarian.", default_player_params};
     World world{};
     player.set_current_room(world.get_start_room());
     string input_line = "";
