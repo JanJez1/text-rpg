@@ -13,7 +13,7 @@ std::string Go::action(std::vector<std::string> params, Player& player) {
     if (target_room == nullptr)
         return "You can't go this way.";
     player.set_current_room(target_room);
-            // can't use param, as it can be single char like 'n'
+    target_room->event_enter();
     return "You moved to the " + exit_to_string(exit) + "\n" + target_room->get_full_desc();
-    
+        // can't use param, as it can be single char like 'n'
 }

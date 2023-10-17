@@ -13,6 +13,7 @@ Currently implemented:
 - item manipulation
 - worn/held items alter player (and monster) characteristics (ac, damage, strength, ...)
 - simple combat based on AD&D
+- some creatures reappear over time when killed
 
 Commands:
 - go ('go north', or simply 'n')

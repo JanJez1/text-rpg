@@ -2,9 +2,9 @@
 #include <memory>
 #include <map>
 #include <string>
+#include <cstdlib>
 
 #include "defs.h"
-// #include "World.h"
 #include "objects/Player.h"
 #include "utils.h"
 #include "Input_Handler.h"
@@ -28,6 +28,7 @@ int main() {
      };
 
     Player player{"Dorban", "you", "A young barbarian.", default_player_params};
+    srand(time(0));
     Room_Factory room_factory{};
     room_factory.generate_rooms();
     player.set_current_room(room_factory.get_start_room());

@@ -2,12 +2,15 @@
 
 using namespace std;
 
-Room::Room(string title, string desc)
+Room::Room(string title, string desc, bool resetable_)
     : m_title{title},
       m_desc{desc},
       m_exits{},
       m_items{},
-      m_creatures{}
+      m_creatures{},
+      resetable{resetable_},
+      m_creatures_backup{},
+      last_kill_time{0}
 {}
 
 // string objects_in_room_to_string(const vector<unique_ptr<Object>>& objects) {
@@ -90,12 +93,25 @@ Room* Room::get_exit(Exit exit) {
     return nullptr;
 }
 
+void Room::event_enter() {
+    if (resetable && m_creatures.size() == 0 && m_creatures_backup.size() > 0 && (last_kill_time + 20) < time(0)) {
+        m_creatures.clear();
+        for(const string &name: m_creatures_backup) {
+            Creature_Factory creature_factory;  // cannot simply call add_item as it would increase m_creatures_backup
+            m_creatures.push_back(move(creature_factory.create(name)));
+        }
+    }
+}
+
 void Room::add_item(std::string name) {
     Item_Factory item_factory;
     m_items.push_back(move(item_factory.create(name)));
 }
 
 void Room::add_creature(std::string name) {
+    if(resetable) {
+        m_creatures_backup.push_back(name);
+    }
     Creature_Factory creature_factory;
     m_creatures.push_back(move(creature_factory.create(name)));
 }
@@ -113,4 +129,5 @@ void Room::creature_killed(Creature& killed) {
     if( iter_creature != get_creatures().end() ) {
         get_creatures().erase(iter_creature);
     }
+    last_kill_time = time(0);
 }
