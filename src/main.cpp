@@ -4,11 +4,13 @@
 #include <string>
 
 #include "defs.h"
-#include "World.h"
+// #include "World.h"
 #include "objects/Player.h"
 #include "utils.h"
 #include "Input_Handler.h"
 #include "Commands.h"
+#include "world_helper/Room_Factory.h"
+
 using namespace std;
 
 int main() {
@@ -26,8 +28,9 @@ int main() {
      };
 
     Player player{"Dorban", "you", "A young barbarian.", default_player_params};
-    World world{};
-    player.set_current_room(world.get_start_room());
+    Room_Factory room_factory{};
+    room_factory.generate_rooms();
+    player.set_current_room(room_factory.get_start_room());
     string input_line = "";
     Input_Handler input_handler {};
     Commands commands{};

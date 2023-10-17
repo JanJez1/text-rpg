@@ -1,4 +1,4 @@
-#include "Creature_Factory.h"
+#include "../world_helper/Creature_Factory.h"
 
 using namespace std;
 

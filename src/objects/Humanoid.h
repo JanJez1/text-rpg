@@ -6,7 +6,6 @@
 #include <map>
 #include <memory>
 
-// #include "Room.h"
 #include "../defs.h"
 #include "Creature.h"
 #include "Item.h"

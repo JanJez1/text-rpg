@@ -2,9 +2,7 @@
 #define PLAYER_H
 
 #include <string>
-// #include <vector>
 #include <map>
-// #include <memory>
 
 #include "Room.h"
 #include "Humanoid.h"

@@ -4,11 +4,8 @@
 #include "Cmd_Base.h"
 #include "../Combat.h"
 #include "../utils.h"
-#include "../World.h"
-// #include "../Room.h"
 #include "../Object.h"
 #include "../objects/Item.h"
-
 
 class Hit : public Cmd_Base
 {

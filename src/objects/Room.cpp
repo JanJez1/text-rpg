@@ -90,6 +90,16 @@ Room* Room::get_exit(Exit exit) {
     return nullptr;
 }
 
+void Room::add_item(std::string name) {
+    Item_Factory item_factory;
+    m_items.push_back(move(item_factory.create(name)));
+}
+
+void Room::add_creature(std::string name) {
+    Creature_Factory creature_factory;
+    m_creatures.push_back(move(creature_factory.create(name)));
+}
+
 void Room::creature_killed(Creature& killed) {
     // move inventory of killed creature to room
     if (killed.get_inv().size() > 0) {

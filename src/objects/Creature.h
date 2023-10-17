@@ -12,7 +12,7 @@
 #include "../utils.h"
 #include "../defs.h"
 #include "Item.h"
-#include "../world/Item_Factory.h"
+#include "../world_helper/Item_Factory.h"
 
 
 class Creature: public Object
