@@ -18,6 +18,8 @@ void Room_Factory::generate_rooms() {
     main_square->add_item("rusty_dagger");
     main_square->add_item("heater_shield");
     main_square->add_item("buckler");
+    main_square->add_detail("cobblestones", "About half foot large square pieces of stone.");
+    main_square->add_detail("cobblestone", "About half foot large square pieces of stone.");
     
     auto dark_lane1 = create_room(
         "dark_lane1",

@@ -36,6 +36,11 @@ std::string Look::action(std::vector<std::string> params, Player& player) {
     if(itr_items != items.end()) {
         return (*itr_items)->get_desc();
     }
+
+    // DETAILED DESCRIPTION IN ROOM
+    std::string detail_desc = player.get_current_room()->find_detail(target_string);
+    if (detail_desc != "")
+        return detail_desc;
     
     return "You don't see " + target_string + " here.";
 }

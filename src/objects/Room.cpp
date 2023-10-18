@@ -5,6 +5,7 @@ using namespace std;
 Room::Room(string title, string desc, bool resetable_)
     : m_title{title},
       m_desc{desc},
+      m_details{},
       m_exits{},
       m_items{},
       m_creatures{},
@@ -77,6 +78,14 @@ string Room::get_full_desc() {
     full_desc += exits_string;
     
     return full_desc;
+}
+
+string Room::find_detail(string key) {
+    auto itr = m_details.find(key);
+    if (itr != m_details.end()) {
+        return itr->second;
+    }
+    return "";
 }
 
 void Room::add_exit(Exit exit, Room *p_room) {
