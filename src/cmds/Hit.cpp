@@ -1,24 +1,31 @@
 #include "Hit.h"
 
 std::string Hit::action(std::vector<std::string> params, Player& player) {
+    
     if (params.size() != 1)
         return "What do you want to get?";
 
+    auto current_room = player.get_current_room();
+    auto target_string = params.at(0);
+
     // CREATURE
-    auto& creatures = player.get_current_room()->get_creatures();
-    auto itr = find_elem(params.at(0), creatures);
-    if(itr != creatures.end()) {
+    auto creature = current_room->find_creature(target_string);
+    if(creature) {
         Combat combat{};
-        return combat.compute_round(player, *(*itr));
-        //return (*iter2)->die();
+        return combat.compute_round(player, *creature);
     }
 
     // ITEM
-    auto& items = player.get_current_room()->get_items();
-    auto itr2 = find_elem(params.at(0), items);
-    if(itr2 != items.end()) {
-        return "You can't attack " + params.at(0) + ".";
+    auto item = current_room->find_item(target_string);
+    if(item) {
+        return "You can't attack " + target_string + ".";
     }
 
-    return "There is no " + params.at(0) + " around.";
+    // ROOM DETAIL
+    auto detail = current_room->find_detail(target_string);
+    if(detail != "") {
+        return "You can't attack " + target_string + ".";
+    }
+
+    return "There is no " + target_string + " around.";
 }

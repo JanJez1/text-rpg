@@ -32,6 +32,7 @@ public:
     std::string ability_to_string(short value);
 
     void add_item(std::string, bool equip = false);
+    Item *find_item(std::string);
     std::vector<std::unique_ptr<Item>>& get_inv() { return m_inv; }; 
 
     // combat related
@@ -48,9 +49,8 @@ public:
     void alter_param_bonus(Param_Type, short);
     short get_param(Param_Type);
 
-    // item manipulation - move it to Player class??
-    std::string event_equip_item(std::vector<std::unique_ptr<Item>>::iterator);
-    std::string event_remove_item(std::vector<std::unique_ptr<Item>>::iterator);
+    std::string event_equip_item(Item*);
+    std::string event_remove_item(Item*);
 
     std::string get_status();
 };

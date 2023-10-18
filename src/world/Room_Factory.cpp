@@ -33,7 +33,7 @@ void Room_Factory::generate_rooms() {
         "dark_lane2",
         "a dark lane bending",
         "This is a narrow street running among tiny houses. It turns here abruptly.",
-        true //resetable
+        true //room is resetable
     );
     dark_lane2->add_creature("rat");
 

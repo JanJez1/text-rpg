@@ -22,7 +22,7 @@ string Player::event_pick_item(vector<unique_ptr<Item>>::iterator iter) {
 string Player::event_drop_item(vector<unique_ptr<Item>>::iterator iter) {
     string response = "";
     if ((*iter)->is_equipped())
-        response = event_remove_item(iter) + "\n";
+        response = event_remove_item((*iter).get()) + "\n";
     
     response += "You've dropped " + (*iter)->get_title() + "."; 
     // ToDo: add try / catch to be sure

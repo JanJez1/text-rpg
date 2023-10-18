@@ -117,12 +117,26 @@ void Room::add_item(std::string name) {
     m_items.push_back(move(item_factory.create(name)));
 }
 
+Item* Room::find_item(std::string name) {
+    auto iter = find_elem(name, m_items);
+    if (iter == m_items.end())
+        return nullptr;
+    return (*iter).get();
+}
+
 void Room::add_creature(std::string name) {
     if(resetable) {
         m_creatures_backup.push_back(name);
     }
     Creature_Factory creature_factory;
     m_creatures.push_back(move(creature_factory.create(name)));
+}
+
+Creature* Room::find_creature(std::string name) {
+    auto iter = find_elem(name, m_creatures);
+    if (iter == m_creatures.end())
+        return nullptr;
+    return (*iter).get();
 }
 
 void Room::creature_killed(Creature& killed) {

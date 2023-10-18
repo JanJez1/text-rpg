@@ -49,6 +49,13 @@ void Creature::add_item(string name, bool equip) {
     m_inv.push_back(move(item));
 }
 
+Item *Creature::find_item(std::string name) {
+    auto iter = find_elem(name, m_inv);
+    if (iter == m_inv.end())
+        return nullptr;
+    return (*iter).get();
+}
+
 void Creature::alter_hp(int change) {
     if ( (hp + change) > get_param(Param_Type::max_hp)) {
         hp = get_param(Param_Type::max_hp);
@@ -63,33 +70,32 @@ string Creature::die() {  //
 }
 
 
-std::string Creature::event_equip_item(vector<unique_ptr<Item>>::iterator iter) {
+std::string Creature::event_equip_item(Item *item) {
     // if sth already equipped on the same body part
     auto worn = find_if(m_inv.begin(), m_inv.end(),
         [&](unique_ptr<Item> & obj){
-        return (obj->is_equipped() && obj->get_object_type() == (*iter)->get_object_type());
+        return (obj->is_equipped() && obj->get_object_type() == item->get_object_type());
     });
     string response = "";
     if(worn != m_inv.end()) {
-        response = event_remove_item(worn) + "\n";
+        response = event_remove_item((*worn).get()) + "\n";
     }
 
-    (*iter)->set_equipped(true);
-    for(auto const& [key, value]: (*iter)->get_item_params()) {
+    item->set_equipped(true);
+    for(auto const& [key, value]: item->get_item_params()) {
         alter_param_bonus(key, value);
     }
-    if ((*iter)->is_wearable())
-        return response += "You've worn " + (*iter)->get_title() + ".";
-    return response += "You've held " + (*iter)->get_title() + ".";
-
+    if (item->is_wearable())
+        return response += "You've worn " + item->get_title() + ".";
+    return response += "You've held " + item->get_title() + ".";
 }
 
-std::string Creature::event_remove_item(vector<unique_ptr<Item>>::iterator iter) {
-    (*iter)->set_equipped(false);
-    for(auto const& [key, value]: (*iter)->get_item_params()) {
+std::string Creature::event_remove_item(Item *item) {
+    item->set_equipped(false);
+    for(auto const& [key, value]: item->get_item_params()) {
         alter_param_bonus(key, -value);
     }
-    return "You've removed " + (*iter)->get_title() + ".";
+    return "You've removed " + item->get_title() + ".";
 }
 
 // --------- SUPPORT
