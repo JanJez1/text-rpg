@@ -1,9 +1,7 @@
 #ifndef DEFS_H
 #define DEFS_H
 
-// #include <map>
-
-enum class Object_Type {creature, item, helmet, armour, boots, gauntlets, weapon, shield, undefined};
+enum class Object_Type {creature, item, helmet, armour, boots, gauntlets, weapon, shield, game_mechanics, undefined};
 
 enum class Param_Type {
     str, dex, con,
@@ -12,15 +10,11 @@ enum class Param_Type {
     max_hp
 };
 
-// map<Param_Type, short> default_creature_params = {
-//     {Param_Type::str, 1},
-//     {Param_Type::dex, 1},
-//     {Param_Type::con, 1},
-//     {Param_Type::ac,  5},
-//     {Param_Type::attack, 1},
-//     {Param_Type::min_damage, 1},
-//     {Param_Type::max_damage, 2},
-//     {Param_Type::max_hp, 1}
-// };
+enum class Item_State {
+    unused,
+    locked,
+    opened,
+    activated
+};
 
 #endif // DEFS_H

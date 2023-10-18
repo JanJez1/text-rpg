@@ -12,6 +12,8 @@
 #include "../world_helper/Item_Factory.h"
 #include "Creature.h"
 #include "../world_helper/Creature_Factory.h"
+// #include "../world_helper/Room_Factory.h"
+// class Room_Factory; //forward declaration because of obvious cross reference
 
 class Room
 {
@@ -39,6 +41,7 @@ public:
     std::string find_detail(std::string);
     
     void add_exit(Exit, Room*);
+    void add_exit(Exit, std::string);
     Room* get_exit(Exit);
     void event_enter();
 

@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "../objects/Item.h"
+#include "../objects/Equipment.h"
 #include "../defs.h"
 
 class Item_Factory

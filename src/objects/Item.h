@@ -6,13 +6,12 @@
 
 #include "../defs.h"
 #include "../Object.h"
+class Player; //forward declaration because of cross reference
 
 class Item: public Object
 {
 private:
     std::map<Param_Type, short> item_params;
-    bool equipped;
-
 public:
     Item(std::string,
         std::string title,
@@ -22,11 +21,19 @@ public:
     );
     virtual ~Item() = default;
 
-    bool is_equipped() { return equipped; }
-    virtual void set_equipped(bool eq) { equipped = eq; }
-    bool is_wearable();
-    bool is_holdable();
     const std::map<Param_Type, short>& get_item_params() { return item_params; }
+
+    // TO OVERRIDE
+    virtual bool is_equipped() { return false; }
+    virtual void set_equipped(bool) {return;}
+    virtual bool is_wearable() { return false; }
+    virtual bool is_holdable() { return false; }
+
+    // SPECIAL ACTIONS - GAME MECHANICS - TO OVERRIDE
+    virtual void set_item_state(Item_State) { return; };
+    virtual Item_State get_item_state() { return Item_State::unused; }
+    virtual std::string event_look() { return "";}
+    virtual std::string event_unlock() { return "";}
 };
 
 #endif // ITEM_H

@@ -24,7 +24,7 @@ unique_ptr<Item> Item_Factory::create(string str) {
 
 //    *****    ARMOURS    ***********
     if (str == "leather_helmet") {
-        return make_unique<Item>(
+        return make_unique<Equipment>(
             "helmet",
             "a leather helmet",
             "This is a simple helmet made of hardened leather. It covers top of the head only.",
@@ -34,7 +34,7 @@ unique_ptr<Item> Item_Factory::create(string str) {
     }
 
     if (str == "leather_cap") {
-        return make_unique<Item>(
+        return make_unique<Equipment>(
             "cap",
             "a leather cap",
             "This is a simple cap made of hardened leather. It covers top of the head only.",
@@ -44,7 +44,7 @@ unique_ptr<Item> Item_Factory::create(string str) {
     }
 
     if (str == "leather_boots_dex") {
-        return make_unique<Item>(
+        return make_unique<Equipment>(
             "boots",
             "leather boots of dexterity",
             "Light boots made of soft leather.",
@@ -58,7 +58,7 @@ unique_ptr<Item> Item_Factory::create(string str) {
 
 //    *****    SHIELDS    ***********
     if (str == "buckler") {
-        return make_unique<Item>(
+        return make_unique<Equipment>(
             "buckler",
             "a tiny buckler",
             "A tiny round shield measuring around one foot in diamater.",
@@ -68,7 +68,7 @@ unique_ptr<Item> Item_Factory::create(string str) {
     }
 
     if (str == "heater_shield") {
-        return make_unique<Item>(
+        return make_unique<Equipment>(
             "shield",
             "a heater shield",
             "The shield made of thin wood overlaid with leather and braced with iron.",
@@ -79,7 +79,7 @@ unique_ptr<Item> Item_Factory::create(string str) {
 
 //    *****    WEAPONS    ***********
     if (str == "stick") {
-        return make_unique<Item>(
+        return make_unique<Equipment>(
             "stick",
             "a wooden stick",
             "This is about one foot long and relatively strong piece of wood.",
@@ -92,7 +92,7 @@ unique_ptr<Item> Item_Factory::create(string str) {
     }
 
     if (str == "rusty_dagger") {
-        return make_unique<Item>(
+        return make_unique<Equipment>(
             "dagger",
             "a rusty dagger",
             "An old rusty dagger. It is about a half foot long.",

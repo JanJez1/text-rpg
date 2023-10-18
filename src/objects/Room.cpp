@@ -92,6 +92,12 @@ void Room::add_exit(Exit exit, Room *p_room) {
     m_exits.insert({exit, p_room});
 }
 
+void Room::add_exit(Exit exit, string room_id) {
+    // auto room_p Room_Factory::get_room(room_id);
+    // m_exits.insert({exit, room_p});
+}
+
+
 Room* Room::get_exit(Exit exit) {
     if (m_exits.size() == 0)
         return nullptr;
