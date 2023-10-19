@@ -1,5 +1,4 @@
 #include "../world_helper/Room_Factory.h"
-#include "items/Bush.h"
 
 using namespace std;
 
@@ -30,7 +29,7 @@ void Room_Factory::generate_rooms() {
         "It opens to a square to the north while getting even darker to the south."
     );
     dark_lane1->add_creature("green_orc");
-    main_square->add_item(move(make_unique<Bush>(main_square, dark_lane1)));
+    main_square->add_special_item("bush1", dark_lane1);
 
     auto dark_lane2 = create_room(
         "dark_lane2",

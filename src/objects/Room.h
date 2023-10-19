@@ -10,10 +10,10 @@
 #include "../utils.h"
 #include "Item.h"
 #include "../world_helper/Item_Factory.h"
+#include "../world_helper/Special_Object_Factory.h"
 #include "Creature.h"
 #include "../world_helper/Creature_Factory.h"
-// #include "../world_helper/Room_Factory.h"
-// class Room_Factory; //forward declaration because of obvious cross reference
+
 
 class Room
 {
@@ -41,7 +41,6 @@ public:
     std::string find_detail(std::string);
     
     void add_exit(Exit, Room*);
-    void add_exit(Exit, std::string);
     Room* get_exit(Exit);
     void event_enter();
 
@@ -49,6 +48,7 @@ public:
     Item* find_item(std::string name);
     void add_item(std::unique_ptr<Item> item) { m_items.push_back(move(item)); }
     std::vector<std::unique_ptr<Item>>& get_items() {return m_items;}
+    void add_special_item(std::string name, Room* room2 = nullptr, std::string target_item = "");
     
     void add_creature(std::string name);
     Creature* find_creature(std::string name);

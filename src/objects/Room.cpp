@@ -92,12 +92,6 @@ void Room::add_exit(Exit exit, Room *p_room) {
     m_exits.insert({exit, p_room});
 }
 
-void Room::add_exit(Exit exit, string room_id) {
-    // auto room_p Room_Factory::get_room(room_id);
-    // m_exits.insert({exit, room_p});
-}
-
-
 Room* Room::get_exit(Exit exit) {
     if (m_exits.size() == 0)
         return nullptr;
@@ -128,6 +122,10 @@ Item* Room::find_item(std::string name) {
     if (iter == m_items.end())
         return nullptr;
     return (*iter).get();
+}
+
+void Room::add_special_item(string name, Room* room2, string target_item) {
+    m_items.push_back(move(Special_Object_Factory::create(name, this, room2, target_item)));
 }
 
 void Room::add_creature(std::string name) {

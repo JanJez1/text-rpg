@@ -30,8 +30,8 @@ public:
     virtual bool is_holdable() { return false; }
 
     // SPECIAL ACTIONS - GAME MECHANICS - TO OVERRIDE
-    virtual void set_item_state(Item_State) { return; };
-    virtual Item_State get_item_state() { return Item_State::unused; }
+    virtual void set_object_state(Object_State) { };
+    virtual Object_State get_object_state() { return Object_State::unused; }
     virtual std::string event_look() { return "";}
     virtual std::string event_unlock() { return "";}
 };
