@@ -6,17 +6,18 @@
 
 #include "../defs.h"
 #include "Item.h"
-// #include "Room.h"
+
 class Room;
 
 class Special_Object: public Item
 {
 protected:
     Object_State object_state;
-    Room* room1;
-    Room* room2;
+    Room* current_room;
+    Room* target_room;
+    std::string target_item;
 public:
-    Special_Object(std::string key_name, std::string desc, Room* room1, Room* room2);
+    Special_Object(std::string key_name, std::string desc, Room* current_room_, Room* target_room_, std::string target_item_);
     virtual ~Special_Object() = default;
 
     // GAME MECHANICS

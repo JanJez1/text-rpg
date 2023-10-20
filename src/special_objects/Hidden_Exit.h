@@ -9,11 +9,8 @@
 
 class Hidden_Exit: public Special_Object
 {
-private:
-    Room* current_room;
-    Room* target_room;
 public:
-    Hidden_Exit(std::string key_name, std::string desc, Room* room1_, Room* room2_);
+    Hidden_Exit(std::string key_name, std::string desc, Room* current_room_, Room* target_room_);
     virtual ~Hidden_Exit() = default;
 
     std::string event_look() override;

@@ -39,8 +39,7 @@ short Creature::get_param(Param_Type param_type) {
 }
 
 void Creature::add_item(string name, bool equip) {
-    Item_Factory item_factory{};
-    auto item = item_factory.create(name);
+    auto item = Item_Factory::create(name);
     if (equip) {
         item->set_equipped(true);
         for(auto const& [key, value]: item->get_item_params())

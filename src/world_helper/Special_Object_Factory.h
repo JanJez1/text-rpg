@@ -9,13 +9,22 @@
 #include "../objects/Special_Object.h"
 #include "../defs.h"
 #include "../special_objects/Hidden_Exit.h"
+#include "../special_objects/Hidden_Item.h"
 
 class Room;
 
 class Special_Object_Factory
 {
 public:
-    static std::unique_ptr<Item> create(std::string, Room* room1 = nullptr, Room* room2 = nullptr, std::string target_item = "");
+    static std::unique_ptr<Item> create(
+        std::string special_item_name,
+        Room* current_room,
+        Room* target_room = nullptr
+    );
+    static std::unique_ptr<Item> create(
+        std::string special_item_name,
+        Room* current_room, 
+        std::string target_item_name = "");
 };
 
 #endif // SPECIAL_OBJECT_FACTORY_H

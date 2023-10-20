@@ -14,14 +14,12 @@ class Room_Factory
 {
 private:
     std::map<std::string, std::unique_ptr<Room>> rooms;
-    static std::map<std::string, std::unique_ptr<Room>> static_rooms;
     Room *start_room;
     
     Room* create_room(std::string room_id, std::string title, std::string desc, bool resetable = false) {
         auto unique_ptr_room = std::make_unique<Room>(title, desc, resetable);
         auto p_room = unique_ptr_room.get();
-        // rooms.insert({room_id, std::move(unique_ptr_room)});
-        Room_Factory::static_rooms.insert({room_id, std::move(unique_ptr_room)});
+        rooms.insert({room_id, std::move(unique_ptr_room)});
         return p_room;
     }
 
@@ -38,12 +36,7 @@ public:
 
     void generate_rooms();
     Room* get_start_room() { return start_room; }
-    // static Room* get_room(std::string room_id) { return (static_rooms.at(room_id).get()); } // needs to be error checked
-    static int get_number() { return 1;}
-
 };
-
-
 
 #endif // ROOM_FACTORY_H
 

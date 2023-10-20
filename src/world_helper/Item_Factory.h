@@ -11,7 +11,7 @@
 class Item_Factory
 {
 public:
-    std::unique_ptr<Item> create(std::string);
+    static std::unique_ptr<Item> create(std::string);
 };
 
 #endif // ITEM_FACTORY_H

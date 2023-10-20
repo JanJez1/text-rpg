@@ -2,14 +2,14 @@
 
 using namespace std;
 
-Hidden_Exit::Hidden_Exit(string key_name, string desc, Room* room1, Room* room2)
-    : Special_Object{key_name, desc, room1, room2}
+Hidden_Exit::Hidden_Exit(string key_name, string desc, Room* current_room_, Room* target_room_)
+    : Special_Object{key_name, desc, current_room_, target_room_, ""}
  {}
 
  std::string Hidden_Exit::event_look() {
     if (get_object_state() == Object_State::activated)
         return "";
     set_object_state(Object_State::activated);
-    room1->add_exit(Exit::north, room2);
+    current_room->add_exit(Exit::north, target_room);
     return "\nYou've found a hidden exit!";
  }

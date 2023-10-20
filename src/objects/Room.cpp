@@ -106,15 +106,14 @@ void Room::event_enter() {
     if (resetable && m_creatures.size() == 0 && m_creatures_backup.size() > 0 && (last_kill_time + 20) < time(0)) {
         m_creatures.clear();
         for(const string &name: m_creatures_backup) {
-            Creature_Factory creature_factory;  // cannot simply call add_item as it would increase m_creatures_backup
-            m_creatures.push_back(move(creature_factory.create(name)));
+            // cannot simply call add_creature as it would increase m_creatures_backup
+            m_creatures.push_back(move(Creature_Factory::create(name)));
         }
     }
 }
 
 void Room::add_item(std::string name) {
-    Item_Factory item_factory;
-    m_items.push_back(move(item_factory.create(name)));
+    m_items.push_back(move(Item_Factory::create(name)));
 }
 
 Item* Room::find_item(std::string name) {
@@ -124,16 +123,18 @@ Item* Room::find_item(std::string name) {
     return (*iter).get();
 }
 
-void Room::add_special_item(string name, Room* room2, string target_item) {
-    m_items.push_back(move(Special_Object_Factory::create(name, this, room2, target_item)));
+void Room::add_special_item(string name, Room* target_room) {
+    m_items.push_back(move(Special_Object_Factory::create(name, this, target_room)));
+}
+void Room::add_special_item(string name, string target_item) {
+    m_items.push_back(move(Special_Object_Factory::create(name, this, target_item)));
 }
 
 void Room::add_creature(std::string name) {
     if(resetable) {
         m_creatures_backup.push_back(name);
     }
-    Creature_Factory creature_factory;
-    m_creatures.push_back(move(creature_factory.create(name)));
+    m_creatures.push_back(move(Creature_Factory::create(name)));
 }
 
 Creature* Room::find_creature(std::string name) {

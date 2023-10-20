@@ -2,7 +2,6 @@
 
 using namespace std;
 
-std::map<std::string, std::unique_ptr<Room>> Room_Factory::static_rooms;
 
 void Room_Factory::generate_rooms() {
 

@@ -13,7 +13,7 @@
 class Creature_Factory
 {
 public:
-    std::unique_ptr<Creature> create(std::string);
+    static std::unique_ptr<Creature> create(std::string);
 };
 
 #endif // CREATURE_FACTORY_H
