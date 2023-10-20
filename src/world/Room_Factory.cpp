@@ -12,14 +12,14 @@ void Room_Factory::generate_rooms() {
     );
     main_square->add_detail("cobblestones", "About half foot large square pieces of stone.");
     main_square->add_detail("cobblestone", "About half foot large square pieces of stone.");
-    main_square->add_item("leather_helmet");
-    main_square->add_item("leather_cap");
+    main_square->add_item("a leather helmet");
+    main_square->add_item("a leather cap");
     main_square->add_item("a tiny iron key");
-    main_square->add_item( "leather_boots_dex");
-    main_square->add_item("stick");
-    main_square->add_item("rusty_dagger");
-    main_square->add_item("heater_shield");
-    main_square->add_item("buckler");
+    main_square->add_item( "leather boots of dexterity");
+    main_square->add_item("a wooden stick");
+    main_square->add_item("a rusty dagger");
+    main_square->add_item("a heater shield");
+    main_square->add_item("a tiny buckler");
     
     auto dark_lane1 = create_room(
         "dark_lane1",
@@ -27,7 +27,7 @@ void Room_Factory::generate_rooms() {
         "This is a narrow dark street running among tiny houses. "
         "It opens to a square to the north while getting even darker to the south."
     );
-    dark_lane1->add_creature("green_orc");
+    dark_lane1->add_creature("a green orc");
     main_square->add_special_item("bush1", dark_lane1);
 
     auto dark_lane2 = create_room(
@@ -36,14 +36,15 @@ void Room_Factory::generate_rooms() {
         "This is a narrow street running among tiny houses. It turns here abruptly.",
         true //room is resetable
     );
-    dark_lane2->add_creature("rat");
+    dark_lane2->add_creature("a small rat");
+    dark_lane2->add_creature("a grey bat");
 
     auto dark_lane3 = create_room(
         "dark_lane3",
         "a dark lane dead end",
-        "The dark lane ends here. The only exit is to the west."
+        "The dark lane ends here. The only exit is to the west. There is a bird nest."
     );
-    dark_lane3->add_item("leather_helmet");
+    dark_lane3->add_item("a leather helmet");
     dark_lane3->add_special_item("nest", "a tiny iron key");
     
     start_room = main_square;

@@ -23,30 +23,30 @@ unique_ptr<Item> Item_Factory::create(string title) {
     };
 
 //    *****    ARMOURS    ***********
-    if (title == "leather_helmet") {
+    if (title == "a leather helmet") {
         return make_unique<Equipment>(
             "helmet",
-            "a leather helmet",
+            title,
             "This is a simple helmet made of hardened leather. It covers top of the head only.",
             Object_Type::helmet,
             ac1
         );
     }
 
-    if (title == "leather_cap") {
+    if (title == "a leather cap") {
         return make_unique<Equipment>(
             "cap",
-            "a leather cap",
+            title,
             "This is a simple cap made of hardened leather. It covers top of the head only.",
             Object_Type::helmet,
             ac1
         );
     }
 
-    if (title == "leather_boots_dex") {
+    if (title == "leather boots of dexterity") {
         return make_unique<Equipment>(
             "boots",
-            "leather boots of dexterity",
+            title,
             "Light boots made of soft leather.",
             Object_Type::boots,
             std::map<Param_Type, short> {
@@ -57,20 +57,20 @@ unique_ptr<Item> Item_Factory::create(string title) {
     }
 
 //    *****    SHIELDS    ***********
-    if (title == "buckler") {
+    if (title == "a tiny buckler") {
         return make_unique<Equipment>(
             "buckler",
-            "a tiny buckler",
+            title,
             "A tiny round shield measuring around one foot in diamater.",
             Object_Type::shield,
             ac1
         );
     }
 
-    if (title == "heater_shield") {
+    if (title == "a heater shield") {
         return make_unique<Equipment>(
             "shield",
-            "a heater shield",
+            title,
             "The shield made of thin wood overlaid with leather and braced with iron.",
             Object_Type::shield,
             ac2
@@ -78,10 +78,10 @@ unique_ptr<Item> Item_Factory::create(string title) {
     }
 
 //    *****    WEAPONS    ***********
-    if (title == "stick") {
+    if (title == "a wooden stick") {
         return make_unique<Equipment>(
             "stick",
-            "a wooden stick",
+            title,
             "This is about one foot long and relatively strong piece of wood.",
             Object_Type::weapon,
             std::map<Param_Type, short> {
@@ -91,10 +91,10 @@ unique_ptr<Item> Item_Factory::create(string title) {
         );
     }
 
-    if (title == "rusty_dagger") {
+    if (title == "a rusty dagger") {
         return make_unique<Equipment>(
             "dagger",
-            "a rusty dagger",
+            title,
             "An old rusty dagger. It is about a half foot long.",
             Object_Type::weapon,
             std::map<Param_Type, short> {

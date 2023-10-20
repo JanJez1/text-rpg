@@ -3,13 +3,13 @@
 using namespace std;
 
 
-unique_ptr<Creature> Creature_Factory::create(string str) {
+unique_ptr<Creature> Creature_Factory::create(string title) {
 
     // ANIMALS 
-    if (str == "rat") {  
+    if (title == "a small rat") {  
         auto creature = make_unique<Animal>(
             "rat",
-            "a small rat",
+            title,
             "A small rat.",
             std::map<Param_Type, short> {
                 {Param_Type::ac, 5}
@@ -18,10 +18,10 @@ unique_ptr<Creature> Creature_Factory::create(string str) {
         return move(creature);
     }
 
-    if (str == "bat") {
+    if (title == "a grey bat") {
         auto creature = make_unique<Animal>(
             "bat",
-            "a grey bat",
+            title,
             "Rather small but nimble flying creature.",
             std::map<Param_Type, short> {
                 {Param_Type::ac, 5}
@@ -33,10 +33,10 @@ unique_ptr<Creature> Creature_Factory::create(string str) {
    
     
     // HUMANOIDS
-    if (str == "green_orc") {
+    if (title == "a green orc") {
         auto creature = make_unique<Humanoid>(
             "orc",
-            "a green orc",
+            title,
             "Sturdy ugly humanoid creature with green skin.",
             std::map<Param_Type, short> {
                 {Param_Type::str, 15},
@@ -47,8 +47,8 @@ unique_ptr<Creature> Creature_Factory::create(string str) {
                 {Param_Type::ac, 0}
             } 
         );
-            creature->add_item("rusty_dagger", true);
-            creature->add_item("leather_cap", true);
+            creature->add_item("a rusty dagger", true);
+            creature->add_item("a leather cap", true);
             creature->add_item("a tiny iron key"); 
         return move(creature);
     }

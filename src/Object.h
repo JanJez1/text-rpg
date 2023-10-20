@@ -7,9 +7,12 @@
 class Object
 {
 private:
-    std::string m_key_name; // like 'orc', 'sword'
-    std::string m_title; // like 'a silver sword', 'an orc warrior', 'an ornated helmet'
-    std::string m_desc; // like 'This is about three feet long sword made of silver.'
+    std::string m_key_name; // like 'orc', 'sword' 
+                            // - name under which can be targeted by player aka 'get sword'
+    std::string m_title;    // like 'a silver sword', 'an orc warrior', 'an ornated helmet' 
+                            // - this is shown in the room description when lying on the ground, or items in inventory
+                            // - needs to be unique, serves also as an ID
+    std::string m_desc;     // like 'This is about three feet long sword made of silver.'
     Object_Type m_object_type; // creature, sword, helmet, ...
 public:
     Object(std::string, 
