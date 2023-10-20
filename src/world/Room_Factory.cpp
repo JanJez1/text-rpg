@@ -6,7 +6,6 @@ using namespace std;
 void Room_Factory::generate_rooms() {
 
     auto main_square = create_room(
-        "main_square",
         "main square",
         "a quite large square covered with cobblestones. Currently only one narrow street leads to the south and bush is to the north."
     );
@@ -22,7 +21,6 @@ void Room_Factory::generate_rooms() {
     main_square->add_item("a tiny buckler");
     
     auto dark_lane1 = create_room(
-        "dark_lane1",
         "a dark lane",
         "This is a narrow dark street running among tiny houses. "
         "It opens to a square to the north while getting even darker to the south."
@@ -31,7 +29,6 @@ void Room_Factory::generate_rooms() {
     main_square->add_special_item("bush1", dark_lane1);
 
     auto dark_lane2 = create_room(
-        "dark_lane2",
         "a dark lane bending",
         "This is a narrow street running among tiny houses. It turns here abruptly.",
         true //room is resetable
@@ -40,8 +37,7 @@ void Room_Factory::generate_rooms() {
     dark_lane2->add_creature("a grey bat");
 
     auto dark_lane3 = create_room(
-        "dark_lane3",
-        "a dark lane dead end",
+         "a dark lane dead end",
         "The dark lane ends here. The only exit is to the west. There is a bird nest."
     );
     dark_lane3->add_item("a leather helmet");

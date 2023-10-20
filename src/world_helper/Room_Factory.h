@@ -13,13 +13,14 @@
 class Room_Factory
 {
 private:
-    std::map<std::string, std::unique_ptr<Room>> rooms;
+    // std::map<std::string, std::unique_ptr<Room>> rooms;
+    std::vector<std::unique_ptr<Room>> rooms;
     Room *start_room;
     
-    Room* create_room(std::string room_id, std::string title, std::string desc, bool resetable = false) {
+    Room* create_room(std::string title, std::string desc, bool resetable = false) {
         auto unique_ptr_room = std::make_unique<Room>(title, desc, resetable);
         auto p_room = unique_ptr_room.get();
-        rooms.insert({room_id, std::move(unique_ptr_room)});
+        rooms.push_back(std::move(unique_ptr_room));
         return p_room;
     }
 
