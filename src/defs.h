@@ -1,7 +1,7 @@
 #ifndef DEFS_H
 #define DEFS_H
 
-enum class Object_Type {creature, item, helmet, armour, boots, gauntlets, weapon, shield, game_mechanics, undefined, special};
+enum class Object_Type {creature, item, helmet, armour, boots, gauntlets, weapon, shield, undefined, special};
 
 enum class Param_Type {
     str, dex, con,

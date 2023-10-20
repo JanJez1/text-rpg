@@ -14,7 +14,7 @@ void Room_Factory::generate_rooms() {
     main_square->add_detail("cobblestone", "About half foot large square pieces of stone.");
     main_square->add_item("leather_helmet");
     main_square->add_item("leather_cap");
-    main_square->add_item("key");
+    main_square->add_item("a tiny iron key");
     main_square->add_item( "leather_boots_dex");
     main_square->add_item("stick");
     main_square->add_item("rusty_dagger");
@@ -44,6 +44,7 @@ void Room_Factory::generate_rooms() {
         "The dark lane ends here. The only exit is to the west."
     );
     dark_lane3->add_item("leather_helmet");
+    dark_lane3->add_special_item("nest", "a tiny iron key");
     
     start_room = main_square;
     

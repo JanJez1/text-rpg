@@ -49,7 +49,7 @@ unique_ptr<Creature> Creature_Factory::create(string str) {
         );
             creature->add_item("rusty_dagger", true);
             creature->add_item("leather_cap", true);
-            creature->add_item("key"); 
+            creature->add_item("a tiny iron key"); 
         return move(creature);
     }
 

@@ -11,7 +11,7 @@ std::string Get::action(std::vector<std::string> params, Player& player) {
     auto& items = current_room->get_items();
     auto iter = find_elem(target_string, items);
     if(iter != items.end()) {
-        if ( (*iter)->get_object_type() == Object_Type::game_mechanics)
+        if ( (*iter)->get_object_type() == Object_Type::special)
             return "You can't pick up " + target_string + "."; 
         return player.event_pick_item(iter);
     }

@@ -2,13 +2,13 @@
 
 using namespace std;
 
-unique_ptr<Item> Item_Factory::create(string str) {
+unique_ptr<Item> Item_Factory::create(string title) {
     
-    if (str == "key")
+    if (title == "a tiny iron key")
         return make_unique<Item>(
             "key",
-            "a silver key",
-            "This is a tiny key made of silver. It looks to be used very often."
+            title,
+            "This is a tiny key made of iron. It is quite rusty."
         );
 
 //    *****    PREDEFINED PARAMS FOR ARMOURS    ***********
@@ -23,7 +23,7 @@ unique_ptr<Item> Item_Factory::create(string str) {
     };
 
 //    *****    ARMOURS    ***********
-    if (str == "leather_helmet") {
+    if (title == "leather_helmet") {
         return make_unique<Equipment>(
             "helmet",
             "a leather helmet",
@@ -33,7 +33,7 @@ unique_ptr<Item> Item_Factory::create(string str) {
         );
     }
 
-    if (str == "leather_cap") {
+    if (title == "leather_cap") {
         return make_unique<Equipment>(
             "cap",
             "a leather cap",
@@ -43,7 +43,7 @@ unique_ptr<Item> Item_Factory::create(string str) {
         );
     }
 
-    if (str == "leather_boots_dex") {
+    if (title == "leather_boots_dex") {
         return make_unique<Equipment>(
             "boots",
             "leather boots of dexterity",
@@ -57,7 +57,7 @@ unique_ptr<Item> Item_Factory::create(string str) {
     }
 
 //    *****    SHIELDS    ***********
-    if (str == "buckler") {
+    if (title == "buckler") {
         return make_unique<Equipment>(
             "buckler",
             "a tiny buckler",
@@ -67,7 +67,7 @@ unique_ptr<Item> Item_Factory::create(string str) {
         );
     }
 
-    if (str == "heater_shield") {
+    if (title == "heater_shield") {
         return make_unique<Equipment>(
             "shield",
             "a heater shield",
@@ -78,7 +78,7 @@ unique_ptr<Item> Item_Factory::create(string str) {
     }
 
 //    *****    WEAPONS    ***********
-    if (str == "stick") {
+    if (title == "stick") {
         return make_unique<Equipment>(
             "stick",
             "a wooden stick",
@@ -91,7 +91,7 @@ unique_ptr<Item> Item_Factory::create(string str) {
         );
     }
 
-    if (str == "rusty_dagger") {
+    if (title == "rusty_dagger") {
         return make_unique<Equipment>(
             "dagger",
             "a rusty dagger",

@@ -10,5 +10,6 @@ Hidden_Item::Hidden_Item(string key_name, string desc, Room* current_room_, stri
     if (get_object_state() == Object_State::activated)
         return "";
     set_object_state(Object_State::activated);
-    return "\nYou've found a key!";
+    current_room->add_item(target_item);
+    return "\nYou've found " + target_item + "!";
  }

@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <memory>
+#include <algorithm>
 #include <map>
 #include <vector>
 
@@ -14,10 +15,8 @@
 #include "Creature.h"
 #include "../world_helper/Creature_Factory.h"
 
-
 class Room
 {
-
 private:
     std::string m_title;
     std::string m_desc;

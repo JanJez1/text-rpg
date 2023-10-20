@@ -48,18 +48,24 @@ string Room::get_full_desc() {
     }
     
     // ITEMS IN ROOM 
-    // -  identical to monsters in room, but no simple solution to extract repeated code
+    // first exclude special items from list of items lying on the ground
+    vector<Item*> real_items;
+    for (auto const& item: m_items) {
+        if (item->get_object_type() != Object_Type::special )
+            real_items.push_back(item.get());
+    }
+    // -  following identical to monsters in room, but no simple solution to extract repeated code
     //    Only solution I know - template with function definition in header - not good
-    if (m_items.size() > 0 ) {
-        string items_string{m_items.at(0)->get_title()};
-        if(m_items.size() == 1)
+    if (real_items.size() > 0 ) {
+        string items_string{real_items.at(0)->get_title()};
+        if(real_items.size() == 1)
             items_string += " is lying here.\n";
         else {
-            if(m_items.size()>2) {
-                for(size_t i{1}; i <= m_items.size()-2; i++)
-                    items_string += ", " + m_items.at(i)->get_title();
+            if(real_items.size()>2) {
+                for(size_t i{1}; i <= real_items.size()-2; i++)
+                    items_string += ", " + real_items.at(i)->get_title();
             }
-            items_string += " and " + m_items.back()->get_title() +" are lying here.\n";
+            items_string += " and " + real_items.back()->get_title() +" are lying here.\n";
         }
         full_desc += to_upper(items_string);
     }
