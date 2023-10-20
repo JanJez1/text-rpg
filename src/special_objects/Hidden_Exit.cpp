@@ -2,9 +2,10 @@
 
 using namespace std;
 
-Hidden_Exit::Hidden_Exit(string key_name, string desc, Room* current_room_, Room* target_room_)
-    : Special_Object{key_name, desc, current_room_, target_room_, ""}
- {}
+Hidden_Exit::Hidden_Exit(string name, string desc, Room* current_room_, Room* target_room_)
+    : Special_Object{name, desc, current_room_},
+      target_room{target_room_}
+{}
 
  std::string Hidden_Exit::event_look() {
     if (get_object_state() == Object_State::activated)

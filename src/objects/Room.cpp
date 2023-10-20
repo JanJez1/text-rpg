@@ -132,9 +132,6 @@ Item* Room::find_item(std::string name) {
 void Room::add_special_item(string name, Room* target_room) {
     m_items.push_back(move(Special_Object_Factory::create(name, this, target_room)));
 }
-void Room::add_special_item(string name, string target_item) {
-    m_items.push_back(move(Special_Object_Factory::create(name, this, target_item)));
-}
 
 void Room::add_creature(std::string name) {
     if(resetable) {

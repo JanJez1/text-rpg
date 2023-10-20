@@ -41,8 +41,8 @@ void Room_Factory::generate_rooms() {
         "The dark lane ends here. The only exit is to the west. There is a bird nest."
     );
     dark_lane3->add_item("a leather helmet");
-    dark_lane3->add_special_item("nest", "a tiny iron key");
-    
+    dark_lane3->add_special_item("nest");
+
     start_room = main_square;
     
     connect_rooms(main_square, Exit::south, dark_lane1);

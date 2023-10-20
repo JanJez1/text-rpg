@@ -12,17 +12,13 @@ unique_ptr<Item> Special_Object_Factory::create(string str, Room* current_room, 
             target_room
         );
 
-    return make_unique<Item>("blob", "", "useless piece of blob");
-}
-
-unique_ptr<Item> Special_Object_Factory::create(string str, Room* current_room, string target_item_name) {
-    
+ 
     if (str == "nest")
         return make_unique<Hidden_Item>(
             "nest",
             "This is a small bird nest, it seems to be abandoned for a long time.",
             current_room,
-            target_item_name
+            "a tiny iron key"
         );
 
     return make_unique<Item>("blob", "", "useless piece of blob");

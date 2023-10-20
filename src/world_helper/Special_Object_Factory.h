@@ -21,10 +21,6 @@ public:
         Room* current_room,
         Room* target_room = nullptr
     );
-    static std::unique_ptr<Item> create(
-        std::string special_item_name,
-        Room* current_room, 
-        std::string target_item_name = "");
 };
 
 #endif // SPECIAL_OBJECT_FACTORY_H

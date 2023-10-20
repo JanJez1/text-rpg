@@ -14,10 +14,8 @@ class Special_Object: public Item
 protected:
     Object_State object_state;
     Room* current_room;
-    Room* target_room;
-    std::string target_item;
 public:
-    Special_Object(std::string key_name, std::string desc, Room* current_room_, Room* target_room_, std::string target_item_);
+    Special_Object(std::string name, std::string desc, Room* current_room_);
     virtual ~Special_Object() = default;
 
     // GAME MECHANICS

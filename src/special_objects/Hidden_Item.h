@@ -10,8 +10,10 @@
 
 class Hidden_Item: public Special_Object
 {
+private:
+    std::string items;
 public:
-    Hidden_Item(std::string key_name, std::string desc, Room* current_room_, std::string target_item_);
+    Hidden_Item(std::string name, std::string desc, Room* current_room_, std::string target_item_);
     virtual ~Hidden_Item() = default;
 
     std::string event_look() override;

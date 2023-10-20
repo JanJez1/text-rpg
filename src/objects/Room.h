@@ -47,8 +47,7 @@ public:
     Item* find_item(std::string name);
     void add_item(std::unique_ptr<Item> item) { m_items.push_back(move(item)); }
     std::vector<std::unique_ptr<Item>>& get_items() {return m_items;}
-    void add_special_item(std::string name, Room* target_room);
-    void add_special_item(std::string name, std::string target_item);
+    void add_special_item(std::string name, Room* target_room = nullptr);
     
     void add_creature(std::string name);
     Creature* find_creature(std::string name);
