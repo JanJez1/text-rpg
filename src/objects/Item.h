@@ -34,6 +34,7 @@ public:
     virtual Object_State get_object_state() { return Object_State::unused; }
     virtual std::string event_look() { return "";}
     virtual std::string event_unlock() { return "";}
+    virtual std::string get_action_item() { return "";}
 };
 
 #endif // ITEM_H

@@ -21,6 +21,7 @@ Commands::Commands()
     commands.insert({"q", std::make_unique<Quit>()});
     commands.insert({"remove", std::make_unique<Remove>()});
     commands.insert({"status", std::make_unique<Status>()});
+    commands.insert({"unlock", std::make_unique<Unlock>()});
     commands.insert({"wear", std::make_unique<Wear>()});
     
 }

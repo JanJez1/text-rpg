@@ -5,7 +5,8 @@ using namespace std;
 Hidden_Item::Hidden_Item(string name, string desc, Room* current_room_, string items_)
     : Special_Object{name, desc, current_room_},
       items{items_}   
-{}
+{
+}
 
  std::string Hidden_Item::event_look() {
     if (get_object_state() == Object_State::activated)

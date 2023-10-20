@@ -17,6 +17,7 @@
 #include "cmds/Quit.h"
 #include "cmds/Remove.h"
 #include "cmds/Status.h"
+#include "cmds/Unlock.h"
 #include "cmds/Wear.h"
 
 

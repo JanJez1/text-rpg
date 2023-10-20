@@ -30,11 +30,13 @@ void Room_Factory::generate_rooms() {
 
     auto dark_lane2 = create_room(
         "a dark lane bending",
-        "This is a narrow street running among tiny houses. It turns here abruptly.",
+        "This is a narrow street running among tiny houses. It turns here abruptly. There is a chest here.",
         true //room is resetable
     );
     dark_lane2->add_creature("a small rat");
     dark_lane2->add_creature("a grey bat");
+    dark_lane2->add_special_item("chest1");
+    
 
     auto dark_lane3 = create_room(
          "a dark lane dead end",

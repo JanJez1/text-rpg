@@ -10,6 +10,7 @@
 #include "../defs.h"
 #include "../special_objects/Hidden_Exit.h"
 #include "../special_objects/Hidden_Item.h"
+#include "../special_objects/Chest.h"
 
 class Room;
 
