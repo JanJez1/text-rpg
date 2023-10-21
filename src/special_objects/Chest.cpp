@@ -2,8 +2,8 @@
 
 using namespace std;
 
-Chest::Chest(string name, string desc, Room* current_room_, string name_of_key_, string items_)
-    : Special_Object{name, desc, current_room_},
+Chest::Chest(string name, string title, string desc, Room* current_room_, string name_of_key_, string items_)
+    : Special_Object{name, title, desc, current_room_},
       name_of_key{name_of_key_},
       items{items_}
  {

@@ -24,6 +24,7 @@ unique_ptr<Item> Special_Object_Factory::create(string str, Room* current_room, 
     if (str == "chest1")
         return make_unique<Chest>(
             "chest",
+            "a chest", // chest is visible, we need the title here
             "A big old wooden chest with a tiny lock.",
             current_room,
             "a tiny iron key",

@@ -3,7 +3,7 @@
 using namespace std;
 
 Hidden_Exit::Hidden_Exit(string name, string desc, Room* current_room_, Room* target_room_)
-    : Special_Object{name, desc, current_room_},
+    : Special_Object{name, "", desc, current_room_},
       target_room{target_room_}
 {}
 

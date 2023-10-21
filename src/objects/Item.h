@@ -28,6 +28,8 @@ public:
     virtual void set_equipped(bool) {return;}
     virtual bool is_wearable() { return false; }
     virtual bool is_holdable() { return false; }
+    virtual bool is_visible() { return true; } // visible in room description
+    virtual bool is_pickable() { return true; }
 
     // SPECIAL ACTIONS - GAME MECHANICS - TO OVERRIDE
     virtual void set_object_state(Object_State) { };

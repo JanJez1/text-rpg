@@ -3,7 +3,7 @@
 using namespace std;
 
 Hidden_Item::Hidden_Item(string name, string desc, Room* current_room_, string items_)
-    : Special_Object{name, desc, current_room_},
+    : Special_Object{name, "", desc, current_room_},
       items{items_}   
 {
 }
