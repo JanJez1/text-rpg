@@ -11,8 +11,6 @@ Chest::Chest(string name, string desc, Room* current_room_, string name_of_key_,
  }
 
 string Chest::event_unlock() {
-    if (get_object_state() == Object_State::opened)
-        return "";
     set_object_state(Object_State::opened);
     current_room->add_item(items);
     return "\nYou've unlocked the " + get_key_name() + "!";
