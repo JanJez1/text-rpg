@@ -8,6 +8,7 @@ std::string Get::action(std::vector<std::string> params, Player& player) {
     std::string target_string = params.at(0);
 
     // ITEM
+    // event_pick_item() requires iterator
     auto& items = current_room->get_items();
     auto iter = find_elem(target_string, items);
     if(iter != items.end()) {

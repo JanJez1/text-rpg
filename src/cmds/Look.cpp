@@ -37,7 +37,6 @@ std::string Look::action(std::vector<std::string> params, Player& player) {
     // ITEM IN ROOM
     auto item = current_room->find_item(target_string);
     if(item) {
-        // return item->get_desc();
         return item->get_desc() + item->event_look();
     }
 

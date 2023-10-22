@@ -27,6 +27,7 @@ unique_ptr<Creature> Creature_Factory::create(string title) {
                 {Param_Type::ac, 5}
             } 
         );
+        creature->set_position("flying");
         return move(creature);
     }
 

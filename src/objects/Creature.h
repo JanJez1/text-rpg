@@ -23,6 +23,7 @@ protected:
     std::map<Param_Type, short> base_params;
     std::map<Param_Type, short> param_bonuses;
     std::vector<std::unique_ptr<Item>> m_inv;
+    std::string position;
 
 public:
     Creature(std::string key_name, std::string title, std::string desc, std::map<Param_Type, short> params);
@@ -53,6 +54,8 @@ public:
     std::string event_remove_item(Item*);
 
     std::string get_status();
+    std::string get_position() { return position;};
+    void set_position(std::string pos) { position = pos; };
 };
 
 #endif // CREATURE_H

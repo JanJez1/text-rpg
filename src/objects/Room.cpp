@@ -14,17 +14,6 @@ Room::Room(string title, string desc, bool resetable_)
       last_kill_time{0}
 {}
 
-// string objects_in_room_to_string(const vector<unique_ptr<Object>>& objects) {
-//     string objects_string{objects.at(0)->get_title()};
-//     if(objects.size() > 1) {
-//         if(objects.size()>2) {
-//             for(size_t i{1}; i <= objects.size()-2; i++)
-//                 objects_string += ", " + objects.at(i)->get_title();
-//         }
-//         objects_string += " and " + objects.back()->get_title();
-//     }
-//     return objects_string; 
-// }
 
 string Room::get_full_desc() {
     
@@ -32,40 +21,31 @@ string Room::get_full_desc() {
         to_upper(m_title) + "\n" +
         to_upper(m_desc) + "\n";
   
-    // MONSTERS IN ROOM
+    // CREATURES IN ROOM
+    // one creature per line
     if (m_creatures.size() > 0 ) {
-        string items_string{m_creatures.at(0)->get_title()};
-        if(m_creatures.size() == 1)
-            items_string += " is standing here.\n";
-        else {
-            if(m_creatures.size()>2) {
-                for(size_t i{1}; i <= m_creatures.size()-2; i++)
-                    items_string += ", " + m_creatures.at(i)->get_title();
-            }
-            items_string += " and " + m_creatures.back()->get_title() +" are standing here.\n";
-        }
-        full_desc += to_upper(items_string);
+        for(const auto &creature: m_creatures)
+            full_desc += to_upper(creature->get_title() + " is " + creature->get_position() + " here.\n");
     }
     
     // ITEMS IN ROOM 
     // first exclude not visible (special) items from list of items lying on the ground
     vector<Item*> visible_items;
-    for (auto const& item: m_items) {
+    for (const auto &item: m_items) {
         if ( item->is_visible() )
             visible_items.push_back(item.get());
     }
-    // -  following identical to monsters in room, but no simple solution to extract repeated code
-    //    Only solution I know - template with function definition in header - not good
+
     if (visible_items.size() > 0 ) {
         string items_string{visible_items.at(0)->get_title()};
         if(visible_items.size() == 1)
-            items_string += " is lying here.\n";
+            items_string += " is here.\n";
         else {
             if(visible_items.size()>2) {
                 for(size_t i{1}; i <= visible_items.size()-2; i++)
                     items_string += ", " + visible_items.at(i)->get_title();
             }
-            items_string += " and " + visible_items.back()->get_title() +" are lying here.\n";
+            items_string += " and " + visible_items.back()->get_title() +" are here.\n";
         }
         full_desc += to_upper(items_string);
     }

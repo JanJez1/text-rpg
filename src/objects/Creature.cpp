@@ -6,7 +6,8 @@ Creature::Creature(string key_name, string title, string desc, map<Param_Type, s
     : Object{key_name, title, desc},
       base_params{params},
       param_bonuses{},
-      m_inv{}
+      m_inv{},
+      position{"standing"}
 {    
     map<Param_Type, short>::const_iterator iter = base_params.find(Param_Type::max_hp);
     if(iter == base_params.end()) {
