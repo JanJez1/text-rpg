@@ -13,7 +13,7 @@ Chest::Chest(string name, string title, string desc, Room* current_room_, string
 string Chest::event_unlock() {
     set_object_state(Object_State::opened);
     current_room->add_item(items);
-    return "\nYou've unlocked the " + get_key_name() + "!";
+    return "\nYou've unlocked and opened the " + get_key_name() + "!";
  }
 
  string Chest::get_desc() {
