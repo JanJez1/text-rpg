@@ -19,6 +19,7 @@ void Room_Factory::generate_rooms() {
     main_square->add_item("a rusty dagger");
     main_square->add_item("a heater shield");
     main_square->add_item("a tiny buckler");
+    main_square->add_item("a healing potion");
     
     auto dark_lane1 = create_room(
         "a dark lane",

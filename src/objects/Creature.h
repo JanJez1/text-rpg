@@ -52,6 +52,7 @@ public:
 
     std::string event_equip_item(Item*);
     std::string event_remove_item(Item*);
+    std::string event_heal();
 
     std::string get_status();
     std::string get_position() { return position;};

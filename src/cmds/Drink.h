@@ -1,5 +1,5 @@
-#ifndef HOLD_H
-#define HOLD_H
+#ifndef DRINK_H
+#define DRINK_H
 
 #include "Cmd_Base.h"
 #include "../utils.h"
@@ -7,11 +7,11 @@
 #include "../objects/Item.h"
 
 
-class Hold : public Cmd_Base
+class Drink : public Cmd_Base
 {
 public:
-    virtual ~Hold() {};
+    virtual ~Drink() {};
     virtual std::string action(std::vector<std::string>, Player&) override;
 };
 
-#endif // HOLD_H
+#endif // DRINK_H

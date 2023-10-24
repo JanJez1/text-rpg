@@ -17,6 +17,14 @@ unique_ptr<Item> Item_Factory::create(string title) {
             "This is a massive key made of iron. It is quite rusty."
         );
 
+    if (title == "a healing potion") // universal healing potion, no variants available
+        return make_unique<Item>(
+            "potion",
+            title,
+            "A tiny flask filled with red liquid bearing the sign 'healing potion'.",
+            Object_Type::potion
+        );
+
 //    *****    PREDEFINED PARAMS FOR ARMOURS    ***********
     std::map<Param_Type, short> ac1 {
         {Param_Type::ac, 1}

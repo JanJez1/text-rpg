@@ -7,6 +7,7 @@
 #include <memory>
 
 #include "cmds/Cmd_Base.h"
+#include "cmds/Drink.h"
 #include "cmds/Drop.h"
 #include "cmds/Get.h"
 #include "cmds/Go.h"

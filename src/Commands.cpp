@@ -5,6 +5,7 @@ using namespace std;
 Commands::Commands()
 :commands{}
 {
+    commands.insert({"drink", std::make_unique<Drink>()});
     commands.insert({"drop", std::make_unique<Drop>()});
     commands.insert({"get", std::make_unique<Get>()});
     commands.insert({"go", std::make_unique<Go>()});

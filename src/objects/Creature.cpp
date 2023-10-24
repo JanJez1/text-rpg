@@ -27,7 +27,6 @@ void Creature::alter_param_bonus(Param_Type param_type, short value) {
 }
 
 
-// I made changes here 13.10
 short Creature::get_param(Param_Type param_type) {
     short param_value {0};
     auto itr = base_params.find(param_type);
@@ -70,6 +69,8 @@ string Creature::die() {  //
 }
 
 
+//  *** EVENTS ***
+
 std::string Creature::event_equip_item(Item *item) {
     // if sth already equipped on the same body part
     auto worn = find_if(m_inv.begin(), m_inv.end(),
@@ -96,6 +97,11 @@ std::string Creature::event_remove_item(Item *item) {
         alter_param_bonus(key, -value);
     }
     return "You've removed " + item->get_title() + ".";
+}
+
+std::string Creature::event_heal() {
+    hp = base_params.at(Param_Type::max_hp);
+    return "You've drunk your potion.";
 }
 
 // --------- SUPPORT

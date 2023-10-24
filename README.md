@@ -26,3 +26,8 @@ Commands:
 - quit
 - hit (attack)
 - unlock
+- drink (potion)
+
+ToDo:
+- player creation and development
+- demo area
