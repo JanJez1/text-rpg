@@ -23,6 +23,12 @@ Exit string_to_exit(std::string);
 std::string object_type_to_string(Object_Type);
 
 template <typename T>
+typename std::vector<std::shared_ptr<T>>::iterator find_elem(std::string str, std::vector<std::shared_ptr<T>>& vec) {
+    return std::find_if(vec.begin(), vec.end(),
+        [&](std::shared_ptr<T> & obj){ return obj->get_key_name() == str;});
+}
+
+template <typename T>
 typename std::vector<std::unique_ptr<T>>::iterator find_elem(std::string str, std::vector<std::unique_ptr<T>>& vec) {
     return std::find_if(vec.begin(), vec.end(),
         [&](std::unique_ptr<T> & obj){ return obj->get_key_name() == str;});

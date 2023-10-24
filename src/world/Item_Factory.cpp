@@ -10,6 +10,12 @@ unique_ptr<Item> Item_Factory::create(string title) {
             title,
             "This is a tiny key made of iron. It is quite rusty."
         );
+    if (title == "a massive iron key")
+        return make_unique<Item>(
+            "key",
+            title,
+            "This is a massive key made of iron. It is quite rusty."
+        );
 
 //    *****    PREDEFINED PARAMS FOR ARMOURS    ***********
     std::map<Param_Type, short> ac1 {

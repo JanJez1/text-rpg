@@ -22,7 +22,7 @@ protected:
     short hp;
     std::map<Param_Type, short> base_params;
     std::map<Param_Type, short> param_bonuses;
-    std::vector<std::unique_ptr<Item>> m_inv;
+    std::vector<std::shared_ptr<Item>> m_inv;
     std::string position;
 
 public:
@@ -34,7 +34,7 @@ public:
 
     void add_item(std::string, bool equip = false);
     Item *find_item(std::string);
-    std::vector<std::unique_ptr<Item>>& get_inv() { return m_inv; }; 
+    std::vector<std::shared_ptr<Item>>& get_inv() { return m_inv; }; 
 
     // combat related
     void alter_hp(int change);

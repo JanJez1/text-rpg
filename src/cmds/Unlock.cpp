@@ -35,7 +35,7 @@ string Unlock::action(std::vector<std::string> params, Player& player) {
         string name_of_key = (*iter)->get_action_item();
         auto &inv = player.get_inv();
         auto key_iter = find_if(inv.begin(), inv.end(),
-            [&](unique_ptr<Item> & obj){ return obj->get_title() == name_of_key;});
+            [&](shared_ptr<Item> & obj){ return obj->get_title() == name_of_key;});
         if(key_iter == inv.end()) 
             return "You don't have the right key.";
         inv.erase(key_iter); // all keys are for single use

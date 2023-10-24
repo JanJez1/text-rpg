@@ -26,7 +26,7 @@ void Room_Factory::generate_rooms() {
         "It opens to a square to the north while getting even darker to the south."
     );
     dark_lane1->add_creature("a green orc");
-    main_square->add_special_item("bush1", dark_lane1);
+    dark_lane1->add_item("a massive iron key");
 
     auto dark_lane2 = create_room(
         "a dark lane bending",
@@ -47,8 +47,9 @@ void Room_Factory::generate_rooms() {
 
     start_room = main_square;
     
+    main_square->add_special_item("bush1", dark_lane1); // hidden exit behind bush
     connect_rooms(main_square, Exit::south, dark_lane1);
-    connect_rooms(dark_lane1, Exit::south, dark_lane2);
+    connect_rooms(dark_lane1, Exit::south, dark_lane2, "gate1");
     connect_rooms(dark_lane2, Exit::east, dark_lane3);
 }
 

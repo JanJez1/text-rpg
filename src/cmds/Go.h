@@ -4,6 +4,7 @@
 #include "Cmd_Base.h"
 // #include "../World.h"
 #include "../utils.h"
+#include "../special_objects/Door.h"
 
 class Go : public Cmd_Base
 {

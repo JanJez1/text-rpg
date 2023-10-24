@@ -7,6 +7,7 @@ Room::Room(string title, string desc, bool resetable_)
       m_desc{desc},
       m_details{},
       m_exits{},
+      m_doors{},
       m_items{},
       m_creatures{},
       resetable{resetable_},
@@ -57,9 +58,16 @@ string Room::get_full_desc() {
     else {
         auto itr = m_exits.begin();
         exits_string += exit_to_string(itr->first);
+        auto door_itr = m_doors.find(itr->first);
+        if (door_itr != m_doors.end() && door_itr->second->get_object_state() == Object_State::locked)
+            exits_string += " (x)";
         itr++;
-        for(; itr != m_exits.end(); itr++)
+        for(; itr != m_exits.end(); itr++) {
             exits_string += ", " + exit_to_string(itr->first) += " ";
+            door_itr = m_doors.find(itr->first);
+            if (door_itr != m_doors.end() && door_itr->second->get_object_state() == Object_State::locked)
+                exits_string += "(x) ";
+        }
     }
     full_desc += exits_string;
     
@@ -84,6 +92,21 @@ Room* Room::get_exit(Exit exit) {
     for(auto [ex, p_room]: m_exits) {
         if(ex == exit)
             return p_room;
+    }
+    return nullptr;
+}
+
+void Room::add_door(Exit exit, shared_ptr<Door> door) {
+    m_doors.insert({exit, door.get()});
+    m_items.push_back(door);
+}
+
+Door* Room::get_door(Exit exit) {
+    if (m_doors.size() == 0)
+        return nullptr;
+    for(auto [ex, p_door]: m_doors) {
+        if(ex == exit)
+            return p_door;
     }
     return nullptr;
 }

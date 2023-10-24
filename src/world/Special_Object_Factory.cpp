@@ -27,14 +27,23 @@ unique_ptr<Item> Special_Object_Factory::create(string str, Room* current_room, 
             "a chest", // chest is visible, we need the title here
             "A big old wooden chest with a tiny lock.",
             current_room,
-            "a tiny iron key",
-            "a heater shield"
-        );
-
-        
+            "a tiny iron key", // key
+            "a heater shield"  // content
+        );        
 
     return make_unique<Item>("blob", "", "useless piece of blob");
 }
 
+shared_ptr<Door> Special_Object_Factory::create(string str) {
 
+    if (str == "gate1")
+        return make_shared<Door>(
+            "gate",
+            "This is a massive iron gate.",
+            "a massive iron key"
+        );
+        
 
+    return make_shared<Door>("blob", "", "useless piece of blob");
+
+}

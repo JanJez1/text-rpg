@@ -9,7 +9,7 @@ Player::Player(string key_name, string title, string desc, map<Param_Type, short
 
 
 // iter to items in room
-string Player::event_pick_item(vector<unique_ptr<Item>>::iterator iter) {
+string Player::event_pick_item(vector<shared_ptr<Item>>::iterator iter) {
     string response = "You've picked up " + (*iter)->get_title() + "."; 
     if (get_current_room() != nullptr) { 
         get_inv().push_back(move(*iter));
@@ -19,7 +19,7 @@ string Player::event_pick_item(vector<unique_ptr<Item>>::iterator iter) {
 }
 
 // iter to inventory
-string Player::event_drop_item(vector<unique_ptr<Item>>::iterator iter) {
+string Player::event_drop_item(vector<shared_ptr<Item>>::iterator iter) {
     string response = "";
     if ((*iter)->is_equipped())
         response = event_remove_item((*iter).get()) + "\n";

@@ -21,8 +21,8 @@ public:
     bool is_playing() { return playing; }
     void quit_game() { playing = false; }
 
-    std::string event_drop_item(std::vector<std::unique_ptr<Item>>::iterator); // only for player
-    std::string event_pick_item(std::vector<std::unique_ptr<Item>>::iterator); // only for player
+    std::string event_drop_item(std::vector<std::shared_ptr<Item>>::iterator); // only for player
+    std::string event_pick_item(std::vector<std::shared_ptr<Item>>::iterator); // only for player
 };
 
 #endif // PLAYER_H

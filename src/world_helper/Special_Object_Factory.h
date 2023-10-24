@@ -11,6 +11,7 @@
 #include "../special_objects/Hidden_Exit.h"
 #include "../special_objects/Hidden_Item.h"
 #include "../special_objects/Chest.h"
+#include "../special_objects/Door.h"
 
 class Room;
 
@@ -22,6 +23,8 @@ public:
         Room* current_room,
         Room* target_room = nullptr
     );
+    // for door we need shared ptr
+    static std::shared_ptr<Door> create( std::string special_item_name );
 };
 
 #endif // SPECIAL_OBJECT_FACTORY_H

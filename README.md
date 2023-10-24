@@ -14,7 +14,9 @@ Currently implemented:
 - worn/held items alter player (and monster) characteristics (ac, damage, strength, ...)
 - simple combat based on AD&D
 - some creatures reappear over time when killed
-- general support for interaction with objects (chests, finding hidden exits or items, ...)
+- special interaction with objects:
+    - locked chests and gates
+    - finding hidden exits or items
 
 Commands:
 - go ('go north', or simply 'n')

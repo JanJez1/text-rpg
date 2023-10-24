@@ -12,6 +12,10 @@ std::string Go::action(std::vector<std::string> params, Player& player) {
     Room* target_room = player.get_current_room()->get_exit(exit);
     if (target_room == nullptr)
         return "You can't go this way.";
+    Door* door = player.get_current_room()->get_door(exit);
+    if (door != nullptr)
+        if (door->get_object_state() == Object_State::locked)
+            return "The way to the " + exit_to_string(exit) + " is blocked by the " + door->get_key_name() + ".";
     player.set_current_room(target_room);
     target_room->event_enter();
     return "You moved to the " + exit_to_string(exit) + "\n" + target_room->get_full_desc();

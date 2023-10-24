@@ -73,7 +73,7 @@ string Creature::die() {  //
 std::string Creature::event_equip_item(Item *item) {
     // if sth already equipped on the same body part
     auto worn = find_if(m_inv.begin(), m_inv.end(),
-        [&](unique_ptr<Item> & obj){
+        [&](shared_ptr<Item> & obj){
         return (obj->is_equipped() && obj->get_object_type() == item->get_object_type());
     });
     string response = "";
