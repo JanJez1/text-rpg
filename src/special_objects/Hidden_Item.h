@@ -6,7 +6,6 @@
 #include "../defs.h"
 #include "../objects/Special_Object.h"
 #include "../objects/Room.h"
-#include "../world_helper/Item_Factory.h"
 
 class Hidden_Item: public Special_Object
 {

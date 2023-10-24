@@ -3,7 +3,6 @@
 
 #include "Cmd_Base.h"
 #include "../utils.h"
-#include "../Object.h"
 #include "../objects/Item.h"
 
 class Drop : public Cmd_Base

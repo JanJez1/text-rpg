@@ -2,7 +2,6 @@
 #define COMBAT_H
 
 #include <string>
-// #include <message>
 
 #include "objects/Creature.h"
 #include "objects/Player.h"

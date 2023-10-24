@@ -8,7 +8,6 @@
 
 #include "../defs.h"
 #include "Creature.h"
-#include "Item.h"
 
 class Humanoid: public Creature
 {

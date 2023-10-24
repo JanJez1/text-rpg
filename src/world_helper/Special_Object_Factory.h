@@ -5,8 +5,6 @@
 #include <memory>
 
 #include "../objects/Item.h"
-// #include "../objects/Room.h"
-#include "../objects/Special_Object.h"
 #include "../defs.h"
 #include "../special_objects/Hidden_Exit.h"
 #include "../special_objects/Hidden_Item.h"
