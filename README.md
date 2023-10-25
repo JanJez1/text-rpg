@@ -17,6 +17,7 @@ Currently implemented:
 - special interaction with objects:
     - locked chests and gates
     - finding hidden exits or items
+- demo area (14 rooms)
 
 Commands:
 - go ('go north', or simply 'n')
@@ -30,4 +31,3 @@ Commands:
 
 ToDo:
 - player creation and development
-- demo area

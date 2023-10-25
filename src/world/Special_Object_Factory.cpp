@@ -4,6 +4,14 @@ using namespace std;
 
 unique_ptr<Item> Special_Object_Factory::create(string str, Room* current_room, Room* target_room) {
     
+    if (str == "boat")
+        return make_unique<Hidden_Item>(
+            "boat",
+            "This is abandoned wreckage of a small partially decked boat.",
+            current_room,
+            "shabby shoes"
+        );
+
     if (str == "bush1")
         return make_unique<Hidden_Exit>(
             "bush",
@@ -27,8 +35,8 @@ unique_ptr<Item> Special_Object_Factory::create(string str, Room* current_room, 
             "a chest", // chest is visible, we need the title here
             "A big old wooden chest with a tiny lock.",
             current_room,
-            "a tiny iron key", // key
-            "a heater shield"  // content
+            "a tiny iron key", //key to unlock
+            "a leather cap"  // content
         );        
 
     return make_unique<Item>("blob", "", "useless piece of blob");

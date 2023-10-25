@@ -37,13 +37,24 @@ unique_ptr<Item> Item_Factory::create(string title) {
     };
 
 //    *****    ARMOURS    ***********
-    if (title == "a leather helmet") {
+
+    if (title == "dirty rags") {
         return make_unique<Equipment>(
-            "helmet",
+            "rags",
             title,
-            "This is a simple helmet made of hardened leather. It covers top of the head only.",
-            Object_Type::helmet,
+            "Torn and dirty clothes.",
+            Object_Type::armour,
             ac1
+        );
+    }
+
+    if (title == "a leather vest") {
+        return make_unique<Equipment>(
+            "vest",
+            title,
+            "This is a vest without sleeves made of hardened leather.",
+            Object_Type::armour,
+            ac2
         );
     }
 
@@ -57,7 +68,16 @@ unique_ptr<Item> Item_Factory::create(string title) {
         );
     }
 
-    if (title == "leather boots of dexterity") {
+   if (title == "shabby shoes") {
+        return make_unique<Equipment>(
+            "shoes",
+            title,
+            "Old looking but still intact shoes made of soft leather.",
+            Object_Type::boots,
+            ac1
+        );
+    }
+    if (title == "leather boots of dexterity") { // unused
         return make_unique<Equipment>(
             "boots",
             title,
@@ -70,26 +90,6 @@ unique_ptr<Item> Item_Factory::create(string title) {
         );
     }
 
-//    *****    SHIELDS    ***********
-    if (title == "a tiny buckler") {
-        return make_unique<Equipment>(
-            "buckler",
-            title,
-            "A tiny round shield measuring around one foot in diamater.",
-            Object_Type::shield,
-            ac1
-        );
-    }
-
-    if (title == "a heater shield") {
-        return make_unique<Equipment>(
-            "shield",
-            title,
-            "The shield made of thin wood overlaid with leather and braced with iron.",
-            Object_Type::shield,
-            ac2
-        );
-    }
 
 //    *****    WEAPONS    ***********
     if (title == "a wooden stick") {

@@ -6,17 +6,6 @@ using namespace std;
 unique_ptr<Creature> Creature_Factory::create(string title) {
 
     // ANIMALS 
-    if (title == "a small rat") {  
-        auto creature = make_unique<Animal>(
-            "rat",
-            title,
-            "A small rat.",
-            std::map<Param_Type, short> {
-                {Param_Type::ac, 5}
-            } 
-        );
-        return move(creature);
-    }
 
     if (title == "a grey bat") {
         auto creature = make_unique<Animal>(
@@ -31,12 +20,30 @@ unique_ptr<Creature> Creature_Factory::create(string title) {
         return move(creature);
     }
 
-   
-    
+       
     // HUMANOIDS
-    if (title == "a green orc") {
+    if (title == "an old goblin") {
         auto creature = make_unique<Humanoid>(
-            "orc",
+            "goblin",
+            title,
+            "Decrepit ugly humanoid creature with green skin.",
+            std::map<Param_Type, short> {
+                {Param_Type::str, 10},
+                {Param_Type::dex, 9},
+                {Param_Type::con, 15},
+                {Param_Type::attack, 2},
+                {Param_Type::max_hp, 15},
+                {Param_Type::ac, 0}
+            } 
+        );
+            creature->add_item("a rusty dagger", true);
+            creature->add_item("dirty rags", true);
+        return move(creature);
+    }
+
+        if (title == "a sturdy goblin") {
+        auto creature = make_unique<Humanoid>(
+            "goblin",
             title,
             "Sturdy ugly humanoid creature with green skin.",
             std::map<Param_Type, short> {
@@ -44,13 +51,14 @@ unique_ptr<Creature> Creature_Factory::create(string title) {
                 {Param_Type::dex, 9},
                 {Param_Type::con, 15},
                 {Param_Type::attack, 2},
-                {Param_Type::max_hp, random(15, 20)},
+                {Param_Type::max_hp, 20},
                 {Param_Type::ac, 0}
             } 
         );
             creature->add_item("a rusty dagger", true);
-            creature->add_item("a leather cap", true);
-            creature->add_item("a tiny iron key"); 
+            creature->add_item("a leather vest", true);
+            creature->add_item("a healing potion");
+            creature->add_item("a massive iron key");
         return move(creature);
     }
 

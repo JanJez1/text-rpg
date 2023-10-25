@@ -5,53 +5,115 @@ using namespace std;
 
 void Room_Factory::generate_rooms() {
 
-    auto main_square = create_room(
-        "main square",
-        "a quite large square covered with cobblestones. Currently only one narrow street leads to the south and bush is to the north."
+    auto shore_01 = create_room(
+        "a shore end",
+        "The cliff protrudes to the sea making progress to the west impossible. The shore runs to the east."
     );
-    main_square->add_detail("cobblestones", "About half foot large square pieces of stone.");
-    main_square->add_detail("cobblestone", "About half foot large square pieces of stone.");
-    main_square->add_item("a leather helmet");
-    main_square->add_item("a leather cap");
-    main_square->add_item("a tiny iron key");
-    main_square->add_item( "leather boots of dexterity");
-    main_square->add_item("a wooden stick");
-    main_square->add_item("a rusty dagger");
-    main_square->add_item("a heater shield");
-    main_square->add_item("a tiny buckler");
-    main_square->add_item("a healing potion");
-    
-    auto dark_lane1 = create_room(
-        "a dark lane",
-        "This is a narrow dark street running among tiny houses. "
-        "It opens to a square to the north while getting even darker to the south."
-    );
-    dark_lane1->add_creature("a green orc");
-    dark_lane1->add_item("a massive iron key");
+    shore_01->add_creature("an old goblin");
 
-    auto dark_lane2 = create_room(
-        "a dark lane bending",
-        "This is a narrow street running among tiny houses. It turns here abruptly. There is a chest here.",
-        true //room is resetable
+    auto shore_02 = create_room(
+        "a shore",
+        "The shore itself runs to the east and west while the path ends here in front of a dense bush growing at the foot of the cliff."
     );
-    dark_lane2->add_creature("a small rat");
-    dark_lane2->add_creature("a grey bat");
-    dark_lane2->add_special_item("chest1");
     
-
-    auto dark_lane3 = create_room(
-         "a dark lane dead end",
-        "The dark lane ends here. The only exit is to the west. There is a bird nest."
+    auto crossing = create_room(
+        "a crossing",
+        "there is an old mole to the south and the main road runs to the north. "
+        "A narrow path runs along the shore to the west."
     );
-    dark_lane3->add_item("a leather helmet");
-    dark_lane3->add_special_item("nest");
 
-    start_room = main_square;
+    auto shore_03 = create_room(
+        "a shore bend",
+        "The shore bends here along the cliff to the south and west. To the north there is a cave entrance."
+    );
+
+    auto shore_04 = create_room(
+        "a shore end",
+        "The shore ends here with only possible exit to the north. There is a tiny nest resting in the cliff wall."
+    );
+    shore_04->add_special_item("nest");
+
+    auto goblin_cave_01 = create_room(
+        "in the goblin cave",
+        "Inhabitable part of the cave with simple bed."
+    );
+    goblin_cave_01->add_creature("a sturdy goblin");
+
+    auto goblin_cave_02 = create_room(
+        "a narrow niche",
+        "This is a narrow but rather long part of the cave. There is a chest placed at its end."
+    );
+    goblin_cave_02->add_special_item("chest1");
+
+    auto bat_cave_01 = create_room(
+        "in the cave",
+        "Northwestern corner of the cave.",
+        true // resetable
+    );
+    bat_cave_01->add_creature("a grey bat");
+
+    auto bat_cave_02 = create_room(
+        "in the cave",
+        "Northeastern corner of the cave.",
+        true
+    );
+    bat_cave_02->add_creature("a grey bat");
+
+    auto bat_cave_03 = create_room(
+        "in the cave",
+        "Southwestern corner of the cave. The exit from the cave is to the south.",
+        true
+    );
+    bat_cave_03->add_creature("a grey bat");
+
+    auto bat_cave_04 = create_room(
+        "in the cave",
+        "Southeastern corner of the cave.",
+        true
+    );
+    bat_cave_04->add_creature("a grey bat");
+    bat_cave_04->add_item("a wooden stick");
+
+    auto mole = create_room(
+        "an old mole",
+        "The mole stretches to the sea. It is constructed from the wood, but seem to be unkept. There is a half sunken boat next to the mole."
+    );
+    mole->add_special_item("boat");
+
+    auto road_01 = create_room(
+        "narrow road",
+        "Narrow road running through the mountain. There is a gate to the north."
+    );
+
+    auto escaped = create_room(
+        "escaped",
+        "You've escaped out of the abandoned harbour. Congratulations! Here the demo ends."
+    );
+
+
+
+    start_room = mole;
     
-    main_square->add_special_item("bush1", dark_lane1); // hidden exit behind bush
-    connect_rooms(main_square, Exit::south, dark_lane1);
-    connect_rooms(dark_lane1, Exit::south, dark_lane2, "gate1");
-    connect_rooms(dark_lane2, Exit::east, dark_lane3);
+    // SHORE + road
+    connect_rooms(shore_01, Exit::east, shore_02);
+    connect_rooms(shore_02, Exit::east, crossing);
+    connect_rooms(crossing, Exit::east, shore_03);
+    connect_rooms(shore_03, Exit::south, shore_04);
+    connect_rooms(crossing, Exit::south, mole);
+    connect_rooms(crossing, Exit::north, road_01);
+    connect_rooms(road_01, Exit::north, escaped, "gate1");
+
+    // BAT CAVE
+    connect_rooms(shore_03, Exit::north, bat_cave_03);
+    connect_rooms(bat_cave_01, Exit::east, bat_cave_02);
+    connect_rooms(bat_cave_01, Exit::south, bat_cave_03);
+    connect_rooms(bat_cave_03, Exit::east, bat_cave_04);
+    connect_rooms(bat_cave_02, Exit::south, bat_cave_04);
+
+    // GOBLIN CAVE
+    shore_02->add_special_item("bush1", goblin_cave_01); // hidden exit
+    goblin_cave_01->add_exit(Exit::south, shore_02); // opposite exit must be done explicitly
+    connect_rooms(goblin_cave_01, Exit::west, goblin_cave_02);
 }
 
 
