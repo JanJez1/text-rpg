@@ -11,7 +11,6 @@
 #include "../Object.h"
 #include "../utils.h"
 #include "../defs.h"
-#include "Item.h"
 #include "../world_helper/Item_Factory.h"
 
 
@@ -32,7 +31,7 @@ public:
     short get_ability_modifier(short ability_value) { return ( ability_value-10 ) / 2; }
     std::string ability_to_string(short value);
 
-    void add_item(std::string, bool equip = false);
+    virtual void add_item(std::string, bool equip = false);
     Item *find_item(std::string);
     std::vector<std::shared_ptr<Item>>& get_inv() { return m_inv; }; 
 
@@ -50,8 +49,6 @@ public:
     void alter_param_bonus(Param_Type, short);
     short get_param(Param_Type);
 
-    std::string event_equip_item(Item*);
-    std::string event_remove_item(Item*);
     std::string event_heal();
 
     std::string get_status();

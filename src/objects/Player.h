@@ -6,7 +6,6 @@
 
 #include "Room.h"
 #include "Humanoid.h"
-#include "Item.h"
 
 class Player: public Humanoid
 {

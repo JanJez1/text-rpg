@@ -40,3 +40,41 @@ string Humanoid::get_desc() {
         output += " " + to_upper(get_key_name()) + " has equipped:" + equipped_str;
     return output;
 }
+
+void Humanoid::add_item(string name, bool equip) {
+    auto item = Item_Factory::create(name);
+    if (equip) {
+        item->set_equipped(true);
+        for(auto const& [key, value]: item->get_item_params())
+            alter_param_bonus(key, value);
+    }
+    m_inv.push_back(move(item));
+}
+
+std::string Humanoid::event_equip_item(Item *item) {
+    // if sth already equipped on the same body part
+    auto worn = find_if(m_inv.begin(), m_inv.end(),
+        [&](shared_ptr<Item> & obj){
+        return (obj->is_equipped() && obj->get_object_type() == item->get_object_type());
+    });
+    string response = "";
+    if(worn != m_inv.end()) {
+        response = event_remove_item((*worn).get()) + "\n";
+    }
+
+    item->set_equipped(true);
+    for(auto const& [key, value]: item->get_item_params()) {
+        alter_param_bonus(key, value);
+    }
+    if (item->is_wearable())
+        return response += "You've worn " + item->get_title() + ".";
+    return response += "You've held " + item->get_title() + ".";
+}
+
+std::string Humanoid::event_remove_item(Item *item) {
+    item->set_equipped(false);
+    for(auto const& [key, value]: item->get_item_params()) {
+        alter_param_bonus(key, -value);
+    }
+    return "You've removed " + item->get_title() + ".";
+}

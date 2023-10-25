@@ -7,7 +7,6 @@
 #include <memory>
 
 #include "Creature.h"
-#include "Item.h"
 
 class Animal: public Creature
 {

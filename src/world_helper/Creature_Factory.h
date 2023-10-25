@@ -4,7 +4,6 @@
 #include <string>
 #include <memory>
 
-#include "../objects/Creature.h"
 #include "../objects/Humanoid.h"
 #include "../objects/Animal.h"
 #include "../defs.h"

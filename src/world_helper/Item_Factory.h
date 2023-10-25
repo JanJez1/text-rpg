@@ -4,7 +4,6 @@
 #include <string>
 #include <memory>
 
-#include "../objects/Item.h"
 #include "../objects/Equipment.h"
 #include "../defs.h"
 

@@ -4,7 +4,6 @@
 #include <string>
 #include <memory>
 
-#include "../objects/Item.h"
 #include "../defs.h"
 #include "../special_objects/Hidden_Exit.h"
 #include "../special_objects/Hidden_Item.h"

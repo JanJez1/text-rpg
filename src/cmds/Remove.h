@@ -5,7 +5,6 @@
 #include "../utils.h"
 #include "../objects/Item.h"
 
-
 class Remove : public Cmd_Base
 {
 public:

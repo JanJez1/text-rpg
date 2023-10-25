@@ -9,8 +9,6 @@
 #include <vector>
 
 #include "../utils.h"
-#include "Item.h"
-#include "Creature.h"
 #include "../special_objects/Door.h"
 #include "../world_helper/Item_Factory.h"
 #include "../world_helper/Special_Object_Factory.h"

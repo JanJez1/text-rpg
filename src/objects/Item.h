@@ -6,7 +6,6 @@
 
 #include "../defs.h"
 #include "../Object.h"
-class Player; //forward declaration because of cross reference
 
 class Item: public Object
 {

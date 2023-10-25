@@ -2,9 +2,7 @@
 #define INVENTORY_H
 
 #include "Cmd_Base.h"
-// #include "../World.h"
 #include "../objects/Item.h"
-
 
 class Inventory : public Cmd_Base
 {
