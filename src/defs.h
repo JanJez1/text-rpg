@@ -8,6 +8,7 @@ enum class Object_Type {
     weapon, shield,
     potion,
     special,
+    door,
     undefined
 };
 

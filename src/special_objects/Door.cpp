@@ -7,6 +7,7 @@ Door::Door(string name, string desc, string name_of_key_)
       name_of_key{name_of_key_}
  {
     set_object_state(Object_State::locked);
+    set_object_type(Object_Type::door);
  }
 
 string Door::event_unlock() {

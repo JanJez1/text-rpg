@@ -10,11 +10,13 @@ void Room_Factory::generate_rooms() {
         "The cliff protrudes to the sea making progress to the west impossible. The shore runs to the east."
     );
     shore_01->add_creature("an old goblin");
+    shore_01->add_detail("cliff", "Steep mountain cliff towering along the shore. It protrudes to the sea here.");
 
     auto shore_02 = create_room(
         "a shore",
         "The shore itself runs to the east and west while the path ends here in front of a dense bush growing at the foot of the cliff."
     );
+    shore_01->add_detail("cliff", "Steep mountain cliff towering along northern side of shore.");
     
     auto crossing = create_room(
         "a crossing",
@@ -92,7 +94,7 @@ void Room_Factory::generate_rooms() {
 
 
 
-    start_room = mole;
+    start_room = crossing;
     
     // SHORE + road
     connect_rooms(shore_01, Exit::east, shore_02);
@@ -111,8 +113,9 @@ void Room_Factory::generate_rooms() {
     connect_rooms(bat_cave_02, Exit::south, bat_cave_04);
 
     // GOBLIN CAVE
-    shore_02->add_special_item("bush1", goblin_cave_01); // hidden exit
-    goblin_cave_01->add_exit(Exit::south, shore_02); // opposite exit must be done explicitly
+    // shore_02->add_special_item("bush1", goblin_cave_01); // hidden exit
+    // goblin_cave_01->add_exit(Exit::south, shore_02); // opposite exit must be done explicitly
+    connect_rooms(shore_02, Exit::north, goblin_cave_01, "bush1"); // hidden exit
     connect_rooms(goblin_cave_01, Exit::west, goblin_cave_02);
 }
 

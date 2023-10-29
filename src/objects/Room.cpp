@@ -63,10 +63,10 @@ string Room::get_full_desc() {
             exits_string += " (x)";
         itr++;
         for(; itr != m_exits.end(); itr++) {
-            exits_string += ", " + exit_to_string(itr->first) += " ";
+            exits_string += ", " + exit_to_string(itr->first);
             door_itr = m_doors.find(itr->first);
             if (door_itr != m_doors.end() && door_itr->second->get_object_state() == Object_State::locked)
-                exits_string += "(x) ";
+                exits_string += " (x)";
         }
     }
     full_desc += exits_string;
@@ -96,12 +96,12 @@ Room* Room::get_exit(Exit exit) {
     return nullptr;
 }
 
-void Room::add_door(Exit exit, shared_ptr<Door> door) {
+void Room::add_door(Exit exit, shared_ptr<Special_Object> door) {
     m_doors.insert({exit, door.get()});
     m_items.push_back(door);
 }
 
-Door* Room::get_door(Exit exit) {
+Special_Object* Room::get_door(Exit exit) {
     if (m_doors.size() == 0)
         return nullptr;
     for(auto [ex, p_door]: m_doors) {
@@ -134,6 +134,10 @@ Item* Room::find_item(std::string name) {
 
 void Room::add_special_item(string name, Room* target_room) {
     m_items.push_back(move(Special_Object_Factory::create(name, this, target_room)));
+}
+
+void Room::add_special_item(unique_ptr<Special_Object> special_item) {
+    m_items.push_back(move(special_item));
 }
 
 void Room::add_creature(std::string name) {

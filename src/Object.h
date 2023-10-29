@@ -26,6 +26,7 @@ public:
     std::string get_title() {return m_title;}
     virtual std::string get_desc() {return m_desc;}
     Object_Type get_object_type() { return m_object_type; }
+    void set_object_type(Object_Type type) {  m_object_type = type; }
 };
 
 #endif // OBJECT_H

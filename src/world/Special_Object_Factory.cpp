@@ -2,7 +2,8 @@
 
 using namespace std;
 
-unique_ptr<Item> Special_Object_Factory::create(string str, Room* current_room, Room* target_room) {
+// unique_ptr<Item> Special_Object_Factory::create(string str, Room* current_room, Room* target_room) {
+unique_ptr<Special_Object> Special_Object_Factory::create(string str, Room* current_room, Room* target_room) {
     
     if (str == "boat")
         return make_unique<Hidden_Item>(
@@ -19,7 +20,13 @@ unique_ptr<Item> Special_Object_Factory::create(string str, Room* current_room, 
             current_room,
             target_room
         );
-
+    
+    if (str == "gate1")
+        return make_unique<Door>(
+            "gate",
+            "This is a massive iron gate.",
+            "a massive iron key"
+        );
  
     if (str == "nest")
         return make_unique<Hidden_Item>(
@@ -39,19 +46,19 @@ unique_ptr<Item> Special_Object_Factory::create(string str, Room* current_room, 
             "a leather cap"  // content
         );        
 
-    return make_unique<Item>("blob", "", "useless piece of blob");
+    return make_unique<Special_Object>("blob", "", "useless piece of blob", nullptr);
 }
 
-shared_ptr<Door> Special_Object_Factory::create(string str) {
+// shared_ptr<Door> Special_Object_Factory::create(string str) {
 
-    if (str == "gate1")
-        return make_shared<Door>(
-            "gate",
-            "This is a massive iron gate.",
-            "a massive iron key"
-        );
+//     if (str == "gate1")
+//         return make_shared<Door>(
+//             "gate",
+//             "This is a massive iron gate.",
+//             "a massive iron key"
+//         );
         
 
-    return make_shared<Door>("blob", "", "useless piece of blob");
+//     return make_shared<Door>("blob", "", "useless piece of blob");
 
-}
+// }

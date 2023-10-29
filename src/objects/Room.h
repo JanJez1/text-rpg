@@ -9,7 +9,8 @@
 #include <vector>
 
 #include "../utils.h"
-#include "../special_objects/Door.h"
+// #include "../special_objects/Door.h"
+#include "Special_Object.h"
 #include "../world_helper/Item_Factory.h"
 #include "../world_helper/Special_Object_Factory.h"
 #include "../world_helper/Creature_Factory.h"
@@ -23,7 +24,7 @@ private:
     std::string m_desc;
     std::map<std::string, std::string> m_details; // detailed description of objects mentioned in room description
     std::map<Exit, Room*> m_exits;
-    std::map<Exit, Door*> m_doors;
+    std::map<Exit, Special_Object*> m_doors;
     std::vector<std::shared_ptr<Item>> m_items;
     std::vector<std::unique_ptr<Creature>> m_creatures;
     
@@ -43,8 +44,8 @@ public:
     
     void add_exit(Exit, Room*);
     Room* get_exit(Exit);
-    void add_door(Exit, std::shared_ptr<Door> door);
-    Door* get_door(Exit);
+    void add_door(Exit, std::shared_ptr<Special_Object> door);
+    Special_Object* get_door(Exit);
     void event_enter();
 
     void add_item(std::string name);
@@ -52,6 +53,7 @@ public:
     void add_item(std::shared_ptr<Item> item) { m_items.push_back(move(item)); }
     std::vector<std::shared_ptr<Item>>& get_items() {return m_items;}
     void add_special_item(std::string name, Room* target_room = nullptr);
+    void add_special_item(std::unique_ptr<Special_Object>);
     
     void add_creature(std::string name);
     Creature* find_creature(std::string name);
