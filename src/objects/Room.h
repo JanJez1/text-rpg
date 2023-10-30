@@ -2,20 +2,17 @@
 #define ROOM_H
 
 #include <string>
-#include <iostream>
 #include <memory>
 #include <algorithm>
 #include <map>
 #include <vector>
 
 #include "../utils.h"
-// #include "../special_objects/Door.h"
 #include "Special_Object.h"
+#include "Room_Desc.h"
 #include "../world_helper/Item_Factory.h"
 #include "../world_helper/Special_Object_Factory.h"
 #include "../world_helper/Creature_Factory.h"
-
-class Door;
 
 class Room
 {

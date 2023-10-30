@@ -15,63 +15,8 @@ Room::Room(string title, string desc, bool resetable_)
       last_kill_time{0}
 {}
 
-
 string Room::get_full_desc() {
-    
-    string full_desc  = "\n" +
-        to_upper(m_title) + "\n" +
-        to_upper(m_desc) + "\n";
-  
-    // CREATURES IN ROOM
-    // one creature per line
-    if (m_creatures.size() > 0 ) {
-        for(const auto &creature: m_creatures)
-            full_desc += to_upper(creature->get_title() + " is " + creature->get_position() + " here.\n");
-    }
-    
-    // ITEMS IN ROOM 
-    // first exclude not visible (special) items from list of items lying on the ground
-    vector<Item*> visible_items;
-    for (const auto &item: m_items) {
-        if ( item->is_visible() )
-            visible_items.push_back(item.get());
-    }
-
-    if (visible_items.size() > 0 ) {
-        string items_string{visible_items.at(0)->get_title()};
-        if(visible_items.size() == 1)
-            items_string += " is here.\n";
-        else {
-            if(visible_items.size()>2) {
-                for(size_t i{1}; i <= visible_items.size()-2; i++)
-                    items_string += ", " + visible_items.at(i)->get_title();
-            }
-            items_string += " and " + visible_items.back()->get_title() +" are here.\n";
-        }
-        full_desc += to_upper(items_string);
-    }
-
-    // EXITS:
-    string exits_string{"Exits: "};
-    if(m_exits.size()==0)
-        exits_string = "none";
-    else {
-        auto itr = m_exits.begin();
-        exits_string += exit_to_string(itr->first);
-        auto door_itr = m_doors.find(itr->first);
-        if (door_itr != m_doors.end() && door_itr->second->get_object_state() == Object_State::locked)
-            exits_string += " (x)";
-        itr++;
-        for(; itr != m_exits.end(); itr++) {
-            exits_string += ", " + exit_to_string(itr->first);
-            door_itr = m_doors.find(itr->first);
-            if (door_itr != m_doors.end() && door_itr->second->get_object_state() == Object_State::locked)
-                exits_string += " (x)";
-        }
-    }
-    full_desc += exits_string;
-    
-    return full_desc;
+    return Room_Desc::get_full_desc(m_title, m_desc, m_creatures, m_items, m_exits, m_doors);
 }
 
 string Room::find_detail(string key) {
