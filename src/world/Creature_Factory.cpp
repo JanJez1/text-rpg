@@ -65,10 +65,8 @@ unique_ptr<Creature> Creature_Factory::create(string title) {
 
     // DEFAULT CREATURE
     std::map<Param_Type, short> params {
-        {Param_Type::ac, 5},
-        {Param_Type::max_hp, 5}
     }; 
-    return make_unique<Animal>("blob", "an unidentified blob", "useless piece of blob", params);
+    return make_unique<Animal>("error", "error", "'" + title + "' is not among available creatures. Typo, perhaps?", params);
 }
 
 

@@ -2,7 +2,6 @@
 
 using namespace std;
 
-// unique_ptr<Item> Special_Object_Factory::create(string str, Room* current_room, Room* target_room) {
 unique_ptr<Special_Object> Special_Object_Factory::create(string str, Room* current_room, Room* target_room) {
     
     if (str == "boat")
@@ -46,19 +45,7 @@ unique_ptr<Special_Object> Special_Object_Factory::create(string str, Room* curr
             "a leather cap"  // content
         );        
 
-    return make_unique<Special_Object>("blob", "", "useless piece of blob", nullptr);
+    // for "error" object used chest - only visible Special_Object
+    return make_unique<Chest>("error", "error",
+        "'" + str + "' is not among available special objects. Typo, perhaps?", nullptr, "", "");
 }
-
-// shared_ptr<Door> Special_Object_Factory::create(string str) {
-
-//     if (str == "gate1")
-//         return make_shared<Door>(
-//             "gate",
-//             "This is a massive iron gate.",
-//             "a massive iron key"
-//         );
-        
-
-//     return make_shared<Door>("blob", "", "useless piece of blob");
-
-// }

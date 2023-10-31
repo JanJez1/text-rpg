@@ -38,11 +38,11 @@ unique_ptr<Item> Item_Factory::create(string title) {
 
 //    *****    ARMOURS    ***********
 
-    if (title == "dirty rags") {
+    if (title == "a dirty tunic") {
         return make_unique<Equipment>(
-            "rags",
+            "tunic",
             title,
-            "Torn and dirty clothes.",
+            "Simple tunic covering the body and upper legs. It is torn and dirty.",
             Object_Type::armour,
             ac1
         );
@@ -68,7 +68,7 @@ unique_ptr<Item> Item_Factory::create(string title) {
         );
     }
 
-   if (title == "shabby shoes") {
+   if (title == "a pair of shabby shoes") {
         return make_unique<Equipment>(
             "shoes",
             title,
@@ -77,11 +77,11 @@ unique_ptr<Item> Item_Factory::create(string title) {
             ac1
         );
     }
-    if (title == "leather boots of dexterity") { // unused
+    if (title == "a pair of leather boots") { // unused
         return make_unique<Equipment>(
             "boots",
             title,
-            "Light boots made of soft leather.",
+            "Very light boots made of soft leather.",
             Object_Type::boots,
             std::map<Param_Type, short> {
               {Param_Type::ac, 1},
@@ -118,7 +118,7 @@ unique_ptr<Item> Item_Factory::create(string title) {
         );
     }
 
-    return make_unique<Item>("blob", "an unidentified blob", "useless piece of blob");
+    return make_unique<Item>("error", "error", "'" + title + "' is not among available items. Typo, perhaps?");
 }
 
 
