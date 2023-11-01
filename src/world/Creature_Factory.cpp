@@ -37,7 +37,7 @@ unique_ptr<Creature> Creature_Factory::create(string title) {
             } 
         );
             creature->add_item("a rusty dagger", true);
-            creature->add_item("dirty rags", true);
+            creature->add_item("a dirty tunic", true);
         return move(creature);
     }
 
@@ -57,7 +57,6 @@ unique_ptr<Creature> Creature_Factory::create(string title) {
         );
             creature->add_item("a rusty dagger", true);
             creature->add_item("a leather vest", true);
-            creature->add_item("a healing potion");
             creature->add_item("a massive iron key");
         return move(creature);
     }

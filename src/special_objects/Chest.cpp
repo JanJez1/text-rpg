@@ -2,17 +2,21 @@
 
 using namespace std;
 
-Chest::Chest(string name, string title, string desc, Room* current_room_, string name_of_key_, string items_)
+// Chest::Chest(string name, string title, string desc, Room* current_room_, string name_of_key_, string items_)
+Chest::Chest(string name, string title, string desc, Room* current_room_, string name_of_key_)
     : Special_Object{name, title, desc, current_room_},
       name_of_key{name_of_key_},
-      items{items_}
+    //   items{items_}
+      items{}
  {
     set_object_state(Object_State::locked);
  }
 
-string Chest::event_unlock() {
+ string Chest::event_unlock() {
     set_object_state(Object_State::opened);
-    current_room->add_item(items);
+    if (items.size() >0 )
+        for(const auto& item: items)
+            current_room->add_item(item);
     return "\nYou've unlocked and opened the " + get_key_name() + "!";
  }
 
