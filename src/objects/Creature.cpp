@@ -38,7 +38,7 @@ string Creature::get_desc() {
 
 string Creature::health_string() {
     int health_percentage = 100 * get_hp() / get_param(Param_Type::max_hp);
-    string str = to_upper(get_key_name()) + " is ";
+    string str = "\n" + to_upper(get_key_name()) + " is ";
     if (health_percentage > 99)
         return  str + "in full health.";
     if (health_percentage > 90)

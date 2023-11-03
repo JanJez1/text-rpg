@@ -33,7 +33,7 @@ int Humanoid::get_dr() {
 }
 
 string Humanoid::get_desc() {
-    string output = Creature::get_desc();
+    string output = Object::get_desc();
     string equipped_str = "";
     for(const auto& item: get_inv()) {
         if(item->is_equipped()) {
@@ -45,6 +45,7 @@ string Humanoid::get_desc() {
     }
     if (equipped_str.size())
         output += " " + to_upper(get_key_name()) + " has equipped:" + equipped_str;
+    output += health_string();
     return output;
 }
 
