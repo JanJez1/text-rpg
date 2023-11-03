@@ -18,6 +18,44 @@ Creature::Creature(string key_name, string title, string desc, map<Param_Type, s
         hp = iter->second;
 }
 
+
+
+// DESCRIPTION, STATUS
+
+string Creature::get_status(){
+    std::string response = "\n";
+    response += "Strength:      " + ability_to_string(get_param(Param_Type::str)) + "\n";
+    response += "Dexterity:     " + ability_to_string(get_param(Param_Type::dex)) + "\n";
+    response += "Constitution:  " + ability_to_string(get_param(Param_Type::con)) + "\n";
+    response += "Health points: " + std::to_string(hp) + "/" + std::to_string(get_param(Param_Type::max_hp)) + "\n";
+    response += "Armour class:  " + std::to_string(get_param(Param_Type::ac)) + "\n";
+    return response;
+}
+
+string Creature::get_desc() {
+    return Object::get_desc() + health_string();
+}
+
+string Creature::health_string() {
+    int health_percentage = 100 * get_hp() / get_param(Param_Type::max_hp);
+    string str = to_upper(get_key_name()) + " is ";
+    if (health_percentage > 99)
+        return  str + "in full health.";
+    if (health_percentage > 90)
+        return  str + "almost in full health.";
+    if (health_percentage > 70)
+        return  str + "slightly scratched.";
+    if (health_percentage > 50)
+        return  str + "injured.";
+    if (health_percentage > 30)
+        return  str + "badly injured.";
+    if (health_percentage > 10)
+        return  str + "very seriously injured.";
+    return str + "almost dead.";
+}
+
+// ----------------------------------
+
 void Creature::alter_param_bonus(Param_Type param_type, short value) {
     auto itr = param_bonuses.find(param_type);
     if (itr != param_bonuses.end())
@@ -25,7 +63,6 @@ void Creature::alter_param_bonus(Param_Type param_type, short value) {
     else
         param_bonuses[param_type] = value;
 }
-
 
 short Creature::get_param(Param_Type param_type) {
     short param_value {0};
@@ -81,15 +118,7 @@ std::string Creature::ability_to_string(short value) {
     return str += std::to_string(modif) + ")";
 }
 
-std::string Creature::get_status(){
-    std::string response = "\n";
-    response += "Strength:      " + ability_to_string(get_param(Param_Type::str)) + "\n";
-    response += "Dexterity:     " + ability_to_string(get_param(Param_Type::dex)) + "\n";
-    response += "Constitution:  " + ability_to_string(get_param(Param_Type::con)) + "\n";
-    response += "Health points: " + std::to_string(hp) + "/" + std::to_string(get_param(Param_Type::max_hp)) + "\n";
-    response += "Armour class:  " + std::to_string(get_param(Param_Type::ac)) + "\n";
-    return response;
-}
+
 
 
 

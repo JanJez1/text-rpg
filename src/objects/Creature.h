@@ -26,6 +26,10 @@ public:
     Creature(std::string key_name, std::string title, std::string desc, std::map<Param_Type, short> params);
     virtual ~Creature() = default;
 
+    virtual std::string get_desc();
+    virtual std::string get_status();
+    std::string health_string();
+
     short get_ability_modifier(short ability_value) { return ( ability_value-10 ) / 2; }
     std::string ability_to_string(short value);
 
@@ -49,7 +53,6 @@ public:
 
     std::string event_heal();
 
-    virtual std::string get_status();
     std::string get_position() { return position;};
     void set_position(std::string pos) { position = pos; };
 };
