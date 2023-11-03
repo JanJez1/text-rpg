@@ -27,7 +27,7 @@ string perform_attack(Creature& attacker, Creature& defender){
 string Combat::compute_round(Player& player, Creature& creature) {
     string message = perform_attack(player, creature);
     if (creature.get_hp() <= 0)
-        player.get_current_room()->creature_killed(creature);
+        message += player.creature_killed(creature);
     else
         message += "\n" + perform_attack(creature, player);
     return message;

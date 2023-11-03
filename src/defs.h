@@ -1,6 +1,8 @@
 #ifndef DEFS_H
 #define DEFS_H
 
+#include<vector>
+
 enum class Object_Type {
     creature,
     item,
@@ -16,7 +18,8 @@ enum class Param_Type {
     str, dex, con,
     ac, attack,
     min_damage, max_damage,
-    max_hp
+    max_hp,
+    exp_rating
 };
 
 enum class Object_State {
@@ -25,6 +28,5 @@ enum class Object_State {
     opened,
     activated
 };
-
 
 #endif // DEFS_H

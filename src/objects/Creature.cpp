@@ -82,16 +82,12 @@ std::string Creature::ability_to_string(short value) {
 }
 
 std::string Creature::get_status(){
-    short strength = get_param(Param_Type::str);
-    std::string response = "";
-    response += "Strength:      " + ability_to_string(strength) + "\n";
+    std::string response = "\n";
+    response += "Strength:      " + ability_to_string(get_param(Param_Type::str)) + "\n";
     response += "Dexterity:     " + ability_to_string(get_param(Param_Type::dex)) + "\n";
     response += "Constitution:  " + ability_to_string(get_param(Param_Type::con)) + "\n";
     response += "Health points: " + std::to_string(hp) + "/" + std::to_string(get_param(Param_Type::max_hp)) + "\n";
-    response += "Damage:        " 
-        + std::to_string( get_param(Param_Type::min_damage) + get_ability_modifier(strength) ) +
-        "/" + std::to_string( get_param(Param_Type::max_damage) + get_ability_modifier(strength) ) + "\n";;
-    response += "Armour class:  " + std::to_string(get_param(Param_Type::ac));
+    response += "Armour class:  " + std::to_string(get_param(Param_Type::ac)) + "\n";
     return response;
 }
 

@@ -6,6 +6,14 @@ Humanoid::Humanoid(string key_name, string title, string desc, map<Param_Type, s
     : Creature{key_name, title, desc, params}
 {}
 
+std::string Humanoid::get_status(){
+    std::string response = Creature::get_status();
+    response += "Damage:        " 
+        + std::to_string( get_param(Param_Type::min_damage) + get_ability_modifier(get_param(Param_Type::str) )) +
+        "/" + std::to_string( get_param(Param_Type::max_damage) + get_ability_modifier(get_param(Param_Type::str) ));
+    return response;
+}
+
 int Humanoid::get_ac() { 
     short dex_modifier = get_ability_modifier(get_param(Param_Type::dex));
     short base_ac = get_param(Param_Type::ac);
@@ -22,7 +30,6 @@ int Humanoid::get_dr() {
     short max_damage = get_param(Param_Type::max_damage);
     short str_modifier = get_ability_modifier(get_param(Param_Type::str));
     return random(min_damage, max_damage) + str_modifier;
-    // weapon equipped:
 }
 
 string Humanoid::get_desc() {
@@ -78,3 +85,4 @@ std::string Humanoid::event_remove_item(Item *item) {
     }
     return "You've removed " + item->get_title() + ".";
 }
+

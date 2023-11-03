@@ -6,15 +6,26 @@
 
 #include "Room.h"
 #include "Humanoid.h"
+#include "../utils.h"
 
 class Player: public Humanoid
 {
 private:
     Room* current_room;
     bool playing;
+    int exp;
+    int lvl;
+    std::string level_up();
+    std::string raise_exp(Creature &creature);
 public:
     Player(std::string key_name, std::string title, std::string desc, std::map<Param_Type, short> params);
     virtual ~Player() = default;
+
+    std::string get_status() override;
+
+    std::string creature_killed(Creature &creature);
+    int get_exp() { return exp; }
+
     void set_current_room(Room* room) {current_room = room;}
     Room* get_current_room()  {return current_room;}
     bool is_playing() { return playing; }

@@ -68,11 +68,11 @@ unique_ptr<Item> Item_Factory::create(string title) {
         );
     }
 
-   if (title == "a pair of shabby shoes") {
+   if (title == "a pair of thigh boots") {
         return make_unique<Equipment>(
-            "shoes",
+            "boots",
             title,
-            "Old looking but still intact shoes made of soft leather.",
+            "Old looking but still intact leather boots used by fisherman.",
             Object_Type::boots,
             ac1
         );

@@ -1,7 +1,6 @@
 #ifndef CREATURE_H
 #define CREATURE_H
 
-#include <iostream>
 #include <string>
 #include <vector>
 #include <map>
@@ -12,7 +11,6 @@
 #include "../utils.h"
 #include "../defs.h"
 #include "../world_helper/Item_Factory.h"
-
 
 class Creature: public Object
 {
@@ -51,7 +49,7 @@ public:
 
     std::string event_heal();
 
-    std::string get_status();
+    virtual std::string get_status();
     std::string get_position() { return position;};
     void set_position(std::string pos) { position = pos; };
 };

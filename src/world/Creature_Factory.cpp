@@ -11,9 +11,17 @@ unique_ptr<Creature> Creature_Factory::create(string title) {
         auto creature = make_unique<Animal>(
             "bat",
             title,
-            "Rather small but nimble flying creature.",
+            "This is a nimble flying creature with wingspan slightly above two feet.",
             std::map<Param_Type, short> {
-                {Param_Type::ac, 5}
+                {Param_Type::str, 2},
+                {Param_Type::dex, 16},
+                {Param_Type::con, 11},
+                {Param_Type::ac, 8},
+                {Param_Type::attack, 0},
+                {Param_Type::min_damage, 1},
+                {Param_Type::max_damage, 1},
+                {Param_Type::max_hp, 5},
+                {Param_Type::exp_rating, 50}
             } 
         );
         creature->set_position("flying");
@@ -28,13 +36,13 @@ unique_ptr<Creature> Creature_Factory::create(string title) {
             title,
             "Decrepit ugly humanoid creature with green skin.",
             std::map<Param_Type, short> {
-                {Param_Type::str, 10},
-                {Param_Type::dex, 9},
-                {Param_Type::con, 15},
-                {Param_Type::attack, 2},
-                {Param_Type::max_hp, 15},
-                {Param_Type::ac, 0}
-            } 
+                {Param_Type::str, 6},
+                {Param_Type::dex, 10},
+                {Param_Type::con, 10},
+                {Param_Type::ac, 10},
+                {Param_Type::max_hp, 10},
+                {Param_Type::exp_rating, 20}
+             } 
         );
             creature->add_item("a rusty dagger", true);
             creature->add_item("a dirty tunic", true);
@@ -47,12 +55,12 @@ unique_ptr<Creature> Creature_Factory::create(string title) {
             title,
             "Sturdy ugly humanoid creature with green skin.",
             std::map<Param_Type, short> {
-                {Param_Type::str, 15},
-                {Param_Type::dex, 9},
+                {Param_Type::str, 12},
+                {Param_Type::dex, 12},
                 {Param_Type::con, 15},
-                {Param_Type::attack, 2},
+                {Param_Type::ac, 10},
                 {Param_Type::max_hp, 20},
-                {Param_Type::ac, 0}
+                {Param_Type::exp_rating, 100}
             } 
         );
             creature->add_item("a rusty dagger", true);
@@ -63,8 +71,7 @@ unique_ptr<Creature> Creature_Factory::create(string title) {
 
 
     // DEFAULT CREATURE
-    std::map<Param_Type, short> params {
-    }; 
+    std::map<Param_Type, short> params {}; 
     return make_unique<Animal>("error", "error", "'" + title + "' is not among available creatures. Typo, perhaps?", params);
 }
 

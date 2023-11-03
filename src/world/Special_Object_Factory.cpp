@@ -7,9 +7,9 @@ unique_ptr<Special_Object> Special_Object_Factory::create(string str, Room* curr
     if (str == "boat")
         return make_unique<Hidden_Item>(
             "boat",
-            "This is abandoned wreckage of a small partially decked boat.",
+            "This is abandoned wreckage of a small fishing boat.",
             current_room,
-            "a pair of shabby shoes"
+            "a pair of thigh boots"
         );
 
     if (str == "bush1")

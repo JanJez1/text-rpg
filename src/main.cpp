@@ -23,7 +23,7 @@ int main() {
         {Param_Type::str, 15},
         {Param_Type::dex, 10},
         {Param_Type::con, 15},
-        {Param_Type::max_hp, 30},
+        {Param_Type::max_hp, 10},
         {Param_Type::ac, 8}
      };
 

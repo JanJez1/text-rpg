@@ -12,10 +12,8 @@ class Chest: public Special_Object
 {
 private:
     std::string name_of_key;
-    // std::string items;
     std::list<std::string> items;
 public:
-    // Chest(std::string name, std::string title, std::string desc, Room* current_room_, std::string name_of_key, std::string items_);
     Chest(std::string name, std::string title, std::string desc, Room* current_room_, std::string name_of_key);
     virtual ~Chest() = default;
 

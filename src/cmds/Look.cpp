@@ -25,7 +25,7 @@ std::string Look::action(std::vector<std::string> params, Player& player) {
     // CREATURE IN ROOM
     auto creature = current_room->find_creature(target_string);
     if (creature)
-        return creature->get_desc();
+        return creature->get_desc() + creature->get_status();
 
     // ITEM IN INVENTORY
     auto& inv = player.get_inv();

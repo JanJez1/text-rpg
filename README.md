@@ -9,8 +9,9 @@ Currently implemented:
 - hero movement
 - items, armours, weapons, creatures
 - item manipulation
-- worn/held items alter player (and monster) characteristics (ac, damage, strength, ...)
+- worn/held items alter hero (and monster) characteristics (ac, damage, strength, ...)
 - simple combat based on AD&D
+- hero advancement
 - some creatures reappear over time when killed
 - special interaction with objects:
     - locked chests and gates
@@ -28,4 +29,4 @@ Commands:
 - drink (potion)
 
 ToDo:
-- player creation and development
+- hero creation

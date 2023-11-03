@@ -2,11 +2,9 @@
 
 using namespace std;
 
-// Chest::Chest(string name, string title, string desc, Room* current_room_, string name_of_key_, string items_)
 Chest::Chest(string name, string title, string desc, Room* current_room_, string name_of_key_)
     : Special_Object{name, title, desc, current_room_},
       name_of_key{name_of_key_},
-    //   items{items_}
       items{}
  {
     set_object_state(Object_State::locked);

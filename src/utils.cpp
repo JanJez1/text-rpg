@@ -63,10 +63,25 @@ std::string object_type_to_string(Object_Type object_type) {
 }
 
 int random(int min, int max) {
-    // srand(time(0));
+    // if (min < 0) 
+    //     min = 0;
+    // if (min > max)
+    //     return min;
     return (rand() % (max - min + 1)) + min;
 }
 
 int random(int max) {
     return random(1, max);
 }
+
+
+int exp_to_advance(int lvl) {
+    switch (lvl) {
+        case 1: return 300;
+        case 2: return 900;
+        case 3: return 2700;
+        case 4: return 6500;
+        case 5: return 14000;
+    }
+    return 20000;
+};

@@ -6,6 +6,15 @@ Animal::Animal(string key_name, string title, string desc, map<Param_Type, short
     : Creature{key_name, title, desc, params}
 {}
 
+std::string Animal::get_status(){
+    std::string response = Creature::get_status();
+    response += "Damage:        " 
+        + std::to_string( get_param(Param_Type::min_damage) ) +
+        "/" + std::to_string( get_param(Param_Type::max_damage) );
+    return response;
+}
+
+
 int Animal::get_ac() { 
     short dex_modifier = get_ability_modifier(get_param(Param_Type::dex));
     short base_ac = get_param(Param_Type::ac);
