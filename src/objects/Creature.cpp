@@ -22,7 +22,7 @@ Creature::Creature(string key_name, string title, string desc, map<Param_Type, s
 
 // DESCRIPTION, STATUS
 
-string Creature::get_status(){
+string Creature::get_profile(){
     std::string response = "\n";
     response += "Strength:      " + ability_to_string(get_param(Param_Type::str)) + "\n";
     response += "Dexterity:     " + ability_to_string(get_param(Param_Type::dex)) + "\n";

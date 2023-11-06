@@ -2,9 +2,12 @@
 
 using namespace std;
 
-Player::Player(string key_name, string title, string desc, map<Param_Type, short> params)
-    : Humanoid{key_name, title, desc, params},
+// Player::Player(string key_name, string title, string desc, map<Param_Type, short> params)
+Player::Player(map<Param_Type, short> params)
+    : Humanoid{"", "you", "", params},
+    state{Player_State::in_menu},
     playing{true},
+    alive{true},
     exp{0},
     lvl{1}
 {}
@@ -29,6 +32,10 @@ string Player::level_up() {
     lvl++;
     // ToDo raise 2 abilities
     return "\nYou gained another level!";
+}
+
+void Player::event_die() {
+    state = Player_State::dead;
 }
 
 // ITEM MANIPULATION
@@ -56,8 +63,8 @@ string Player::event_drop_item(vector<shared_ptr<Item>>::iterator iter) { // ite
 
 // DESCRIPTION
 
-string Player::get_status() {
-    string response = Humanoid::get_status() + "\n";
+string Player::get_profile() {
+    string response = Humanoid::get_profile() + "\n";
     response += "Level: " + std::to_string(lvl)+ "\n";
     response += "Experience: " + std::to_string(exp) + "/" + std::to_string(exp_to_advance(lvl));
     return response;

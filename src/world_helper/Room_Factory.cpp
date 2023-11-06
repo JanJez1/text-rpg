@@ -3,6 +3,7 @@
     Room* Room_Factory::create_room(std::string title, std::string desc, bool resetable) {
         auto unique_ptr_room = std::make_unique<Room>(title, desc, resetable);
         auto p_room = unique_ptr_room.get();
+        // rooms.push_back(std::move(unique_ptr_room));
         rooms.push_back(std::move(unique_ptr_room));
         return p_room;
     }

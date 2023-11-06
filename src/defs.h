@@ -29,4 +29,20 @@ enum class Object_State {
     activated
 };
 
+enum class Player_State {
+    quit,
+    generate,
+    auto_generate,
+    in_menu,
+    playing,
+    dead
+};
+
+enum class Menu_Item {
+    in_menu,
+    auto_generate,
+    generate,
+    quit
+};
+
 #endif // DEFS_H

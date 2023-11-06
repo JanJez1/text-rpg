@@ -28,8 +28,11 @@ string Combat::compute_round(Player& player, Creature& creature) {
     string message = perform_attack(player, creature);
     if (creature.get_hp() <= 0)
         message += player.creature_killed(creature);
-    else
+    else {
         message += "\n" + perform_attack(creature, player);
+        if (player.get_hp() <= 0)
+            player.event_die();
+    }
     return message;
 }
 

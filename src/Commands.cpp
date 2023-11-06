@@ -18,10 +18,12 @@ Commands::Commands()
     commands.insert({"i", std::make_unique<Inventory>()});
     commands.insert({"look", std::make_unique<Look>()});
     commands.insert({"l", std::make_unique<Look>()});
+    commands.insert({"profile", std::make_unique<Profile>()});
+    commands.insert({"prof", std::make_unique<Profile>()});
+    commands.insert({"p", std::make_unique<Profile>()});
     commands.insert({"quit", std::make_unique<Quit>()});
     commands.insert({"q", std::make_unique<Quit>()});
     commands.insert({"remove", std::make_unique<Remove>()});
-    commands.insert({"status", std::make_unique<Status>()});
     commands.insert({"unlock", std::make_unique<Unlock>()});
     commands.insert({"wear", std::make_unique<Wear>()});
     

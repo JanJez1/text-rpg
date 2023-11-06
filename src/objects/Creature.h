@@ -27,7 +27,7 @@ public:
     virtual ~Creature() = default;
 
     virtual std::string get_desc();
-    virtual std::string get_status();
+    virtual std::string get_profile();
     std::string health_string();
 
     short get_ability_modifier(short ability_value) { return ( ability_value-10 ) / 2; }

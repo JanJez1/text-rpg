@@ -15,9 +15,9 @@
 #include "cmds/Hold.h"
 #include "cmds/Inventory.h"
 #include "cmds/Look.h"
+#include "cmds/Profile.h"
 #include "cmds/Quit.h"
 #include "cmds/Remove.h"
-#include "cmds/Status.h"
 #include "cmds/Unlock.h"
 #include "cmds/Wear.h"
 

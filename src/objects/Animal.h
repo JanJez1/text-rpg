@@ -14,7 +14,7 @@ public:
     Animal(std::string key_name, std::string title, std::string desc, std::map<Param_Type, short> params);
     virtual ~Animal() = default;
 
-    std::string get_status() override;
+    std::string get_profile() override;
     
     //combat related
     int get_ac() override; // armour class

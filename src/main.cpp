@@ -5,51 +5,58 @@
 #include <cstdlib>
 
 #include "defs.h"
+#include "Main_Menu.h"
+#include "Player_Factory.h"
 #include "objects/Player.h"
 #include "utils.h"
 #include "Input_Handler.h"
 #include "Commands.h"
 #include "world_helper/Room_Factory.h"
 
+
 using namespace std;
 
 int main() {
-
- // ToDo
- // - initialization of the game - name of player, setting stats etc.
- // - extract some code from main.cpp somewhere else
-   
-     map<Param_Type, short> default_player_params {
-        {Param_Type::str, 15},
-        {Param_Type::dex, 10},
-        {Param_Type::con, 15},
-        {Param_Type::max_hp, 10},
-        {Param_Type::ac, 8}
-     };
-
-    Player player{"Dorban", "you", "A young barbarian.", default_player_params};
-    srand(time(0));
-    Room_Factory room_factory{};
-    room_factory.generate_rooms();
-    player.set_current_room(room_factory.get_start_room());
-    string input_line = "";
-    Input_Handler input_handler {};
-    Commands commands{};
-    vector<string> tokens{};
-    string response="";
-    
-    cout << player.get_current_room()->get_full_desc() << endl;
-    
-    // main game loop
+    auto selection{Menu_Item::in_menu};
     do {
-        cout << "> ";
-        getline (cin, input_line);
-        input_handler.parse_input(input_line);
-        tokens = input_handler.get_tokens();
-        response = commands.execute_command(tokens, player);
-        cout << response << endl;
-    }
-    while (player.is_playing());
-	return 0;
-}
 
+        // *** MAIN MENU ***
+        selection = Main_Menu::select_menu_item();
+        if (selection != Menu_Item::quit) {
+            auto player = Player_Factory::create_default_player();
+            if (selection == Menu_Item::auto_generate) {
+                Player_Factory::auto_generate_abilities(player);
+            }
+            else if (selection == Menu_Item::generate) {
+            }
+
+            // *** GAME INIT ***
+            srand(time(0));
+            Room_Factory room_factory{};
+            room_factory.generate_rooms();
+            player.set_current_room(room_factory.get_start_room());
+            player.set_state(Player_State::playing);
+            
+            string input_line = "";
+            Input_Handler input_handler {};
+            Commands commands{};
+            vector<string> tokens{};
+            string response="";
+            
+            cout << player.get_current_room()->get_full_desc() << endl;
+            
+            // *** MAIN GAME LOOP ***
+            do {
+                cout << "> ";
+                getline (cin, input_line);
+                input_handler.parse_input(input_line);
+                tokens = input_handler.get_tokens();
+                response = commands.execute_command(tokens, player);
+                cout << response << endl;
+            }
+            while (player.get_state() == Player_State::playing);
+        }
+    }
+    while (selection != Menu_Item::quit);
+    return 0;
+}
