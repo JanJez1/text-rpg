@@ -17,6 +17,7 @@
 #include "cmds/Look.h"
 #include "cmds/Profile.h"
 #include "cmds/Quit.h"
+#include "cmds/Raise.h"
 #include "cmds/Remove.h"
 #include "cmds/Unlock.h"
 #include "cmds/Wear.h"
@@ -26,6 +27,7 @@ class Commands
 {
 private:
     std::map<std::string, std::unique_ptr<Cmd_Base>> commands;
+    std::map<std::string, std::unique_ptr<Cmd_Base>> menu_commands;
 public:
     Commands();
     std::string execute_command(std::vector<std::string>, Player&);

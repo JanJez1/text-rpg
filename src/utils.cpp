@@ -47,6 +47,26 @@ Exit string_to_exit(std::string ex) {
     return invalid;
 }
 
+std::string get_full_ability_string(std::string abil) {
+    if (abil == "s" || abil == "str" || abil == "strength")
+        return "strength";
+    if (abil == "d" || abil == "dex" || abil == "dexterity")
+        return "dexterity";
+    if (abil == "c" || abil == "con" || abil == "constitution")
+        return "constitution";
+    return "";
+}
+
+Param_Type str_to_param_type(std::string str) {
+    str = get_full_ability_string(str);
+    if (str == "strength")
+        return Param_Type::str;
+    if (str == "dexterity")
+        return Param_Type::dex;
+    if (str == "constitution")
+        return Param_Type::con;
+    return Param_Type::invalid;    
+}
 
 std::string object_type_to_string(Object_Type object_type) {
     switch(object_type) {

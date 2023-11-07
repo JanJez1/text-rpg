@@ -8,7 +8,7 @@ Humanoid::Humanoid(string key_name, string title, string desc, map<Param_Type, s
 
 std::string Humanoid::get_profile(){
     std::string response = Creature::get_profile();
-    response += "Damage:        " 
+    response += "Damage:         " 
         + std::to_string( get_param(Param_Type::min_damage) + get_ability_modifier(get_param(Param_Type::str) )) +
         "/" + std::to_string( get_param(Param_Type::max_damage) + get_ability_modifier(get_param(Param_Type::str) ));
     return response;

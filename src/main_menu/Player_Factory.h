@@ -4,9 +4,9 @@
 #include <string>
 #include <memory>
 
-#include "objects/Player.h"
-#include "defs.h"
-#include "utils.h"
+#include "../objects/Player.h"
+#include "../defs.h"
+#include "../utils.h"
 
 class Player_Factory
 {

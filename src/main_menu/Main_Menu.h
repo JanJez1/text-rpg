@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 
-#include "defs.h"
+#include "../defs.h"
 
 
 class Main_Menu

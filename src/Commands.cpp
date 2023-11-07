@@ -23,10 +23,10 @@ Commands::Commands()
     commands.insert({"p", std::make_unique<Profile>()});
     commands.insert({"quit", std::make_unique<Quit>()});
     commands.insert({"q", std::make_unique<Quit>()});
+    commands.insert({"raise", std::make_unique<Raise>()});
     commands.insert({"remove", std::make_unique<Remove>()});
     commands.insert({"unlock", std::make_unique<Unlock>()});
     commands.insert({"wear", std::make_unique<Wear>()});
-    
 }
 
 

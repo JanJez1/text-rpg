@@ -27,6 +27,7 @@ Commands:
 - hit (attack)
 - unlock
 - drink (potion)
+- raise (ability)
 
 ToDo:
 - hero creation

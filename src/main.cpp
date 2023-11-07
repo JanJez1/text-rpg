@@ -5,8 +5,8 @@
 #include <cstdlib>
 
 #include "defs.h"
-#include "Main_Menu.h"
-#include "Player_Factory.h"
+#include "main_menu/Main_Menu.h"
+#include "main_menu/Player_Factory.h"
 #include "objects/Player.h"
 #include "utils.h"
 #include "Input_Handler.h"

@@ -22,6 +22,9 @@ Exit string_to_exit(std::string);
 
 std::string object_type_to_string(Object_Type);
 
+std::string get_full_ability_string(std::string abil);
+Param_Type str_to_param_type(std::string str);
+
 int exp_to_advance(int lvl);
 
 template <typename T>

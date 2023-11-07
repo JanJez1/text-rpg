@@ -16,10 +16,12 @@ enum class Object_Type {
 
 enum class Param_Type {
     str, dex, con,
+    free_ability_points,
     ac, attack,
     min_damage, max_damage,
     max_hp,
-    exp_rating
+    exp_rating,
+    invalid
 };
 
 enum class Object_State {

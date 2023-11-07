@@ -9,7 +9,8 @@ Player Player_Factory::create_default_player() {
         {Param_Type::dex, 10},
         {Param_Type::con, 10},
         {Param_Type::max_hp, 10},
-        {Param_Type::ac, 8}
+        {Param_Type::ac, 8},
+        {Param_Type::free_ability_points, 7}
      };
      return Player{default_player_params};
 }

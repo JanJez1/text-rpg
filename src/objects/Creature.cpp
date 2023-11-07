@@ -24,11 +24,11 @@ Creature::Creature(string key_name, string title, string desc, map<Param_Type, s
 
 string Creature::get_profile(){
     std::string response = "\n";
-    response += "Strength:      " + ability_to_string(get_param(Param_Type::str)) + "\n";
-    response += "Dexterity:     " + ability_to_string(get_param(Param_Type::dex)) + "\n";
-    response += "Constitution:  " + ability_to_string(get_param(Param_Type::con)) + "\n";
-    response += "Health points: " + std::to_string(hp) + "/" + std::to_string(get_param(Param_Type::max_hp)) + "\n";
-    response += "Armour class:  " + std::to_string(get_param(Param_Type::ac)) + "\n";
+    response += "Strength:       " + ability_to_string(get_param(Param_Type::str)) + "\n";
+    response += "Dexterity:      " + ability_to_string(get_param(Param_Type::dex)) + "\n";
+    response += "Constitution:   " + ability_to_string(get_param(Param_Type::con)) + "\n";
+    response += "Health points:  " + std::to_string(hp) + "/" + std::to_string(get_param(Param_Type::max_hp)) + "\n";
+    response += "Armour class:   " + std::to_string(get_param(Param_Type::ac)) + "\n";
     return response;
 }
 

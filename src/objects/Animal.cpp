@@ -8,7 +8,7 @@ Animal::Animal(string key_name, string title, string desc, map<Param_Type, short
 
 std::string Animal::get_profile(){
     std::string response = Creature::get_profile();
-    response += "Damage:        " 
+    response += "Damage:         " 
         + std::to_string( get_param(Param_Type::min_damage) ) +
         "/" + std::to_string( get_param(Param_Type::max_damage) );
     return response;
