@@ -17,9 +17,11 @@ private:
     int lvl;
     std::string level_up();
     std::string raise_exp(Creature &creature);
+
 public:
     // Player(std::string key_name, std::string title, std::string desc, std::map<Param_Type, short> params);
     Player(std::map<Param_Type, short> params);
+    // Player();
     virtual ~Player() = default;
 
     Player_State get_state() { return state; }

@@ -27,7 +27,8 @@ public:
     virtual ~Creature() = default;
 
     virtual std::string get_desc();
-    virtual std::string get_profile();
+    std::string get_abilities_profile();
+    virtual std::string get_profile();    
     std::string health_string();
 
     short get_ability_modifier(short ability_value) { return ( ability_value-10 ) / 2; }
@@ -45,13 +46,12 @@ public:
     virtual int get_dr() = 0; // damage roll
     virtual std::string die();
 
-    void set_base_param(Param_Type param_type, short value) {
-        base_params.insert_or_assign(param_type, value);
-    }
+    void raise_base_param(Param_Type param_type, short value);
     void alter_param_bonus(Param_Type, short);
-    short get_param(Param_Type);
+    short get_base_param(Param_Type);
+    short get_param_incl_bonus(Param_Type);
 
-    std::string event_heal();
+    void event_heal() { hp = base_params.at(Param_Type::max_hp); }
 
     std::string get_position() { return position;};
     void set_position(std::string pos) { position = pos; };

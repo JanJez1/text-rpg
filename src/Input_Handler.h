@@ -1,20 +1,23 @@
 #ifndef INPUT_HANDLER_H
 #define INPUT_HANDLER_H
 
+#include <iostream>
 #include <vector>
 #include <string>
+#include "objects/Player.h"
+#include "Commands.h"
 
 class Input_Handler
 {
 private:
-    std::vector<std::string> tokens;
-    
+    std::vector<std::string> tokens{};
+    std::string response{};
+    std::string input_line{};
+    Commands commands{};
+   
 public:
-    Input_Handler(std::string input="");
-
     void parse_input(std::string);
-    std::vector<std::string> get_tokens() {return tokens; }
-    std::string get_verb() {return tokens.at(0);}
+    void command_loop(Player&);
 };
 
 #endif // INPUT_HANDLER_H

@@ -14,5 +14,6 @@ std::string Drink::action(std::vector<std::string> params, Player& player) {
         return "You can't drink " + (*iter)->get_title() + ".";
     
     inv.erase(iter);
-    return player.event_heal();
+    player.event_heal();
+    return "You've drunk your potion.";
 }

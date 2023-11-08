@@ -3,7 +3,8 @@
 using namespace std;
 
 Commands::Commands()
-:commands{}
+    : commands{},
+      menu_commands{}
 {
     commands.insert({"drink", std::make_unique<Drink>()});
     commands.insert({"drop", std::make_unique<Drop>()});
@@ -27,18 +28,41 @@ Commands::Commands()
     commands.insert({"remove", std::make_unique<Remove>()});
     commands.insert({"unlock", std::make_unique<Unlock>()});
     commands.insert({"wear", std::make_unique<Wear>()});
+
+    menu_commands.insert({"help", std::make_unique<Menu_Help>()});
+    menu_commands.insert({"h", std::make_unique<Menu_Help>()});
+    menu_commands.insert({"play", std::make_unique<Menu_Play>()});
+    menu_commands.insert({"profile", std::make_unique<Menu_Profile>()});
+    menu_commands.insert({"prof", std::make_unique<Menu_Profile>()});
+    menu_commands.insert({"raise", std::make_unique<Raise>()});
+    menu_commands.insert({"reset", std::make_unique<Menu_Reset>()});
+    menu_commands.insert({"quit", std::make_unique<Menu_Quit>()});
+    menu_commands.insert({"q", std::make_unique<Menu_Quit>()});
 }
 
 
 string Commands::execute_command(vector<string> tokens, Player& player) {
+    
     if (tokens.size() < 1)
         return "No command given.";
     apply_go_aliases(tokens); //  transfers 'n' to 'go north'
     string verb = tokens.at(0);
     tokens.erase(tokens.begin()); // the first token is verb, after erasing it, only params remain in tokens
-    if (commands.find(verb) == commands.end() )
-        return "Command not recognized.";
-    return commands.at(verb)->action(tokens, player);
+    
+    if (player.get_state() == Player_State::playing) {
+        if (commands.find(verb) != commands.end() )
+            return commands.at(verb)->action(tokens, player);
+        else
+            return "Command not recognized.";
+    }
+
+    else if (player.get_state() == Player_State::generate) {
+        if (menu_commands.find(verb) != menu_commands.end() )
+            return menu_commands.at(verb)->action(tokens, player);
+        else
+            return "Command not recognized.\nAvailable commands: 'play', 'profile', 'raise', 'reset', 'quit'.";
+    }
+    return "Some mess in player state.";    
 }
 
 void Commands::apply_go_aliases(vector<string> &tokens) {

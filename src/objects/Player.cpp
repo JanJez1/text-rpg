@@ -4,6 +4,7 @@ using namespace std;
 
 // Player::Player(string key_name, string title, string desc, map<Param_Type, short> params)
 Player::Player(map<Param_Type, short> params)
+// Player::Player()
     : Humanoid{"", "you", "", params},
     state{Player_State::in_menu},
     exp{0},
@@ -17,7 +18,7 @@ string Player::creature_killed(Creature &creature) {
 }
 
 string Player::raise_exp(Creature &creature) {
-    exp += creature.get_param(Param_Type::exp_rating);
+    exp += creature.get_base_param(Param_Type::exp_rating);
     if (exp > exp_to_advance(lvl) )
         return level_up();
     return ""; 
@@ -25,11 +26,10 @@ string Player::raise_exp(Creature &creature) {
 
 string Player::level_up() {
     int con_modif = get_ability_modifier(base_params.at(Param_Type::con));
-    base_params.at(Param_Type::max_hp) += con_modif + 6;
+    base_params.at(Param_Type::max_hp) += 6 + con_modif; // add 6 HP per level + con modif
     base_params.at(Param_Type::free_ability_points) += 2;
-    hp = base_params.at(Param_Type::max_hp);
+    event_heal();
     lvl++;
-    // ToDo raise 2 abilities
     return "\nYou gained another level!";
 }
 
@@ -64,7 +64,7 @@ string Player::event_drop_item(vector<shared_ptr<Item>>::iterator iter) { // ite
 
 string Player::get_profile() {
     string response = Humanoid::get_profile() + "\n";
-    response += "Ability points: " + std::to_string(get_param(Param_Type::free_ability_points))+ "\n";
+    response += "Ability points: " + std::to_string(get_base_param(Param_Type::free_ability_points))+ "\n";
     response += "Level:          " + std::to_string(lvl)+ "\n";
     response += "Experience:     " + std::to_string(exp) + "/" + std::to_string(exp_to_advance(lvl));
     return response;

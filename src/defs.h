@@ -1,7 +1,7 @@
 #ifndef DEFS_H
 #define DEFS_H
 
-#include<vector>
+#include<map>
 
 enum class Object_Type {
     creature,

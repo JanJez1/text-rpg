@@ -1,6 +1,6 @@
 # text-rpg
 
-Role Playing Game (RPG) running in the console.
+Role Playing Game (RPG) running in the console. Playable beta.
 
 You are in control of a hero in a medieval/fantasy world. The world consists of separate locations (so called rooms). While exploring the world you move between rooms, fight monsters, collect items, look for hidden treasures and gain experience. Description of locations, monsters and items are in text only. You control your hero by giving text commands.
 
@@ -11,7 +11,7 @@ Currently implemented:
 - item manipulation
 - worn/held items alter hero (and monster) characteristics (ac, damage, strength, ...)
 - simple combat based on AD&D
-- hero advancement
+- hero customization and advancement
 - some creatures reappear over time when killed
 - special interaction with objects:
     - locked chests and gates
@@ -28,6 +28,3 @@ Commands:
 - unlock
 - drink (potion)
 - raise (ability)
-
-ToDo:
-- hero creation

@@ -9,7 +9,7 @@ Creature::Creature(string key_name, string title, string desc, map<Param_Type, s
       m_inv{},
       position{"standing"}
 {    
-    map<Param_Type, short>::const_iterator iter = base_params.find(Param_Type::max_hp);
+    auto iter = base_params.find(Param_Type::max_hp);
     if(iter == base_params.end()) {
         hp = 10;
         base_params.insert({Param_Type::max_hp, hp});
@@ -20,15 +20,20 @@ Creature::Creature(string key_name, string title, string desc, map<Param_Type, s
 
 
 
-// DESCRIPTION, STATUS
+// DESCRIPTION, PROFILE
+
+string Creature::get_abilities_profile(){
+    std::string response = "\n";
+    response += "Strength:       " + ability_to_string(get_param_incl_bonus(Param_Type::str)) + "\n";
+    response += "Dexterity:      " + ability_to_string(get_param_incl_bonus(Param_Type::dex)) + "\n";
+    response += "Constitution:   " + ability_to_string(get_param_incl_bonus(Param_Type::con)) + "\n";
+    return response;
+}
 
 string Creature::get_profile(){
-    std::string response = "\n";
-    response += "Strength:       " + ability_to_string(get_param(Param_Type::str)) + "\n";
-    response += "Dexterity:      " + ability_to_string(get_param(Param_Type::dex)) + "\n";
-    response += "Constitution:   " + ability_to_string(get_param(Param_Type::con)) + "\n";
-    response += "Health points:  " + std::to_string(hp) + "/" + std::to_string(get_param(Param_Type::max_hp)) + "\n";
-    response += "Armour class:   " + std::to_string(get_param(Param_Type::ac)) + "\n";
+    std::string response = get_abilities_profile();
+    response += "Health points:  " + std::to_string(hp) + "/" + std::to_string(get_param_incl_bonus(Param_Type::max_hp)) + "\n";
+    response += "Armour class:   " + std::to_string(get_param_incl_bonus(Param_Type::ac)) + "\n";
     return response;
 }
 
@@ -37,7 +42,7 @@ string Creature::get_desc() {
 }
 
 string Creature::health_string() {
-    int health_percentage = 100 * get_hp() / get_param(Param_Type::max_hp);
+    int health_percentage = 100 * get_hp() / get_param_incl_bonus(Param_Type::max_hp);
     string str = "\n" + to_upper(get_key_name()) + " is ";
     if (health_percentage > 99)
         return  str + "in full health.";
@@ -64,16 +69,30 @@ void Creature::alter_param_bonus(Param_Type param_type, short value) {
         param_bonuses[param_type] = value;
 }
 
-short Creature::get_param(Param_Type param_type) {
-    short param_value {0};
-    auto itr = base_params.find(param_type);
-    if (itr != base_params.end())
+short Creature::get_param_incl_bonus(Param_Type param_type) {
+    short param_value = get_base_param(param_type);
+    auto itr = param_bonuses.find(param_type); 
+    if (itr != param_bonuses.end())
         param_value += itr->second;
-    auto itr2 = param_bonuses.find(param_type); 
-    if (itr2 != param_bonuses.end())
-        param_value += itr2->second;
     return param_value;
 }
+
+short Creature::get_base_param(Param_Type param_type) {
+    auto itr = base_params.find(param_type);
+    if (itr != base_params.end())
+        return itr->second;
+    return 0;
+}
+
+void Creature::raise_base_param(Param_Type param_type, short value) {
+    auto itr = base_params.find(param_type);
+    if (itr == base_params.end())
+        base_params.insert({param_type, value});
+    else 
+        base_params.at(param_type) += value;
+}
+
+
 
 void Creature::add_item(string name, bool equip) {
     auto item = Item_Factory::create(name);
@@ -88,8 +107,8 @@ Item *Creature::find_item(std::string name) {
 }
 
 void Creature::alter_hp(int change) {
-    if ( (hp + change) > get_param(Param_Type::max_hp)) {
-        hp = get_param(Param_Type::max_hp);
+    if ( (hp + change) > get_param_incl_bonus(Param_Type::max_hp)) {
+        hp = get_param_incl_bonus(Param_Type::max_hp);
         return;
     }
     hp += change;
@@ -98,12 +117,6 @@ void Creature::alter_hp(int change) {
 
 string Creature::die() {  // 
     return to_upper(get_key_name() + " drops dead.");
-}
-
-
-std::string Creature::event_heal() {
-    hp = base_params.at(Param_Type::max_hp);
-    return "You've drunk your potion.";
 }
 
 // --------- SUPPORT

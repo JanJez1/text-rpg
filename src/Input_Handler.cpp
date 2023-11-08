@@ -2,11 +2,6 @@
 
 using namespace std;
 
-Input_Handler::Input_Handler(string input)
-: tokens{}
-{
-}
-
 // split string into substrings and save to 'vector<string> tokens'
 // first substring is considered as verb (command)
 // the rest of substrings (if any) are params
@@ -33,4 +28,11 @@ void Input_Handler::parse_input(std::string input_line) {
         tokens.push_back(token); 
 }
 
+void Input_Handler::command_loop(Player& player) {
+    cout << "> ";
+    getline (cin, input_line);
+    parse_input(input_line);
+    response = commands.execute_command(tokens, player);
+    cout << response << endl;
+}
 

@@ -94,7 +94,6 @@ int random(int max) {
     return random(1, max);
 }
 
-
 int exp_to_advance(int lvl) {
     switch (lvl) {
         case 1: return 300;
@@ -105,3 +104,4 @@ int exp_to_advance(int lvl) {
     }
     return 20000;
 };
+

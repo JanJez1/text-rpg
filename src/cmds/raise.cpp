@@ -25,20 +25,20 @@ std::string Raise::action(std::vector<std::string> params, Player& player) {
             return "Invalid amount of ability points.";
     }
     
-    int free_ability_points = player.get_param(Param_Type::free_ability_points);
+    int free_ability_points = player.get_base_param(Param_Type::free_ability_points);
     if (amount > free_ability_points)
         return "You don't have enough free ability points.";
     
     // max value ability check
-    if ( (amount + player.get_param(ability_to_raise)) > get_ability_max(player.get_level()) )
+    if ( (amount + player.get_base_param(ability_to_raise)) > get_ability_max(player.get_level()) )
         return "You can't raise " + ability_string + " above " + 
             std::to_string(get_ability_max(player.get_level())) + ".";
     
-    player.set_base_param(ability_to_raise, player.get_param(ability_to_raise) + amount);
-    player.set_base_param(Param_Type::free_ability_points, free_ability_points - amount);
+    player.raise_base_param(ability_to_raise, amount);
+    player.raise_base_param(Param_Type::free_ability_points, -amount);
 
     return "You raised " + ability_string + " by " + std::to_string(amount) + " to " 
-        + std::to_string(player.get_param(ability_to_raise)) + ".";
+        + std::to_string(player.get_base_param(ability_to_raise)) + ".";
 }
 
 int Raise::get_ability_max(int level) {

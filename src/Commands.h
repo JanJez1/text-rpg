@@ -22,6 +22,8 @@
 #include "cmds/Unlock.h"
 #include "cmds/Wear.h"
 
+#include "main_menu/Menu_Cmds.h"
+
 
 class Commands
 {
