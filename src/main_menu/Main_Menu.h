@@ -5,14 +5,18 @@
 #include <iostream>
 
 #include "../defs.h"
+#include "../Input_Handler.h"
+#include "../objects/Player.h"
+#include "Player_Factory.h"
 
 
 class Main_Menu
 {
 private:
-    /* data */
-public:
     static Menu_Item select_menu_item();
+public:
+    static bool /*shutdown*/ launch(Player&); 
+
     static void display_config_help();
     static std::string get_config_help();
 };

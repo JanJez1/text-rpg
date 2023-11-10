@@ -93,7 +93,6 @@ void Creature::raise_base_param(Param_Type param_type, short value) {
 }
 
 
-
 void Creature::add_item(string name, bool equip) {
     auto item = Item_Factory::create(name);
     m_inv.push_back(move(item));

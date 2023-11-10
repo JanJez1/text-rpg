@@ -2,9 +2,7 @@
 
 using namespace std;
 
-// Player::Player(string key_name, string title, string desc, map<Param_Type, short> params)
 Player::Player(map<Param_Type, short> params)
-// Player::Player()
     : Humanoid{"", "you", "", params},
     state{Player_State::in_menu},
     exp{0},

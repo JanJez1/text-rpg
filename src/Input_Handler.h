@@ -10,14 +10,12 @@
 class Input_Handler
 {
 private:
-    std::vector<std::string> tokens{};
-    std::string response{};
-    std::string input_line{};
-    Commands commands{};
+    static std::vector<std::string> parse_input(std::string);
+    static std::vector<std::string> handle_input(Player&);
    
 public:
-    void parse_input(std::string);
-    void command_loop(Player&);
+    static void handle_command(Player&);
+    static void handle_menu_command(Player&);
 };
 
 #endif // INPUT_HANDLER_H

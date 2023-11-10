@@ -33,6 +33,7 @@ enum class Object_State {
 
 enum class Player_State {
     quit,
+    config,
     generate,
     auto_generate,
     in_menu,
@@ -42,9 +43,9 @@ enum class Player_State {
 
 enum class Menu_Item {
     in_menu,
-    auto_generate,
-    generate,
-    quit
+    player_config_manual,
+    player_config_auto,
+    shutdown
 };
 
 #endif // DEFS_H

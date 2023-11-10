@@ -2,6 +2,30 @@
 
 using namespace std;
 
+bool /*shutdown*/ Main_Menu::launch(Player& player) {
+    auto selection = select_menu_item();
+
+    if (selection == Menu_Item::shutdown) {
+        return true;
+    }
+
+    else if (selection == Menu_Item::player_config_auto) {
+        Player_Factory player_factory;
+        player_factory.auto_generate_abilities(player);
+        player.set_state(Player_State::playing);
+    }
+    
+    else if (selection == Menu_Item::player_config_manual) {
+        Main_Menu::display_config_help();
+        player.set_state(Player_State::config);
+        do {
+            Input_Handler::handle_menu_command(player);
+        }
+        while (player.get_state() == Player_State::config);
+    }
+    return false;
+}
+
 void print_main_menu() {
     cout << endl;
     cout << "MAIN MENU" << endl;
@@ -19,11 +43,11 @@ Menu_Item Main_Menu::select_menu_item() {
         print_main_menu();
         getline (cin, input);
         if (input == "p" || input == "P")
-            selection = Menu_Item::auto_generate;
+            selection = Menu_Item::player_config_auto;
         else if (input == "c" || input == "C")
-            selection = Menu_Item::generate;
+            selection = Menu_Item::player_config_manual;
         else if (input == "q" || input == "Q")
-            selection = Menu_Item::quit;
+            selection = Menu_Item::shutdown;
         else
             cout << "Invalid selection."  << endl;
     }

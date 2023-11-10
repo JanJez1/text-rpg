@@ -19,7 +19,7 @@ std::string Menu_Reset::action(std::vector<std::string> params, Player& player) 
         return "No parameters allowed.";
     Player_Factory player_factory;
     player = player_factory.create_default_player();
-    player.set_state(Player_State::generate);
+    player.set_state(Player_State::config);
     return "Abilities set to default values.";
 }
 

@@ -10,6 +10,7 @@ Player Player_Factory::create_default_player() {
 void Player_Factory::auto_generate_abilities(Player& player) {
     int ability_points = player.get_base_param(Param_Type::free_ability_points);
     Param_Type abil_to_raise = Param_Type::invalid;
+    // to be perfectly correct, max ability value should be checked not to exceed 15
     for (int i{0}; i < ability_points; i++) {
         switch (random(3)) {
             case 1: abil_to_raise = Param_Type::str; break;
@@ -22,9 +23,7 @@ void Player_Factory::auto_generate_abilities(Player& player) {
     }
     player.raise_base_param(Param_Type::free_ability_points, -ability_points);
     raise_max_hp_per_con(player);
-    player.set_state(Player_State::playing);
 }
-
 
 void Player_Factory::raise_max_hp_per_con(Player& player) {
     int con_modif = player.get_ability_modifier(player.get_base_param(Param_Type::con));

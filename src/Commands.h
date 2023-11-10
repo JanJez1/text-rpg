@@ -28,12 +28,15 @@
 class Commands
 {
 private:
-    std::map<std::string, std::unique_ptr<Cmd_Base>> commands;
-    std::map<std::string, std::unique_ptr<Cmd_Base>> menu_commands;
+    static const std::map<std::string, std::unique_ptr<Cmd_Base>> commands;
+    static const std::map<std::string, std::unique_ptr<Cmd_Base>> menu_commands;
+    static void apply_go_aliases(std::vector<std::string>& tokens);
+    static const std::map<std::string, std::unique_ptr<Cmd_Base>> init_commands();
+    static const std::map<std::string, std::unique_ptr<Cmd_Base>> init_menu_commands();
+
 public:
-    Commands();
-    std::string execute_command(std::vector<std::string>, Player&);
-    void apply_go_aliases(std::vector<std::string>&);
+    static std::string execute_command(std::vector<std::string>, Player&);
+    static std::string execute_menu_command(std::vector<std::string>, Player&);
 };
 
 #endif // COMMANDS_H
